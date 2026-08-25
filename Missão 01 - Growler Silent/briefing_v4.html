@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[CLASSIFICADO] OPORD: Growler Silent</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+        :root {
+            --term-green: #33ff33;
+            --term-dark: #0a0a0a;
+            --term-red: #ff3333;
+            --term-dim: #1a4d1a;
+        }
+
+        body {
+            background-color: var(--term-dark);
+            color: var(--term-green);
+            font-family: 'Share Tech Mono', monospace;
+            margin: 0;
+            padding: 20px;
+            background-image: 
+                linear-gradient(rgba(51, 255, 51, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(51, 255, 51, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+            line-height: 1.6;
+        }
+
+        /* Trava o scroll do body quando o modal estiver ativo */
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        /* Efeito de scanline (Monitor de Comando) */
+        body::after {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 2;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            border: 2px solid var(--term-green);
+            padding: 30px;
+            background-color: rgba(0, 0, 0, 0.85);
+            box-shadow: 0 0 15px rgba(51, 255, 51, 0.2);
+            position: relative;
+            z-index: 3;
+        }
+
+        .header {
+            border-bottom: 2px dashed var(--term-green);
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        .header p {
+            margin: 5px 0;
+        }
+
+        .warning {
+            color: var(--term-red);
+            font-weight: bold;
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0.5; }
+        }
+
+        h1, h2, h3 {
+            text-transform: uppercase;
+            border-left: 5px solid var(--term-green);
+            padding-left: 10px;
+            margin-top: 30px;
+        }
+
+        .video-container {
+            margin: 30px 0;
+            padding: 10px;
+            border: 1px solid var(--term-green);
+            background: var(--term-dim);
+            position: relative;
+        }
+
+        .video-container::before {
+            content: "SINAL DE VÍDEO SEGURO - UPLINK ESTABELECIDO";
+            display: block;
+            font-size: 0.8em;
+            margin-bottom: 10px;
+        }
+
+        video {
+            width: 100%;
+            border: 1px solid var(--term-green);
+            filter: contrast(1.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: rgba(51, 255, 51, 0.05);
+        }
+
+        th, td {
+            border: 1px solid var(--term-green);
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--term-dim);
+        }
+
+        .highlight {
+            background-color: var(--term-green);
+            color: var(--term-dark);
+            padding: 0 5px;
+            font-weight: bold;
+        }
+
+        /* Seção de Cartas de Navegação (Kneeboard) */
+        .kneeboard-section {
+            border: 1px dashed var(--term-green);
+            padding: 15px;
+            margin: 25px 0;
+            background: rgba(0, 30, 0, 0.3);
+        }
+
+        .kneeboard-section h4 {
+            margin-top: 0;
+            color: var(--term-green);
+            border-left: none;
+            padding-left: 0;
+            font-size: 0.95em;
+            letter-spacing: 1px;
+        }
+
+        /* Grade de Fotos de Inteligência Inline (Responsiva para Celular) */
+        .intel-inline {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .intel-card {
+            flex: 1;
+            min-width: 250px;
+            border: 1px solid var(--term-green);
+            padding: 5px;
+            background: rgba(0, 20, 0, 0.5);
+            position: relative;
+        }
+
+        /* Indicador visual de Zoom / Lupa */
+        .intel-card::after {
+            content: "[ + AMP ]";
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.75);
+            color: var(--term-green);
+            font-size: 0.65em;
+            padding: 2px 6px;
+            border: 1px solid var(--term-green);
+            pointer-events: none;
+            letter-spacing: 1px;
+        }
+
+        .intel-card img {
+            width: 100%;
+            display: block;
+            filter: brightness(1.15) contrast(1.2) sepia(50%) hue-rotate(70deg);
+            opacity: 0.95;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .intel-card img:hover {
+            opacity: 1;
+            filter: brightness(1.3) contrast(1.3) sepia(30%) hue-rotate(70deg);
+        }
+
+        .intel-card p {
+            font-size: 0.75em;
+            text-align: center;
+            margin: 5px 0 0 0;
+        }
+
+        /* Modal para Zoom da Imagem sem sair da página */
+        #imgModal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        #imgModal img {
+            max-width: 90%;
+            max-height: 80vh;
+            border: 2px solid var(--term-green);
+            box-shadow: 0 0 25px rgba(51, 255, 51, 0.4);
+            filter: none;
+        }
+
+        #imgModal .modal-caption {
+            color: var(--term-green);
+            margin-top: 15px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        #imgModal .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: var(--term-red);
+            font-size: 2em;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .typing-effect {
+            border-right: 10px solid var(--term-green);
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .block-quote {
+            border-left: 2px dashed var(--term-green);
+            padding-left: 15px;
+            margin-left: 10px;
+            color: #aaffaa;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <p><strong>DE:</strong> CENTRO DE COMANDO TÁTICO (OVERLORD)</p>
+        <p><strong>PARA:</strong> ESQUADRÃO DE ASSALTO (GHOSTS)</p>
+        <p><strong>OPERADORES DESIGNADOS:</strong> <span class="highlight">GHOST ACTUAL "Epyon12"</span> | <span class="highlight">GHOST LEAD "Muguiga"</span></p>
+        <p class="warning">CLASSIFICAÇÃO: ULTRA SECRETO / ESTRITAMENTE PESSOAL</p>
+        <p><strong>ASSUNTO:</strong> ORDEM DE OPERAÇÕES - "OPERAÇÃO GROWLER SILENT"</p>
+    </div>
+
+    <div class="video-container">
+        <video controls>
+            <source src="ASSETS/OPORD_Growler_Silent.mp4" type="video/mp4">
+            Seu navegador não suporta a tag de vídeo.
+        </video>
+    </div>
+
+    <!-- CARTAS DE NAVEGAÇÃO / KNEEBOARD MAPS NO TOPO -->
+    <div class="kneeboard-section">
+        <h4>// CARTAS DE NAVEGAÇÃO E SETORIZAÇÃO (KNEEBOARD)</h4>
+        <div class="intel-inline">
+            <div class="intel-card">
+                <img src="ASSETS/1_1_Boat_Skell_Tech_location_Map.png" alt="Carta Náutica Píer" onclick="openModal(this)">
+                <p>REF: Carta Náutica Píer Inicial</p>
+            </div>
+			<div class="intel-card">
+                <img src="ASSETS/2_1_Drone_Statio_CAR.png" alt="Setor Intermediário W132" onclick="openModal(this)">
+                <p>REF: Setor Intermediário W132</p>
+            </div>
+        </div>
+        <div class="intel-inline" style="margin-top: 15px;">
+            <div class="intel-card">
+                <img src="ASSETS/0_1_Full_Map_1_Box_Infil.png" alt="Mapa Setor Infiltração" onclick="openModal(this)">
+                <p>REF: Setor Infiltração (Rio/Omega)</p>
+            </div>
+            <div class="intel-card">
+                <img src="ASSETS/0_1_Full_Map_2_Heli.png" alt="Mapa Setor Exfiltração" onclick="openModal(this)">
+                <p>REF: Setor Exfiltração & Wasp Ridge</p>
+            </div>
+        </div>
+    </div>
+
+    <p>Senhores, prestem atenção. A Inteligência confirmou a localização de uma instalação clandestina da Skell Tech operada por forças Rogue. Eles estão manufaturando drones armados sendo usados ativamente contra a população civil de Auroa. Além disso, satélites detectaram um protótipo de helicóptero com capacidades anti-radar no local. Se essa aeronave entrar em operação, perderemos o controle do espaço aéreo no setor.</p>
+    
+    <p>O objetivo de vocês é paralisar a produção e extrair o protótipo. A margem de erro é zero.</p>
+
+    <h3>Resumo Tático (SITREP)</h3>
+    <table>
+        <tr>
+            <th>Parâmetro</th>
+            <th>Detalhe</th>
+        </tr>
+        <tr>
+            <td><strong>Ponto de Infiltração</strong></td>
+            <td>Murmur Delta Bivouac</td>
+        </tr>
+        <tr>
+            <td><strong>Zona de Risco Extremo</strong></td>
+            <td>The Growler River (Patrulhas aéreas pesadas)</td>
+        </tr>
+        <tr>
+            <td><strong>ROE (Engajamento)</strong></td>
+            <td>Furtividade absoluta até o objetivo principal. Letalidade total no complexo.</td>
+        </tr>
+        <tr>
+            <td class="warning">Risco Ambiental</td>
+            <td class="warning">Lake Tiberias Bivouac - NOGO ZONE. (Contaminação radioativa letal)</td>
+        </tr>
+    </table>
+
+    <h3>Execução da Missão (Fases)</h3>
+    
+    <!-- FASE 1 -->
+    <p><strong>FASE 1: INSERÇÃO E LOGÍSTICA</strong><br>
+    Vocês iniciarão a operação no <strong>Murmur Delta Bivouac</strong>. Desloquem-se até o píer adjacente e utilizem o transporte aquático para alcançar a foz do <strong>The Growler River</strong>. A topografia do rio impossibilita a navegação prolongada; o desembarque é obrigatório.<br>
+    Avancem até a <strong>Drone Station W132</strong>, que os relatórios indicam estar abandonada, e garantam transporte terrestre. Prossigam pelos trilhos novos até a <strong>Skell Technology Location</strong>.<br>
+    <em>Nota de Suprimentos:</em> Vocês cairão desarmados de explosivos pesados. Uma equipe de scout infiltrou a área ontem à noite e escondeu uma caixa com cargas de C4 neste local. Recuperem os explosivos. Sem eles, a Fase 3 fracassa.</p>
+
+    <div class="intel-inline">
+        <div class="intel-card">
+            <img src="ASSETS/1_2_Boat_Skell_Tech_location.png" alt="Píer e Lancha" onclick="openModal(this)">
+            <p>REF: Píer e Embarcação de Inserção</p>
+        </div>
+        <div class="intel-card">
+            <img src="ASSETS/2_2_Drone_Statio_CAR.png" alt="Drone Station W132" onclick="openModal(this)">
+            <p>REF: Ponto de Apoio W132 / Veículos</p>
+        </div>
+    </div>
+    <div class="intel-inline">
+        <div class="intel-card">
+            <img src="ASSETS/4_1_Skell_C4_Box.png" alt="Entrada Skell Tech" onclick="openModal(this)">
+            <p>REF: Entrada / Skell Technology Location</p>
+        </div>
+        <div class="intel-card">
+            <img src="ASSETS/4_2_Skell_C4_Box.png" alt="Caixa de C4" onclick="openModal(this)">
+            <p>REF: Ponto de Coleta do C4</p>
+        </div>
+    </div>
+
+
+    <!-- FASE 2 -->
+    <p><strong>FASE 2: O GARGALO (STEALTH)</strong><br>
+    Com os explosivos assegurados, o esquadrão se aproximará do <strong>Portão 03</strong>. A partir deste ponto, o protocolo Ghost entra em vigor. O trecho subsequente do rio está sob vigilância constante de patrulhas de helicóptero inimigas. Mantenham-se nas sombras e evitem qualquer engajamento.</p>
+
+    <div class="intel-inline">
+        <div class="intel-card">
+            <img src="ASSETS/6_Área_Entrada_Zona_Perigosa.png" alt="Canal de Entrada" onclick="openModal(this)">
+            <p>REF: Canal de Acesso ao Portão 03</p>
+        </div>
+        <div class="intel-card">
+            <img src="ASSETS/7_2_Barco_em_Chamas.png" alt="Referência Visual Rio" onclick="openModal(this)">
+            <p>REF: Alerta de Patrulha / Setor Quente</p>
+        </div>
+    </div>
+
+
+    <!-- FASE 3 -->
+    <p><strong>FASE 3: AÇÃO DIRETA</strong><br>
+    O alvo principal é a <strong>Assembly Hall Omega 01</strong>.</p>
+    <ul>
+        <li>Realizem o <em>breach</em> da estrutura.</li>
+        <li>Limpem o salão de todos os hostis.</li>
+        <li>Plantem o C4 no gerador de energia e detonem, paralisando a fábrica.</li>
+    </ul>
+    <p>Imediatamente após a sabotagem, movam-se para a <strong>Drone Station W161</strong> e eliminem a guarnição de reforços antes que eles possam organizar um contra-ataque na retaguarda de vocês.</p>
+
+    <div class="intel-inline">
+        <div class="intel-card">
+            <img src="ASSETS/8_2_Assembly_Hall_Omega_Local.png" alt="Assembly Hall" onclick="openModal(this)">
+            <p>REF: Fachada Assembly Hall Omega 01</p>
+        </div>
+        <div class="intel-card">
+            <img src="ASSETS/9_Caminho_Drone_Station_W161.png" alt="Caminho W161" onclick="openModal(this)">
+            <p>REF: Progressão Noturna p/ W161</p>
+        </div>
+        <div class="intel-card">
+            <img src="ASSETS/11_Drone_Station_W161_REFORÇOS.png" alt="Reforços W161" onclick="openModal(this)">
+            <p>REF: Ponto de Contato W161</p>
+        </div>
+    </div>
+
+
+    <!-- FASE 4 -->
+    <p><strong>FASE 4: AQUISIÇÃO E EXFILTRAÇÃO (VFR)</strong><br>
+    Limpa a estação, prossigam a pé rumo ao <strong>Wasp Ridge Bivouac</strong>.<br>
+    <span class="warning">Aviso Crítico:</span> O trajeto contorna o <strong>Lake Tiberias Bivouac</strong>. Esta é uma zona de exclusão (NOGO ZONE) intransponível devido a vazamentos radioativos de testes de drones. Mantenham distância. Caso encontrem patrulhas nos trilhos abandonados perto da encosta, engajem apenas se a detecção for iminente.</p>
+
+    <p>Ao alcançarem Wasp Ridge, localizem e embarquem no helicóptero protótipo.</p>
+
+    <div class="intel-inline">
+        <div class="intel-card">
+            <img src="ASSETS/12_Exfil_Drone_Station_W161.png" alt="Caminho Wasp Ridge" onclick="openModal(this)">
+            <p>REF: Rota de Marcha até Wasp Ridge</p>
+        </div>
+        <div class="intel-card">
+            <img src="ASSETS/14_Tilhos_Abandonados.png" alt="Trilhos Abandonados" onclick="openModal(this)">
+            <p>REF: Encosta / Trilhos Abandonados</p>
+        </div>
+    </div>
+
+    <div class="block-quote">
+        <strong>Procedimento de Fuga:</strong> A Inteligência informa que os sistemas de navegação do helicóptero estão inoperantes e o espaço aéreo acima de vocês é uma <em>No Fly Zone</em> monitorada por enxames de drones letais.<br>
+        O piloto tem poucos segundos após a decolagem para baixar a altitude. Vocês deverão realizar a exfiltração contornando a barreira externa em voo estritamente visual (VFR). Utilizem o <strong>Portão 03</strong> iluminado como Ponto de Encontro Visual (Rendezvous) para se reorientarem e sigam o curso do The Growler River pelo ar até avistarem as luzes do <strong>Murmur Delta Bivouac</strong>.
+    </div>
+
+    <div class="intel-inline" style="margin-top: 20px;">
+        <div class="intel-card">
+            <img src="ASSETS/20_Rendevouz_GATE_03.png" alt="Portão 03 Noturno" onclick="openModal(this)">
+            <p>REF: Ponto de Referência Visual (Portão 03)</p>
+        </div>
+        <div class="intel-card">
+            <img src="ASSETS/21_Luzes_Murmur_Delta_Bivouac.png" alt="Luzes de Chegada" onclick="openModal(this)">
+            <p>REF: Sinalizador de Chegada (Murmur Delta)</p>
+        </div>
+    </div>
+
+    <br>
+    <p>Repassem suas funções, verifiquem os rádios e preparem o equipamento. O tempo e a gravidade estão contra vocês.</p>
+    <p class="typing-effect">Boa sorte, Ghosts. Dispensados.</p>
+
+</div>
+
+<!-- MODAL DE ZOOM DE IMAGEM -->
+<div id="imgModal" onclick="closeModal()">
+    <span class="modal-close">&times; [FECHAR]</span>
+    <img id="modalImg" src="" alt="Zoom Intel">
+    <div id="modalCaption" class="modal-caption"></div>
+</div>
+
+<script>
+    function openModal(imgElement) {
+        const modal = document.getElementById("imgModal");
+        const modalImg = document.getElementById("modalImg");
+        const modalCaption = document.getElementById("modalCaption");
+        
+        modal.style.display = "flex";
+        modalImg.src = imgElement.src;
+        
+        // Pega o texto da legenda logo abaixo da imagem na página
+        const captionText = imgElement.nextElementSibling ? imgElement.nextElementSibling.innerText : "";
+        modalCaption.innerText = captionText;
+
+        // Trava o scroll da página de fundo
+        document.body.classList.add("modal-open");
+    }
+
+    function closeModal() {
+        document.getElementById("imgModal").style.display = "none";
+        // Libera o scroll da página de fundo
+        document.body.classList.remove("modal-open");
+    }
+
+    // Fecha o modal ao pressionar a tecla ESC do teclado
+    document.addEventListener("keydown", function(event) {
+        if (event.key === "Escape") {
+            closeModal();
+        }
+    });
+</script>
+
+</body>
+</html>

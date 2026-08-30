@@ -1,0 +1,345 @@
+:root {
+    --term-bright: #adff2f;
+    --hud-bg: rgba(5, 5, 5, 0.9);
+    --border-glow: 0 0 10px rgba(51, 255, 51, 0.2);
+
+    /* POI Colors */
+    --color-bivouac: #00f0ff;
+    --color-camp: #ff3333;
+    --color-outpost: #ff9900;
+    --color-village: #ffff33;
+    --color-station: #cc33ff;
+    --color-other: #55a855;
+}
+
+body {
+    background-color: var(--term-dark);
+    color: var(--term-green);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+}
+
+body::after {
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.12) 50%);
+    background-size: 100% 2px;
+}
+
+.app-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+.map-viewport {
+    flex: 1;
+    height: 100%;
+    position: relative;
+    background-color: #030303;
+    border-right: 2px solid var(--term-dim);
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: #030303;
+}
+
+/* Custom Leaflet overrides for cyberpunk theme */
+.leaflet-container {
+    font-family: 'Share Tech Mono', monospace !important;
+    background: #030303 !important;
+}
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+    background: var(--hud-bg) !important;
+    border: 1px solid var(--term-green) !important;
+    color: var(--term-green) !important;
+    box-shadow: var(--border-glow) !important;
+    border-radius: 0px !important;
+}
+
+.leaflet-popup-content {
+    margin: 12px 16px !important;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.leaflet-popup-close-button {
+    color: var(--term-green) !important;
+}
+
+.leaflet-bar {
+    border: 1px solid var(--term-green) !important;
+    box-shadow: var(--border-glow) !important;
+    border-radius: 0px !important;
+    overflow: hidden;
+}
+
+.leaflet-bar a {
+    background-color: var(--hud-bg) !important;
+    color: var(--term-green) !important;
+    border-bottom: 1px solid var(--term-dim) !important;
+    border-radius: 0px !important;
+}
+
+.leaflet-bar a:hover {
+    background-color: var(--term-green) !important;
+    color: var(--term-dark) !important;
+}
+
+/* HUD Panel */
+.hud-panel {
+    width: 400px;
+    height: 100%;
+    background-color: var(--hud-bg);
+    border-left: 1px solid var(--term-green);
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    z-index: 5;
+    overflow-y: auto;
+}
+
+.hud-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    border-bottom: 2px dashed var(--term-green);
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    text-shadow: 0 0 5px rgba(51, 255, 51, 0.5);
+}
+
+.btn-back {
+    background-color: var(--term-dim);
+    color: var(--term-green);
+    border: 1px solid var(--term-green);
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.btn-back:hover {
+    background-color: var(--term-green);
+    color: var(--term-dark);
+    box-shadow: 0 0 10px rgba(51, 255, 51, 0.5);
+}
+
+.control-section {
+    border: 1px solid var(--term-dim);
+    padding: 15px;
+    margin-bottom: 20px;
+    background: rgba(0, 20, 0, 0.2);
+}
+
+.control-section h4 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    color: var(--term-bright);
+    letter-spacing: 1px;
+    border-bottom: 1px solid var(--term-dim);
+    padding-bottom: 5px;
+}
+
+/* Search input */
+.search-container {
+    display: flex;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+#searchInput {
+    width: 100%;
+    background: #000;
+    border: 1px solid var(--term-green);
+    color: var(--term-green);
+    padding: 10px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.9rem;
+}
+
+#searchInput:focus {
+    outline: none;
+    box-shadow: var(--border-glow);
+}
+
+/* Province Select */
+#provinceSelect {
+    width: 100%;
+    background: #000;
+    border: 1px solid var(--term-green);
+    color: var(--term-green);
+    padding: 8px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+#provinceSelect:focus {
+    outline: none;
+}
+
+/* Type Checkboxes */
+.filter-types {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.type-item {
+    display: flex;
+    align-items: center;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.type-item input {
+    margin-right: 8px;
+    cursor: pointer;
+    accent-color: var(--term-green);
+}
+
+.type-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 6px;
+}
+
+/* Details Card */
+.details-card {
+    border: 1px solid var(--term-green);
+    background: rgba(0, 10, 0, 0.6);
+    padding: 15px;
+    margin-bottom: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 150px;
+}
+
+.details-placeholder {
+    color: var(--term-dim);
+    text-align: center;
+    margin: auto;
+    font-style: italic;
+}
+
+.details-title {
+    color: #fff;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    word-break: break-all;
+    border-bottom: 1px dashed var(--term-green);
+    padding-bottom: 5px;
+}
+
+.details-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    margin-bottom: 6px;
+}
+
+.details-label {
+    color: var(--term-bright);
+}
+
+.details-value {
+    color: #fff;
+    text-align: right;
+    word-break: break-all;
+}
+
+/* Stats & HUD Foot */
+.hud-stats {
+    font-size: 0.75rem;
+    color: var(--term-dim);
+    border-top: 1px solid var(--term-dim);
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Overlay map instructions UI */
+.map-overlay-info {
+    position: absolute;
+    top: 20px;
+    left: 50px;
+    background: rgba(5, 5, 5, 0.85);
+    border: 1px solid var(--term-dim);
+    padding: 10px 15px;
+    pointer-events: none;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    z-index: 1000;
+}
+
+.map-overlay-info h5 {
+    margin: 0 0 5px 0;
+    color: var(--term-bright);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Coordinate HUD at bottom of canvas */
+.coords-display {
+    position: absolute;
+    bottom: 20px;
+    left: 50px;
+    background: rgba(5, 5, 5, 0.85);
+    border: 1px solid var(--term-green);
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    pointer-events: none;
+    box-shadow: var(--border-glow);
+    z-index: 1000;
+}
+
+/* Loading indicator overlay */
+.loader-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--term-dark);
+    z-index: 100000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s;
+}
+
+.loader-box {
+    border: 2px solid var(--term-green);
+    padding: 40px;
+    box-shadow: var(--border-glow);
+    text-align: center;
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.loader-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px dashed var(--term-green);
+    border-radius: 50%;
+    margin: 20px auto;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}

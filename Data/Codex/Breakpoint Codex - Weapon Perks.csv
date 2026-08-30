@@ -1,0 +1,10 @@
+Green 1 / Blue 2,Purple,Gold,Perk,ASR,HDG,LMG,STG,SMG,SNR,DMR,GRL
++10,+20,+30,Accuracy,X,X,X,X,X,X,X,-
++10m,+15m,+25m,Automatic Marking,X,X,X,X,X,X,X,X
++4%,+6%,+12%,Damage to Drones,X,X,X,X,X,X,X,X
++10,+20,+30,Handling,X,X,X,X,X,X,X,-
++10,+20,+30,Mobility,X,X,X,X,X,X,X,X
++10,+20,+30,Range,X,X,X,X,X,X,X,X
++3%,+5%,+10%,Reload Speed,X,X,X,X,X,X,X,P/Gd
+-10%,-20%,-30%,Technique Cooldown,X,X,X,X,X,X,X,X
++20%,-,-,XP Bonus,X,X,X,X,X,X,X,X

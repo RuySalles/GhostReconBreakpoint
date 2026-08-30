@@ -1,0 +1,11 @@
+# Ignore Extracted folder
+Extracted/
+
+# Node modules
+node_modules/
+
+# VS Code Workspace
+.vscode/
+
+# Ignore large original map image
+public/assets/aurora-original.jpg

@@ -1,0 +1,191 @@
+Region,Province,Location,Points,Mission
+R.01 UC.SPARKLE,Windy Islands,Windy Islands Port,400,
+R.01 UC.SPARKLE,Windy Islands,Incineration Plant,200,
+R.01 UC.SPARKLE,Windy Islands,Auroa Recycling Factory,400,
+R.01 UC.SPARKLE,Windy Islands,Garbage Dump,400,
+R.01 UC.SPARKLE,Windy Islands,Behemoth Defense Area,1000,
+R.01 UC.SPARKLE,Liberty,Ayn Rand Residences,200,
+R.01 UC.SPARKLE,Liberty,John Dewey Residences,200,
+R.01 UC.SPARKLE,Liberty,Autumn Lake District,200,
+R.01 UC.SPARKLE,Liberty,Island District,200,
+R.01 UC.SPARKLE,Liberty,Benjamin Franklin Residences,200,
+R.01 UC.SPARKLE,Liberty,Richard Cobden Residences,200,
+R.01 UC.SPARKLE,Liberty,Jane Addams Residences,200,
+R.01 UC.SPARKLE,Liberty,Construction Site (Bleak Hill),200,
+R.01 UC.SPARKLE,Liberty,Cryohope,200,
+R.01 UC.SPARKLE,Liberty,Eternity,400,X
+R.01 UC.SPARKLE,Liberty,Cryogenization Center,200,
+R.01 UC.SPARKLE,Liberty,Auroa Solar Power Plant,200,
+R.01 UC.SPARKLE,Liberty,Jace Skell Dam,400,
+R.01 UC.SPARKLE,Liberty,Auroa Hospital,400,X
+R.01 UC.SPARKLE,Liberty,Frederic Bastiat Residences,200,
+R.02 AG.CELL,New Stirling,Ettrick Residences,400,
+R.02 AG.CELL,New Stirling,Sutherland Vineyard,200,
+R.02 AG.CELL,New Stirling,Glenorchy Orchard,200,
+R.02 AG.CELL,New Stirling,New Stirling Freight Yard,200,
+R.02 AG.CELL,New Stirling,World Seed Vault,400,
+R.02 AG.CELL,New Stirling,Kelso Farm,200,
+R.02 AG.CELL,New Stirling,Agronomy Center,400,
+R.02 AG.CELL,New Stirling,Mossburn Hopfield,200,
+R.02 AG.CELL,New Stirling,Kinloch Farm,200,
+R.02 AG.CELL,New Stirling,Burnside Orchard,200,
+R.02 AG.CELL,New Stirling,Dunback Farm,200,
+R.02 AG.CELL,New Stirling,Forsyth Farm,200,
+R.02 AG.CELL,New Stirling,Blue Viper Outpost,200,
+R.02 AG.CELL,Infinity,Jace Skell Conference Hall,400,
+R.02 AG.CELL,Infinity,Canopus District,200,
+R.02 AG.CELL,Infinity,Vega Residences,400,
+R.02 AG.CELL,Infinity,Polaris Residences,200,X
+R.02 AG.CELL,Infinity,Outpost Green Viper,400,
+R.02 AG.CELL,Infinity,Rigel Residences,400,
+R.02 AG.CELL,Infinity,Sirius Residences,200,
+R.02 AG.CELL,Infinity,Antares District,400,
+R.02 AG.CELL,Infinity,Skell Technology Head Office,400,
+R.02 AG.CELL,Infinity,Alpha Centauri Residences,200,
+R.02 AG.CELL,Infinity,Infinity Transport Hub,400,
+R.02 AG.CELL,Infinity,Auroa Airport,400,X
+R.02 AG.CELL,Infinity,Skell Foundation Head Office,400,
+R.03 AG.CODON,Fen Bog,Fen Bog Testing Zone,400,
+R.03 AG.CODON,Fen Bog,Fen Bog Port,200,
+R.03 AG.CODON,Fen Bog,Bluecorp Startup,200,
+R.03 AG.CODON,Fen Bog,Andersons Farm,400,
+R.03 AG.CODON,Fen Bog,Longford Farm,400,
+R.03 AG.CODON,Fen Bog,Whitestone Farm,400,
+R.03 AG.CODON,Fen Bog,Shipping Center,200,
+R.03 AG.CODON,Fen Bog,Behemoth Defense Area,1000,
+R.03 AG.CODON,Sinking Country,Sentinel Corp. Land Base,800,
+R.03 AG.CODON,Sinking Country,Anti-Aircraft Ruins,400,
+R.03 AG.CODON,Sinking Country,Equipment Depot,400,X
+R.03 AG.CODON,Sinking Country,Behemoth Defense Area,1000,
+R.03 AG.CODON,Sinking Country,Bunker Edgehod South,200,
+R.03 AG.CODON,Sinking Country,Camp Tiger,800,X
+R.03 AG.CODON,Sinking Country,Ammunition Depot,400,
+R.03 AG.CODON,Sinking Country,Howard Port,400,X
+R.03 AG.CODON,Sinking Country,Radar Station North,200,X
+R.03 AG.CODON,Sinking Country,Howard Airfield,1600,X
+R.04 AG SYNAPSE,Cape North,Underwater Cable Station,200,X
+R.04 AG SYNAPSE,Cape North,Construction Site,200,
+R.04 AG SYNAPSE,Cape North,Skell Foundation Campus,1200,X
+R.04 AG SYNAPSE,Cape North,Darkwood Island Port,200,X
+R.04 AG SYNAPSE,Cape North,Behemoth Defense Area,1000,
+R.04 AG SYNAPSE,Driftwood Islets,Behemoth Defense Area,1000,
+R.04 AG SYNAPSE,Driftwood Islets,Camp Kodiak,400,
+R.04 AG SYNAPSE,Driftwood Islets,Driftwood Islets Testing Zone,400,
+R.05 MN.IRON,Smuggler Coves,Drone Station W011,200,
+R.05 MN.IRON,Smuggler Coves,Auroa Materials Deposit,800,X
+R.05 MN.IRON,Smuggler Coves,Smuggler Coves Freight Yard,200,
+R.05 MN.IRON,Smuggler Coves,Maunga Nui Port,800,X
+R.05 MN.IRON,Smuggler Coves,Behemoth Defense Area,1000,
+R.05 MN.IRON,Smuggler Coves,Composite Factory,800,X
+R.05 MN.IRON,Smuggler Coves,Outpost Red Tiger,200,
+R.05 MN.IRON,Smuggler Coves,Polylmorph Modeling,200,
+R.05 MN.IRON,Smuggler Coves,Emergency Center,200,
+R.05 MN.IRON,Smuggler Coves,Wind Farm 01,200,
+R.05 MN.IRON,Mount Hodgson,Mining Control Center,200,
+R.05 MN.IRON,Mount Hodgson,Chem-Extraction Complex,800,X
+R.05 MN.IRON,Mount Hodgson,Bald Peak Mine,800,X
+R.05 MN.IRON,Mount Hodgson,Silent Valley Mine,800,
+R.05 MN.IRON,Mount Hodgson,Behemoth Defense Area (Invisible Stream),1000,
+R.05 MN.IRON,Mount Hodgson,Behemoth Defense Area (Sceptre Peak),1000,
+R.06 MN.STEEL,Wild Coast,Wind Farm 03,200,
+R.06 MN.STEEL,Wild Coast,Youth Spring,200,
+R.06 MN.STEEL,Wild Coast,Behemoth Defense Area,1000,
+R.06 MN.STEEL,Wild Coast,Control Station Tiger 01,200,
+R.06 MN.STEEL,Wild Coast,Hybrid Engine Factory,800,X
+R.06 MN.STEEL,Wild Coast,Wild Coast Freight Yard,200,X
+R.06 MN.STEEL,Wild Coast,Storage Depot,200,X
+R.06 MN.STEEL,Wild Coast,Engine R&D Center,400,X
+R.06 MN.STEEL,Wild Coast,Outpost Blue Tiger,200,X
+R.06 MN.STEEL,Wild Coast,Toxic Storage Depot,200,
+R.06 MN.STEEL,Wild Coast,Electric Engine Factory,800,X
+R.06 MN.STEEL,Whalers Bay,Mechanical R&D Center,400,X
+R.06 MN.STEEL,Whalers Bay,Storage Depot,200,X
+R.06 MN.STEEL,Whalers Bay,Land Chassis Factory,800,
+R.06 MN.STEEL,Whalers Bay,Behemoth Defense Area,1000,
+R.06 MN.STEEL,Whalers Bay,Whalers Bay Airfield,400,X
+R.06 MN.STEEL,Whalers Bay,Air Chassis Factory,400,
+R.06 MN.STEEL,Whalers Bay,Construction Site,400,
+R.07 MN.COPPER,Channels,Behemoth Defense Area (Behemoth Passage),1000,
+R.07 MN.COPPER,Channels,Electric Grid Control,400,X
+R.07 MN.COPPER,Channels,Channels R&D Center,1200,X
+R.07 MN.COPPER,Channels,Behemoth Defense Area (Misty Ridge),1000,
+R.07 MN.COPPER,Channels,Step Up Startup,200,
+R.07 MN.COPPER,Channels,Navy Fueling Station,200,
+R.07 MN.COPPER,Channels,Main Pumping Station,200,
+R.07 MN.COPPER,Channels,Auroa Power Plant,800,
+R.07 MN.COPPER,Seal Islands,Behemoth Defense Area (SW Arrow Testing),1000,
+R.07 MN.COPPER,Seal Islands,West Radar Station,200,
+R.07 MN.COPPER,Seal Islands,Fuel Storage,800,X
+R.07 MN.COPPER,Seal Islands,Anti-Aircraft Battery,400,X
+R.07 MN.COPPER,Seal Islands,Abandoned Barracks,800,
+R.07 MN.COPPER,Seal Islands,Emelius Port,200,
+R.07 MN.COPPER,Seal Islands,Ammunition Storage,400,
+R.07 MN.COPPER,Seal Islands,Shark Base,800,
+R.07 MN.COPPER,Seal Islands,Behemoth Defense Area (SE Shark Base),1000,
+R.07 MN.COPPER,Seal Islands,Naval Base Auroa Airfield,1600,X
+R.07 MN.COPPER,Seal Islands,Sentinel Corp. Naval Base,400,X
+R.08 DT.SERVO,Silent Mountain,Submarine Cable Control,200,
+R.08 DT.SERVO,Silent Mountain,Auroa Intranet Control,1400,X
+R.08 DT.SERVO,Silent Mountain,Pumping Station,200,X
+R.08 DT.SERVO,Silent Mountain,Battery Farm,200,X
+R.08 DT.SERVO,Silent Mountain,Auroa Data Farm,800,X
+R.08 DT.SERVO,Silent Mountain,Camp Black Widow,800,X
+R.08 DT.SERVO,Good Hope Mountain,Red Weasel Outpost,400,
+R.08 DT.SERVO,Good Hope Mountain,Auroa Weather Station,200,
+R.08 DT.SERVO,Good Hope Mountain,Camp Weasel,800,
+R.08 DT.SERVO,Good Hope Mountain,Natural Hazards Control,400,X
+R.08 DT.SERVO,Good Hope Mountain,Auroa Survival Shelter,1200,X
+R.08 DT.SERVO,Good Hope Mountain,Drone Station W111,200,
+R.08 DT.SERVO,Good Hope Mountain,Behemoth Defense Area,1000,
+R.09 DT.HELIX,New Argyll,Fish Processing Center,400,
+R.09 DT.HELIX,New Argyll,Meal Packaging Center,400,
+R.09 DT.HELIX,New Argyll,Outpost Black Tiger,200,
+R.09 DT.HELIX,New Argyll,Cold Storage Center,200,
+R.09 DT.HELIX,New Argyll,New Argyll Winery,200,
+R.09 DT.HELIX,New Argyll,Juice Processing Center,400,
+R.09 DT.HELIX,New Argyll,Brewery,200,
+R.09 DT.HELIX,New Argyll,Long Valley Residences,400,
+R.09 DT.HELIX,New Argyll,Skell Estate,200,X
+R.09 DT.HELIX,Lake Country,Behemoth Defense Area (Sheep Moor),1000,
+R.09 DT.HELIX,Lake Country,Red Viper Outpost,200,X
+R.09 DT.HELIX,Lake Country,Prototype Workshop,200,
+R.09 DT.HELIX,Lake Country,Behemoth Defense Area (Harper Lake),1000,
+R.09 DT.HELIX,Lake Country,Skell Security R&D Center,400,X
+R.09 DT.HELIX,Lake Country,Skell Security Assembly Hall,800,
+R.09 DT.HELIX,Lake Country,Camp Viper,400,X
+R.09 DT.HELIX,Lake Country,Maintenance Area,200,
+R.09 DT.HELIX,Lake Country,Skell Security Operations,200,X
+R.09 DT.HELIX,Lake Country,Two Lakes Residences,400,X
+R.10 DT.FUSE,Restricted Area 01,Maintenance Area,200,
+R.10 DT.FUSE,Restricted Area 01,Prototype Workshop,200,
+R.10 DT.FUSE,Restricted Area 01,Camp Fox,400,X
+R.10 DT.FUSE,Restricted Area 01,Behemoth Defense Area (Lake Annie),1000,
+R.10 DT.FUSE,Restricted Area 01,Assembly Hall Omega 01,800,
+R.10 DT.FUSE,Restricted Area 01,Behemoth Defense Area (S of Blackburn Ridge),1000,
+R.10 DT.FUSE,Restricted Area 01,Omega R&D Center,400,
+R.10 DT.FUSE,Restricted Area 01,Training Center,400,
+R.10 DT.FUSE,Restricted Area 01,Outpost Red Fox,200,X
+R.10 DT.FUSE,Restricted Area 01,Construction Site,400,
+R.10 DT.FUSE,Restricted Area 01,Omega Operations,200,X
+R.10 DT.FUSE,Restricted Area 01,Camp Ferret,400,X
+R.10 DT.FUSE,Restricted Area 01,Behemoth Defense Area (Generals Valley),1000,
+R.10 DT.FUSE,Restricted Area 01,Outpost Red Ferret,200,X
+R.10 DT.FUSE,Restricted Area 01,Assembly Hall Omega 02,800,X
+R.10 DT.FUSE,Restricted Area 01,Arrow Testing Zone,400,X
+R.10 DT.FUSE,Restricted Area 01,Gold Trail Testing Zone,400,
+R.10 DT.FUSE,Restricted Area 01,Behemoth Defense Area (SE Mirror Lake),1000,
+R.11 HL.ORPHEUS,Golem Island - Sector 1,Ancient Harbor,200,
+R.11 HL.ORPHEUS,Golem Island - Sector 1,Golem Island Satellite Dish,400,
+R.11 HL.ORPHEUS,Golem Island - Sector 1,Golem Island Heliport,400,X
+R.11 HL.ORPHEUS,Golem Island - Sector 1,Chemical Refinery,400,
+R.11 HL.ORPHEUS,Golem Island - Sector 1,Chemical Pipeline,200,
+R.11 HL.ORPHEUS,Golem Island - Sector 2,Forgotten Sanctuary,200,
+R.11 HL.ORPHEUS,Golem Island - Sector 2,Golem Island Testing Zone,400,
+R.11 HL.ORPHEUS,Golem Island - Sector 2,Camp Phoenix,400,
+R.11 HL.ORPHEUS,Golem Island - Sector 2,Missile Site Ruins,400,!
+R.11 HL.ORPHEUS,Golem Island - Sector 2,Camp Salamander,400,X
+R.11 HL.ORPHEUS,Golem Island - Sector 3,Red Phoenix Outpost,400,
+R.11 HL.ORPHEUS,Golem Island - Sector 3,No Man's Land,200,
+R.11 HL.ORPHEUS,Golem Island - Sector 3,Scandium Mine,800,
+R.11 HL.ORPHEUS,Golem Island - Sector 3,Lavaduct,400,X
+R.11 HL.ORPHEUS,Golem Island - Sector 3,Prototype Workshop,800,X

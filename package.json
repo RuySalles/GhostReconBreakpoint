@@ -1,0 +1,22 @@
+{
+  "name": "ghostreconbreakpoint",
+  "version": "1.0.0",
+  "description": "> **CLASSIFICAÇÃO DE SEGURANÇA:** ESTRITAMENTE SECRETO // SCI // NOFORN // NÍVEL 5  \r > **DIRETRIZ DE EXECUÇÃO:** CÓDIGO GHOST ABSOLUTO",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RuySalles/GhostReconBreakpoint.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/RuySalles/GhostReconBreakpoint/issues"
+  },
+  "homepage": "https://github.com/RuySalles/GhostReconBreakpoint#readme"
+}

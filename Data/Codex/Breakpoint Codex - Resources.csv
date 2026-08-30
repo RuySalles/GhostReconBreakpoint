@@ -1,0 +1,106 @@
+Resource,Category,Value,Use (Current)
+Standard Weapon Parts (gray),Weapon Parts,5,Weapon Mk Upgrades
+Improved Weapon Parts (green),Weapon Parts,10,Weapon Mk Upgrades
+Advanced Weapon Parts (blue),Weapon Parts,20,Weapon Mk Upgrades
+High-End Weapon Parts (purple),Weapon Parts,50,Weapon Mk Upgrades
+Elite Weapon Parts (gold),Weapon Parts,150,Weapon Mk Upgrades
+Assault Rifle Parts,Weapon Parts,10,Weapon Mk Upgrades
+DMR Parts,Weapon Parts,10,Weapon Mk Upgrades
+Handgun Parts,Weapon Parts,10,Weapon Mk Upgrades
+Launcher Parts,Weapon Parts,10,Weapon Mk Upgrades
+LMG Parts,Weapon Parts,10,Weapon Mk Upgrades
+Shotgun Parts,Weapon Parts,10,Weapon Mk Upgrades
+SMG Parts,Weapon Parts,10,Weapon Mk Upgrades
+Sniper Parts,Weapon Parts,10,Weapon Mk Upgrades
+Metal Parts,Weapon Parts,5,"Weapon Mk Upgrades, Crafting Consumables"
+Aluminium Armor Plate,Drone Parts,20,Selling for credits
+Behemoth AI Core,Drone Parts,50,Selling for credits
+Behemoth Microchip,Drone Parts,50,Crafting Consumables
+Carbon Armor Plate,Drone Parts,10,Selling for credits
+Daemon Microchip,Drone Parts,20,Crafting Consumables
+Dedicated AI Core,Drone Parts,20,Selling for credits
+Electronic Sensor,Drone Parts,10,Crafting Consumables
+Embedded AI Core,Drone Parts,10,Crafting Consumables
+Inductive Battery,Drone Parts,5,Crafting Consumables
+Integrated Chipset,Drone Parts,5,Selling for credits
+Low-Power Microchip,Drone Parts,10,Crafting Consumables
+Optical Lens,Drone Parts,5,Crafting Consumables
+Reactive Armor Plate,Drone Parts,50,Selling for credits
+Baal Sensor,Titan Parts,1800,Selling for credits
+Gargoyle Lens,Titan Parts,1800,Selling for credits
+Super Computer Microchip,Titan Parts,1800,Selling for credits
+Explosive Device,Explosive Materials,10,Crafting Consumables
+Old Shell,Explosive Materials,50,Crafting Consumables
+Pepper,Explosive Materials,50,Crafting Consumables
+Saltpeter,Explosive Materials,250,Crafting Consumables (better to sell and just buy what you'd craft)
+Sulfur,Explosive Materials,10,Crafting Consumables
+Alianth,Common Medicinal Plant,5,Crafting Syringes
+Auroa Shortleaf,Common Medicinal Plant,5,Crafting Syringes
+Columbian Flax,Common Medicinal Plant,5,Crafting Syringes
+Saxifraga,Common Medicinal Plant,5,Crafting Syringes
+Sweet Folia,Common Medicinal Plant,5,Crafting Syringes
+Valeriana,Common Medicinal Plant,5,Crafting Syringes
+Wild Lupine,Common Medicinal Plant,5,Crafting Syringes
+Winter Stella,Common Medicinal Plant,5,Crafting Syringes
+Androsace,Exotic Medcinal Plant,20,Crafting Syringes
+Austral Pine,Exotic Medcinal Plant,20,Crafting Syringes
+Blue Lotus,Exotic Medcinal Plant,20,Crafting Syringes
+Blue Tear,Exotic Medcinal Plant,20,Crafting Syringes
+Calvatia,Exotic Medcinal Plant,20,Crafting Syringes
+Dead Star,Exotic Medcinal Plant,20,Crafting Syringes
+Ganoderma,Exotic Medcinal Plant,20,Crafting Syringes
+Rata,Exotic Medcinal Plant,20,Crafting Syringes
+Venus Hair,Exotic Medcinal Plant,20,Crafting Syringes
+Aloe Vera,Fiber - Basic,5,Crafting Rations
+Choko,Fiber - Basic,5,Crafting Rations
+Kelp,Fiber - Basic,5,Crafting Rations
+Nenuphar Seed,Fiber - Basic,5,Crafting Rations
+Sugar Root,Fiber - Basic,5,Crafting Rations
+Cassava,Fiber - Complete,20,Crafting Rations
+Ginseng,Fiber - Complete,20,Crafting Rations
+Hot Pepper,Fiber - Complete,20,Crafting Rations
+Red Ysseria,Fiber - Complete,50,Crafting Rations
+Yerba Mate,Fiber - Complete,20,Crafting Rations
+Draba,Fiber - Rich,10,Crafting Rations
+Guso,Fiber - Rich,10,Crafting Rations
+Pumpkin,Fiber - Rich,10,Crafting Rations
+Rosales,Fiber - Rich,10,Crafting Rations
+Albatross Eggs,Proteins - Basic,5,Crafting Rations
+Animal Protien,Proteins - Basic,5,Crafting Rations
+Shellfish,Proteins - Basic,5,Crafting Rations
+Auroa Nuts,Proteins - Complete,50,Crafting Rations
+Cacao,Proteins - Complete,50,Crafting Rations
+Oysters,Proteins - Complete,20,Crafting Rations
+Sea Urchin,Proteins - Complete,50,Crafting Rations
+Barnacle,Proteins - Rich,10,Crafting Rations
+Freshwater Mussel,Proteins - Rich,10,Crafting Rations
+Scallop,Proteins - Rich,10,Crafting Rations
+Sea Cucumber,Proteins - Rich,20,Crafting Rations
+Termites,Proteins - Rich,10,Crafting Rations
+Banana,Sugars - Basic,5,Crafting Rations
+Bear Berries,Sugars - Basic,5,Crafting Rations
+Coconut,Sugars - Basic,5,Crafting Rations
+Pineapple,Sugars - Basic,5,Crafting Rations
+Watermelon,Sugars - Basic,5,Crafting Rations
+Blueberry,Sugars - Complete,20,Crafting Rations
+Goji Berries,Sugars - Complete,50,Crafting Rations
+Pomegrenate Fruit,Sugars - Complete,20,Crafting Rations
+Red Pod Fruit,Sugars - Complete,20,Crafting Rations
+Wild Strawberry,Sugars - Complete,20,Crafting Rations
+Wild Tomato,Sugars - Complete,20,Crafting Rations
+Breadfruit,Sugars - Rich,10,Crafting Rations
+Honey,Sugars - Rich,20,Crafting Rations
+Kiwi,Sugars - Rich,10,Crafting Rations
+Prickly Pear Cactus,Sugars - Rich,10,Crafting Rations
+Amethyst,Mineral,250,Selling for credits
+Chalcedony,Mineral,250,Selling for credits
+Gold Nugget,Mineral,250,Selling for credits
+Jade,Mineral,250,Selling for credits
+Obsidian,Mineral,250,Selling for credits
+Opal,Mineral,250,Selling for credits
+Standard Gear Parts (gray),Gear Parts,25,Selling for credits
+Improved Gear Parts (green),Gear Parts,50,Selling for credits
+Advanced Gear Parts (blue),Gear Parts,75,Selling for credits
+High-End Gear Parts (purple),Gear Parts,150,Selling for credits
+Elite Gear Parts (gold),Gear Parts,200,Selling for credits
+Depleted Ration,Rations,100,Crafting Russian Rations (40% XP Bonus)

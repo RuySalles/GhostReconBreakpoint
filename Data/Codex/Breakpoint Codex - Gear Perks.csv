@@ -1,0 +1,16 @@
+Green 1 / Blue 2,Purple,Gold,Perk,Headwear,Handware,Vest,Pants,Footwear
++2%,+4%,+8%,Drone Evasion,X,-,X,-,X
++2%,+4%,+6%,Explosion Damage Resistance,-,X,X,X,X
++2%,+4%,+8%,Explosive Damage,X,X,X,X,-
++1,+2,+5,Handling,-,X,-,-,-
++2%,+4%,+8%,Health Regen Speed,X,X,X,X,X
++2%,+8%,+8%,Injury Resistance,X,X,X,X,X
++5%,+10%,+20%,Maximum Ammo,-,-,X,X,-
++1%,+3%,+5%,Movement Speed,-,-,-,-,X
+-,+2%,+5%,Reload Speed,-,X,-,-,-
++2%,+5%,+10%,Stamina,-,-,X,X,-
++2%,+5%,+10%,Stamina Regen Speed,X,-,-,-,X
++4,+6,+10,Stealth,X,-,-,X,X
+-1%,-2%,-3%,Technique Cooldown,X,X,-,-,X
++20%,+40%,-,Throw Range,-,X,-,-,-
++5%,-,-,XP Bonus,X,X,X,X,X

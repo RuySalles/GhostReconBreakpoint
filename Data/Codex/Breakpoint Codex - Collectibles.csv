@@ -1,0 +1,243 @@
+Order,Type,Name,Province,Location,Episode,Mission,Notes,Leads to…
+1,VIP Profile,Kerri's beloved compass.,Cape North,Traces of Ancient Ruins,Operation Geenstone,Eco-warrior,"Lighthouse on W end of Twin Islands, rescue Kerri and complete the mission.",
+2,VIP Profile,Note to Haruhi Ito,Windy Islands,South Cape Station,Operation Geenstone,N/A,On a table in Haruhi's office.,
+3,VIP Profile,Order to Arrest Sigrid Bloom,Restricted Area 01,Camp Fox,Operation Geenstone,N/A,S most mobile building.,
+4,VIP Profile,No Bad Apple,Restricted Area 01,Camp Fox,Operation Geenstone,N/A,Armory - biometric door locked mobile building.,
+5,VIP Profile,We Got Her!,Restricted Area 01,Camp Fox,Operation Geenstone,N/A,Two story mobile building next to helipad.,
+6,VIP Profile,RE: Becker,Restricted Area 01,Camp Fox,Operation Geenstone,N/A,S most mobile building.,
+7,VIP Profile,Fishing Party,Restricted Area 01,Camp Fox,Operation Geenstone,N/A,Two story mobile building next to helipad.,
+8,VIP Profile,Take Control,Restricted Area 01,Camp Fox,Operation Geenstone,N/A,Two story mobile building next to helipad.,
+9,VIP Profile,Message from Nomad to Schulz,Sinking Country,Schulz Homestead,Operation Motherland,N/A,"Central building, second floor on a table.",
+10,VIP Profile,RE: Weird Readings,Good Hope Mountain,Auroa Weather Station,Operation Geenstone,N/A,"Second floor workroom, main building.",
+11,VIP Profile,Re: You Know I'm Right,Good Hope Mountain,Auroa Weather Station,Operation Geenstone,N/A,Top floor main control room.,
+12,VIP Profile,There Is No Bloop,Good Hope Mountain,Auroa Weather Station,Operation Geenstone,N/A,"Second floor workroom, main building.",
+13,VIP Profile,Requisition of video equipments,Lake Country,Skell Security Operations,Operation Motherland,N/A,"First floor, W most building.",
+14,VIP Profile,An easter egg memory,Sector 2,Quantum Computer Center,Operation Motherland,Like a Snake,No spoilers! Complete the secret mission.,
+15,VIP Profile,Gibson is Over,Lake Country,Ancient Fort,Operation Geenstone,N/A,Below the sniper tower with the gear chest near center of site.,
+16,VIP Profile,Incidents under your command,Lake Country,Ancient Fort,Operation Geenstone,N/A,On a table on the E side of the SW most building. Not listed on map marker.,
+17,VIP Profile,Sigrid Bloom's Trial,Windy Islands,South Cape Station,Operation Geenstone,Loss of Innocence,Speak with Haruhi to start the mission.,
+18,VIP Profile,Ultralifestyle Magazine,New Argyll,Skell Estate,Operation Geenstone,N/A,Second floor (dining and jazz) on a coffee table.,
+19,VIP Profile,Newspaper Clipping,New Argyll,Skell Estate,Operation Geenstone,N/A,Third floor on a coffee table.,
+20,VIP Profile,Photo of Skell and Fox,Lake Country,Skell Security R&D Center,Operation Geenstone,N/A,"E building, second floor - 1 Dev B on sign outside door.",
+21,VIP Profile,Diane's Last Email,New Argyll,Skell Estate,Operation Geenstone,N/A,First floor nightstand in the bedroom.,
+22,VIP Profile,Photo at the Science Fair,New Argyll,Skell Estate,Operation Geenstone,N/A,First floor desk in the office.,
+23,VIP Profile,Harmony's Drawing,New Argyll,Skell Estate,Operation Geenstone,N/A,Third floor end of the pool deck.,
+24,VIP Profile,Birthday Wishes,New Stirling,Skell Technology Location,Operation Geenstone,N/A,"E beach house, just S of Clipper Islet.",
+25,VIP Profile,Skell's Therapist's Email,Restricted Area 01,Omega Operations,Operation Geenstone,N/A,"Second floor conference room, NE building where skill point chest is.",
+26,VIP Profile,Opening Ceremony Photo,Cape North,Skell Foundation Campus,Operation Geenstone,N/A,"Pythagoras Hall - main building, fifth (marked 4) floor Cromwell's office toward N end of building.",
+27,VIP Profile,Email about Meeting Skell,Restricted Area 01,Omega R&D Center,Operation Geenstone,N/A,"Building 3 Restaurant, SE side of complex E of helipad.",
+28,VIP Profile,Drone Schematics,Infinity,Skell Foundation Head Office,Operation Geenstone,N/A,"Underground complex, workshop on the way to Skell's location. Not listed on map marker.",
+29,VIP Profile,Brain Scan Analysis,Channels,Step Up Startup,Operation Geenstone,N/A,"Head office, second floor, main building S side.",
+30,VIP Profile,Skell's Last Log,Infinity,Skell Foundation Head Office,Operation Geenstone,N/A,"Underground complex, test range on the way to Skell's location. Not listed on map marker.",
+31,VIP Profile,Programmer's Email,Silent Mountain,Auroa Data Farm,Operation Geenstone,N/A,Front (S) end of the NW large building.,
+32,VIP Profile,Reinforced Sec,Infinity,Sirius Residences,Operation Geenstone,N/A,"N end of house, by the chopper pad.",
+33,VIP Profile,Herzog's Diary,Good Hope Mountain,Natural Hazards Control,Operation Geenstone,N/A,"First floor main building, conference room toward NW corner.",
+34,VIP Profile,Walker's Email to Herzog,Good Hope Mountain,Auroa Survival Shelter,Operation Geenstone,N/A,"Second floor, S building, 'war room' over the front.",
+35,VIP Profile,Herzog's Torture Logs,Good Hope Mountain,Auroa Survival Shelter,Operation Geenstone,A Great Escape,"N building, SW corner, Herzog's office. Only accessible during mission along with Skell Creds chest.",
+36,VIP Profile,Email about the Curfew,Cape North,Skell Foundation Campus,Operation Geenstone,N/A,Heliport terminal building.,
+37,VIP Profile,Programmer Operation,Cape North,Skell Foundation Campus,Operation Geenstone,N/A,"Pythagoras Hall - main building, ground floor reception area just inside S end of building.",
+38,VIP Profile,Campus Flyer,Cape North,Skell Foundation Campus,Operation Geenstone,N/A,"Archimedes Hall - N compass point of campus, ground floor.",
+39,VIP Profile,Photo of Cromwell,Cape North,Skell Foundation Campus,Operation Geenstone,N/A,"Pythagoras Hall - main building, third (marked 2) floor office at S end of building.",
+40,VIP Profile,Email from Cromwell,Wild Coast,Engine R&D Center,Operation Geenstone,N/A,"Second floor workshop, central building.",
+41,VIP Profile,The Tyrannical Boss,Silent Mountain,Auroa Data Farm,Operation Geenstone,N/A,Back (N) end of the NW large building in the Security Office.,
+42,VIP Profile,Blake's Orders,Silent Mountain,Auroa Data Farm,Operation Geenstone,N/A,"NE corner of SW large building, in 1 Data Storage.",
+43,VIP Profile,Blake's Coded Message,Silent Mountain,Auroa Data Farm,Operation Geenstone,N/A,"E corner of SW large building, office behind desk.",
+44,VIP Profile,Picture of Paula's Wedding,New Stirling,Ettrick Residences,Operation Geenstone,N/A,Paula Madera's house (NE most); second floor office shelves.,
+45,VIP Profile,Picture of David in a Wheelchair,New Stirling,Ettrick Residences,Operation Geenstone,N/A,Paula Madera's house (NE most); second floor bedroom.,
+46,VIP Profile,ALS Brochure,New Stirling,Ettrick Residences,Operation Geenstone,N/A,Paula Madera's house (NE most); second floor office desk.,
+47,VIP Profile,National Science Trophy,New Stirling,Ettrick Residences,Operation Geenstone,N/A,Paula Madera's house (NE most); first floor entryway.,
+48,VIP Profile,Framed Science Article,New Stirling,Ettrick Residences,Operation Geenstone,N/A,Paula Madera's house (NE most); first floor dining room.,
+49,VIP Profile,Picture of Skell's Staff,Infinity,Skell Technology Head Office,Operation Geenstone,Friendly Fire,"Ayana Puri's office, only accessible during mission.",
+50,VIP Profile,Excellence Trophy,Infinity,Skell Technology Head Office,Operation Geenstone,Friendly Fire,"Ayana Puri's office, only accessible during mission. Junk filler. ""Price of Exelence""?",
+51,VIP Profile,Desk Plate,Infinity,Skell Technology Head Office,Operation Geenstone,Friendly Fire,"Ayana Puri's office, only accessible during mission. Junk filler, doesn't fit story.",
+52,VIP Profile,"Walker's Journal, part 3",Sinking Country,Howard Airfield,Operation Geenstone,N/A,Mobile building E of main building.,
+53,VIP Profile,"Walker's Journal, part 4",Sinking Country,Howard Airfield,Operation Geenstone,N/A,Upper room of tower NE of main building.,
+54,VIP Profile,"Walker's Journal, part 5",Seal Islands,Shark Base,Operation Geenstone,N/A,"Upper floor, main Ops room, N side.",
+55,VIP Profile,"Walker's Journal, part 6",Whalers Bay,Ancient Harbour,Operation Geenstone,N/A,On a barrel at the S round building. Not listed on map marker.,
+56,VIP Profile,Souvenir from Afghanistan,Smuggler Coves,Abandoned Site,Operation Geenstone,N/A,SE edge of Dead  Horse Swamp.,
+57,VIP Profile,Ghosts' motto,Egg Island,Bioluminescent Cavern,Operation Geenstone,N/A,On the wall at the back of the cave entrance.,
+58,VIP Profile,Hawkins and Grant Chat Log,Seal Islands,Naval Base Auroa Airfield,Deep State,N/A,Mobile building just S of prison cells.,
+59,VIP Profile,Grant's Report,Good Hope Mountain,Red Weasel Outpost,Deep State,N/A,Main building.,
+60,VIP Profile,Pollinator: Flora for the Future?,Liberty,Skell Technology Location,Deep State,N/A,"Doctor's house SE of Detention Center, ground floor home office.",
+61,VIP Profile,General Reggie Paxton's Service Record,Liberty,Ayn Rand Residences,Deep State,N/A,"House closest to beach with tennis court, first floor entry.",
+62,VIP Profile,Greetings from Wonderland,Seal Islands,Cave Site,Deep State,N/A,Sea cave SSE of Albatross Peak. First collectible found entering the cave. Mission doesn't have to be active.,
+63,VIP Profile,Bribe List,Channels,Channels R&D Center,Deep State,Two Birds One Stone,"Control room, only accessible during mission.",
+64,VIP Profile,Sam Fisher is Taking Precautionary Measures,Channels,Cold War Site,Deep State,N/A,"Bugged and uncollectable on release, patched at TU3 and now on top of Fisher's Bunker.",
+65,VIP Profile,Claw Coordination Bug Resolved,Seal Islands,Cave Site,Deep State,Enemy Within,"Lower deck of testing area, center, room labeled Lab 02, only accessible during mission.",
+66,VIP Profile,Flying Drones Environmental Immunity,Seal Islands,Cave Site,Deep State,Enemy Within,"Upper deck of testing area, SE corner, room labeled Lab 03, only accessible during mission.",
+67,VIP Profile,Biowarfare Behemoth for CLAW Weaponization,Seal Islands,Cave Site,Deep State,Enemy Within,"Upper deck of testing area, NE corner, Behemoth turret test station, only accessible during mission.",
+68,VIP Profile,Ground Drone Armor-Plating Study for CLAW Defense,Seal Islands,Cave Site,Deep State,Enemy Within,"Lower deck of testing are, NW corner, next to the ground drone test station, only accessible during mission.",
+69,VIP Profile,MISSING IN ACTION,Channels,Abandoned Site,Deep State,Missing in Action,Speak with Sam and complete the mission.,
+70,VIP Profile,ONE MIND ARMY,Channels,Auroa Power Plant,Deep State,One Mind Army,View the personel list and complete the mission.,
+71,VIP Profile,SPIRIT OF THE HIVE,Liberty,Auroa Solar Power Plant,Deep State,Spirit of the Hive,Speak with Van Dyke and complete the mission.,
+72,VIP Profile,BLACK SHEEP,Restricted Area 01,Freeman Residences,Deep State,Black Sheep,Speak with Mackenzie and complete the mission.,
+73,VIP Profile,ENEMY WITHIN,Seal Islands,Cave Site,Deep State,Enemy Within,Exit the cave and complete the mission.,
+74,VIP Profile,LEGAL MOVE,Seal Islands,Unmarked location,Deep State,Legal Move,Eliminate hostiles and complete the mission.,
+75,VIP Profile,LONE WOLF,Seal Islands,Traces of Ancient Ruins,Deep State,Lone Wolf,Speak with Sekulic and complete the mission.,
+76,VIP Profile,BEHIND THE CURTAIN,Seal Islands,Traces of Ancient Ruins,Deep State,Lone Wolf,Speak with Sekulic and complete the mission.,
+77,VIP Profile,TWO BIRDS ONE STONE,Mount Hodgson,Erewhon,Deep State,Two Birds One Stone,Find Midas and complete the mission.,
+78,VIP Profile,Wonderland's Plan for the Kingmaker Operation,Lake Country,Skell Security Assembly Hall,Red Patriot,N/A,"S tower, third floor office where Skell Cred chest is.",
+79,VIP Profile,The list of Presidential Succession,Smuggler Coves,Auroa Materials Deposit,Red Patriot,Hazardous Material,Kill Manticore and if necessary collect intel from body.,
+80,VIP Profile,U.S. targets lists,Driftwood Islets,Driftwood Islets Testing Zone,Red Patriot,Fireworks,Kill Harpy and collect intel from body.,
+81,VIP Profile,Wonderland Update,Lake Country,Skell Security Assembly Hall,Red Patriot,Stone Cold,Kill Stone.,
+82,VIP Profile,Encrypted message from Stone to Oracle,Windy Islands,roving convoy on Shack Island,Red Patriot,Information Warfare,Kill Oracle and if necessary collect intel from body.,
+83,VIP Profile,Bukharov's speech,Wild Coast,Ancient Harbour,Red Patriot,How to Catch a Mastermind,Kill Griffin.,
+84,VIP Profile,An Email from Kraken to Stone,Fen Bog,Drone Station W051,Red Patriot,In Deep Waters,Kill Kraken and collect intel from body.,
+85,VIP Profile,Skell Engineers Required,Silent Mountain,O'Connors Mine (Vestige),Red Patriot,Snow Trail,Kill Cyclops and collect intel from body.,
+86,VIP Profile,Stone and Bukharov's agreement,New Stirling,Abandoned Site,Red Patriot,Blood of the Father,Kill Basilisk and collect intel from body.,
+87,VIP Profile,Email to Stone from Medusa,New Stirling,World Seed Vault,Red Patriot,Wall Run,Kill Medusa and collect intel from body.,
+88,VIP Profile,Walker's legacy,Channels,Abandoned Barracks,Red Patriot,N/A,Wood barracks building directly N of helipad.,
+89,VIP Profile,Sphinx's Kill List,Seal Islands,Abandoned Barracks,Red Patriot,Under the Mask,Kill Sphinx and collect intel from body.,
+90,VIP Profile,Technical Data on Stone's Operation,Fen Bog,Fen Bog Port,Red Patriot,N/A,On a stack of pallets on the S pier/side of the sub. Mission doesn't have to be active.,
+91,VIP Profile,Bio Introduction of Scott Mitchell,Mount Hodgson,Erewhon,Red Patriot,Right from the Top,Use the radio near the entrance for Red Patriot/Mitchell and complete the mission.,
+92,VIP Profile,A communique from Dr. Ballard detailing the antidote,Wild Coast,Unmarked location,Amber Sky,Drastic Remedy,"Extract Finley to the airstrip SSE of Obersvatory Hill, survive ambush, and complete the mission.",
+93,VIP Profile,"Dr. Ballard's findings on ""Amber Ruin""",Fen Bog,Unmarked location,Amber Sky,Human Trial(s),Deliver samples to Ballard at boat dock just NE of Broughton Channel and complete the mission.,
+94,VIP Profile,Buyer Identification: Freddy Porter,Mount Hodgson,Skell Technology Location,Amber Sky,The Devil We Want,Extract Porter to site next to lake S of Chem-Extraction Complex and complete the mission.,
+95,VIP Profile,Buyer Identification: Unknown armed militia group,Wild Coast,Hybrid Engine Factory,Amber Sky,Slumbering Beast,Leave the site undected and complete the mission.,
+96,VIP Profile,Buyer Identification: The Mu,Fen Bog,Whitestone Farm,Amber Sky,Chasing an Apocalypse,Leave the site undected and complete the mission.,
+97,VIP Profile,A picture of the Amber Ruin's effect,Silent Mountain,Abandoned Site,Amber Sky,Breaking the Wheel,Extract Morgan to site NNW of Hemlock Station and complete the mission.,
+98,VIP Profile,SITREP on Auroa,Smuggler Coves,Skell Technology Location,Amber Sky,The Root of All Evil,Destroy the backup server just NW of Polymorph Modeling and complete the mission.,
+99,VIP Profile,Lesion,Mount Hodgson,Erewhon,Amber Sky,Hazardous Material,Use the radio near the entrance for Amber Sky/Lesion and complete the mission.,
+100,VIP Profile,A mail of a Bodark's victim,Sinking Country,Equipment Depot,Operation Motherland,N/A,On the ground next to the pile of bodies in the televised execution area near the end of the yellow road in.,
+101,VIP Profile,CIA's report on Kostas Tchertkov,Wild Coast OR Whalers Bay,Engine R&D Center OR Mechanical R&D Center,Operation Motherland,Shoot the Thieves,Eliminate all targets and complete the mission.,
+102,VIP Profile,Message from a Bodark's victim,Infinity,Polaris Residences,Operation Motherland,N/A,On the floor next to the fireplace in the N house.,
+103,VIP Profile,CIA's report on Sentinel,N/A,N/A,Operation Motherland,N/A,"Was simply added as collected with Motherland, even if that save has never launched Conquest.",
+104,VIP Profile,CIA's report on the Outcasts,Liberty,Ancient Fort,Operation Motherland,N/A,"The new Outcast base, on some crates left of Haruhi's spot.",
+105,VIP Profile,Karen Bowman's biography,N/A,N/A,Operation Motherland,N/A,"Was simply added as collected with Motherland, even if that save has never launched Conquest.",
+106,VIP Profile,A conversation between Schulz and Ito,Mount Hodgson,Erewhon,Operation Motherland,N/A,Attempt to walk into Erewhon.,
+107,VIP Profile,Outcast investigation on Bodarks war crimes,Channels,Unmarked location,Operation Motherland,N/A,Outside the N end of the building on Misty Lake.,
+108,VIP Profile,Anonymous mail to Sentinel,Liberty,Auroa Parliament,Operation Motherland,N/A,On a portable desk at the southern checkpoint of the Battle of Parliament mission.,
+109,VIP Profile,A Wolf and a Sentinel about Bodarks,Wild Coast,Outpost Blue Tiger,Operation Motherland,N/A,On some crates under camo netting just past base entrance on the left.,
+110,VIP Profile,The collaboration with the Bodarks,Lake Country,Camp Viper,Operation Motherland,N/A,On a desk in the medical popout building E of the helipad.,
+111,VIP Profile,A Bodark memo,Infinity,Auroa Airport,Operation Motherland,N/A,"On a crate outside the NE hangar, next to the advisor HVT.",
+112,VIP Profile,Analysis of the Bodark proposition to Sentinel,Sinking Country,Camp Tiger,Operation Motherland,N/A,"Garage on NW side of base, second floor.",
+113,VIP Profile,Message from Skell to the CIA,New Argyll,Skell Estate,Operation Motherland,N/A,Main floor on table in front of the big map.,
+114,VIP Profile,Haruhi Ito's diary - Thoughts on autonomy,Windy Islands,South Cape Station,Operation Motherland,N/A,"Haruhi's office, on the table.",
+115,VIP Profile,Haruhi Ito's biography,Windy Islands,South Cape Station,Operation Motherland,Burned Sanctuary,Clear the camp and complete the mission.,
+116,VIP Profile,Memo - The Bodark's Orders,Good Hope Mountain,Natural Hazards Control,Operation Motherland,N/A,Biolocked room inside main building where a hostage is during IT Rescue.,
+117,VIP Profile,Civilians discovering Bodark's war crimes,Silent Mountain,Auroa Data Farm,Operation Motherland,N/A,On the ground by the executed civilians out front of the server building.,
+118,VIP Profile,CIA's report on Vassili Kropotkine,New Argyll,Traces of Ancient Ruins,Operation Motherland,Golden Parachute,Extract Parks and complete the mission.,
+119,VIP Profile,CIA's report on Fyodor Archinov,Infinity,Unmarked location,Operation Motherland,The Advisor's Extraction,Extract the advisor and complete the mission.,
+120,VIP Profile,CIA's report on the Wolves,N/A,N/A,Operation Motherland,N/A,"Was simply added as collected with Motherland, even if that save has never launched Conquest.",
+121,VIP Profile,CIA's report on the Bodarks,Windy Islands,South Cape Station,Operation Motherland,Heart of the Revolution,Recon the camp and complete the mission.,
+122,VIP Profile,CIA's report on Auroa,N/A,N/A,Operation Motherland,N/A,"Was simply added as collected with Motherland, even if that save has never launched Conquest.",
+123,VIP Profile,Katya Maksimova's Biography,Sector 1,Heliport / road,Operation Motherland,Nowhere to Run,Destroy all targets and complete the mission.,
+124,VIP Profile,Haruhi Ito's diary - Ready for a revolution,Windy Islands,South Cape Station,Operation Motherland,N/A,"Haruhi's office, on top of drawer chest in back left corner.",
+125,VIP Profile,Report of a Bodark execution,Cape North,Underwater Cable Station,Operation Motherland,N/A,On a desk in the server room.,
+126,VIP Profile,A Bodark's personal diary,Cape North,Underwater Cable Station,Operation Motherland,N/A,On some crates on the dock left (from cave entrance).,
+127,VIP Profile,Katya Maksimova's Diary - After the fall,Sector 2,Camp Salamander,Operation Motherland,???,Bugged and uncollectable.,
+128,VIP Profile,Katya Maksimova's Diary - Views on Auroa,Sector 3,Prototype Workshop,Operation Motherland,???,Bugged and uncollectable.,
+129,VIP Profile,Katya Maksimova's Diary - The operation,Sector 3,Lavaduct,Operation Motherland,???,Bugged and uncollectable.,
+130,VIP Profile,Discussion between the Bodarks leaders,Sector 3,Lavaduct,Operation Motherland,???,Bugged and uncollectable.,
+131,VIP Profile,Sentinel's application to the Bodarks,Sinking Country,Equipment Depot,Operation Motherland,???,Bugged and uncollectable.,
+132,VIP Profile,"Jeremy Parks, Skell Tech COO - Personal Diary",New Argyll,Skell Estate,Operation Motherland,???,Bugged and uncollectable.,
+133,VIP Profile,???,???,???,Operation Geenstone,???,Bugged / unknown / uncollectable.,
+134,VIP Profile,???,???,???,Operation Geenstone,???,Bugged / unknown / uncollectable.,
+135,VIP Profile,???,???,???,Operation Geenstone,???,Bugged / unknown / uncollectable.,
+136,VIP Profile,???,???,???,Operation Geenstone,???,Bugged / unknown / uncollectable.,
+1,World Lore,Volcanic Eruption,Cape North,Unmarked location,Operation Geenstone,N/A,"Old lava flow W of Lake Kathryn - look for gray patch on S slope, directly W of Perry Forest Bivouac.",
+2,World Lore,Kings of the forest,Lake Country,Skell Technology Location,Operation Geenstone,N/A,Observation tower/lab on SE slope of Steadman Mountain.,
+3,World Lore,Captain Cook,Cape North,Skell Foundation Campus,Operation Geenstone,N/A,"Euclid Hall - W compass point of campus, second floor building on S side of main gate.",
+4,World Lore,Traders & Adventurers,Seal Islands,Camp Seal Cove,Operation Geenstone,N/A,Shack at far S end of Entry Island.,
+5,World Lore,The La Perouse Expedition,Infinity,Unmarked location,Operation Geenstone,N/A,"N end of Astrolabe Beach, E of Antares District - shipwreck debris on beach near shore.",
+6,World Lore,The Whalers,Wild Coast,Anchor Point Station,Operation Geenstone,N/A,Harpoon in the large building on shore with ramp leading down into water.,
+7,World Lore,Auroa Company,Windy Islands,South Cape Station,Operation Geenstone,N/A,On the main dock in the middle of the settlement.,
+8,World Lore,The Gold Rush,Silent Mountain,O'Connors Mine (Vestige),Operation Geenstone,N/A,In shack near mine entrance.,
+9,World Lore,Depleted Veins,Silent Mountain,Mathilda's Palace (Vestige),Operation Geenstone,N/A,Third floor of central building next to Skell chest. Not noted on map marker for location.,
+10,World Lore,Wold War II,Liberty,Abandoned Site,Operation Geenstone,N/A,Plane crash on hillside NW of Auroa Hospital. Side mission will take you here.,
+11,World Lore,Cold War,Seal Islands,Sentinel Corp. Naval Base,Operation Geenstone,N/A,"Second floor of main admin building, just S of helipad.",
+12,World Lore,99 Year Lease,Seal Islands,Naval Base Auroa Airfield,Operation Geenstone,N/A,"Inside large warehouse, N side.",
+13,World Lore,Resident Exode,New Stirling,Ardmore Farm,Operation Geenstone,N/A,Inside the main farmhouse.,
+14,World Lore,Nuclear Weapons,Good Hope Mountain,Bunker Edgehod South,Operation Geenstone,N/A,Upper level of E bunker.,
+15,World Lore,Operation Harpoon,Channels,Cold War Site,Operation Geenstone,N/A,"Island off West Cape, technically outside province. Two ladders on W side. On radio table.",
+16,World Lore,Base's Closure,Sinking Country,Camp Tiger,Operation Geenstone,N/A,"Third floor, main building.",
+17,World Lore,Archipelago For Sale,Silent Mountain,Auroa Data Farm,Operation Geenstone,N/A,"E corner of SW large building, bookshelf under picture.",
+18,World Lore,Construction Begins,Infinity,Skell Security,Operation Geenstone,N/A,"Two story building on N side, just E of the tallest building at N compass point.",
+19,World Lore,Skell Settlers,Liberty,Auroa Parliament,Operation Geenstone,N/A,"Central building sunken plaza, SW side café area.",
+20,World Lore,Production Begins,Lake Country,Skell Security Assembly Hall,Operation Geenstone,N/A,"S tower, third floor workbench.",
+21,World Lore,Sentinel Corp. Contract,Liberty,Detention Center,Operation Geenstone,N/A,Ground floor behind security desk.,
+22,World Lore,Operation Citadel,Sinking Country,Sentinel Corp. Land Base,Operation Geenstone,N/A,"Second floor main office, near weapon blueprint.",
+23,World Lore,STOLAS,Restricted Area 01,Omega R&D Center,Operation Geenstone,N/A,Conference room just down the hall outside Madera's office in central building.,
+24,World Lore,LEGION,Restricted Area 01,Prototype Workshop,Operation Geenstone,N/A,Second floor work area of NW workshop.,
+25,World Lore,INCUBUS,Whalers Bay,Mechanical R&D Center,Operation Geenstone,N/A,"Second floor, main building, on a desk in the middle.",
+26,World Lore,ANDRAS,Mount Hodgson,Checkpoint Tiger Echo,Operation Geenstone,N/A,In the checkpoint building.,
+27,World Lore,MURMUR,Channels,Red Shark Outpost,Operation Geenstone,N/A,"Garage tent, directly E of helipad.",
+28,World Lore,AYM,Smuggler Coves,Polymorph Modeling,Operation Geenstone,N/A,"Second floor, central building.",
+29,World Lore,AZRAEL,Lake Country,Maintenance Area,Operation Geenstone,N/A,"E warehouse, inside right on loading dock.",
+30,World Lore,BEHEMOTH,Whalers Bay,Land Chassis Factory,Operation Geenstone,N/A,"Third floor main factory, same room as weapon blueprint.",
+31,World Lore,CITY CHERUBIM,Lake Country,Skell Security Operations,Operation Geenstone,N/A,"Main office, second floor, S building over stream.",
+32,World Lore,SKELL-FARMER,New Stirling,Agronomy Center,Operation Geenstone,N/A,Second floor office of main building E wing.,
+33,World Lore,World 2.0 Hall of Fame,Liberty,Ayn Rand Residences,Operation Geenstone,N/A,"House closest to beach with tennis court, second floor bedroom.",
+34,World Lore,SKY CHERUBIM,Liberty,Liberty Airport,Operation Geenstone,N/A,"Second floor of tech building, just N of hangars.",
+35,World Lore,MALPHAS,Wild Coast,Control Station Tiger 01,Operation Geenstone,N/A,Inside the shack on the SE corner of compound.,
+36,World Lore,SUCCUBUS,Fen Bog,Control Station Tiger 02,Operation Geenstone,N/A,Second floor of building.,
+37,World Lore,BAAL,Sector 1,Abandoned Site,Raid,N/A,Fishing Cabin SE of Ancient Harbor.,
+38,World Lore,GARGOYLE,Sector 2,Cold War Site,Raid,N/A,Tower at S edge of island overlooking entrance.,
+39,World Lore,CERBERUS,Sector 3,Abandoned Site,Raid,N/A,"NE of No Man's Land along coast, past the marked location (water access).",
+40,World Lore,SKELL-EXCAVATOR,Mount Hodgson,Bald Peak Mine,Operation Geenstone,N/A,Second floor of main office.,
+41,World Lore,SKELL-TREEMOWER,New Stirling,Glenorchy Orchard,Operation Geenstone,N/A,NE corner of large garage/hanger.,
+42,World Lore,SKELL-HANDY,Wild Coast,Hybrid Engine Factory,Operation Geenstone,N/A,Third floor of office tower on E end of complex.,
+43,World Lore,SKELL-CARRIER,Wild Coast,Electric Engine Factory,Operation Geenstone,N/A,"Second floor office of main factory, above Skell cred chest.",
+44,World Lore,SKELL-TRANSPORTER,Whalers Bay,Air Chassis Factory,Operation Geenstone,N/A,Second floor of S building by helipad.,
+45,World Lore,SKELL-DOCTOR,Smuggler Coves,Emergency Center,Operation Geenstone,N/A,Second floor of N building in the back.,
+46,World Lore,SKELL-FIELDER,New Stirling,Kelso Farm,Operation Geenstone,N/A,"Second floor of warehouse building in SW corner, E side entry.",
+47,World Lore,AAMON,Fen Bog,Control Station Tiger 03,Operation Geenstone,N/A,Second floor of main office.,
+48,World Lore,SKELL QUANTUM COMPUTER,Sector 2,Sentinel Corp. Location,Raid,N/A,Lava flow research site SE of Camp Salamander.,
+1,Stashes,First Serpent Stone,Wild Coast,Unmarked location,Tomb Raider,N/A,"Sea stack NW of Observatory Hill (access only from air, you can land a chopper on it).",N/A
+2,Stashes,Second Serpent Stone,Smuggler Coves,Unmarked location,Tomb Raider,N/A,Ancients alter on cliff overlooking Galleon Cove; bowsprit on shipwreck points at it.,N/A
+3,Stashes,Third Serpent Stone,Sector 1,Abandoned Site,Tomb Raider,N/A,Shelf at waterline on NW side of small island with cabin W of Golem Island Satellite Dish.,N/A
+4,Stashes,Beast Lair,Good Hope Mountain,Homesteader Site,Operation Geenstone,N/A,S of Mathilda's Palace on ridge between Scott and Unknown Glaciers.,"Silent Mountain - unmarked cave. Start at Impetuous Stream Bivouac, follow river upstream to S and around the curve E, up on a cliff on the left side as you go up. Chest in cave will show on map with proximity."
+5,Stashes,The Orchard,Infinity,Abandoned Site,Operation Geenstone,N/A,"Second floor, farmhouse on the hill W of Sirius Residences, SE of Outpost Green Viper.","Under a tree outside to S in the Orchard, over by the water tower. Will have fireflies around it at night, but not required to get chest."
+6,Stashes,The Scavenger,Mount Hodgson,Cold War Site,Operation Geenstone,N/A,SE of Checkpoint Tiger Echo.,"Mount Hodgson - Cold War Site to the NE, on the border between Wild Coast and Mount Hodgson, bunker on the W edge of Rocky Valley. Lower right X is location of the intel, upper left is the treasure location."
+7,Stashes,Ghost Story part 1,Infinity,Abandoned Site,Operation Geenstone,N/A,"Just S of Raven Wood. ""Annie""","When all parts combined, Abandoned Site SE of Lake Annie in Restricted Area 01, just NW of Gate 02."
+8,Stashes,Ghost Story part 2,New Stirling,Abandoned Site,Operation Geenstone,N/A,"NW of Checkpoint Viper Hotel, SE of Glenfield Farm. ""South""","When all parts combined, Abandoned Site SE of Lake Annie in Restricted Area 01, just NW of Gate 02."
+9,Stashes,Ghost Story part 3,Liberty,Abandoned Site,Operation Geenstone,N/A,"SW edge of Small Lake below Skell Dam, in the shack off by itself on the NW. ""East""","When all parts combined, Abandoned Site SE of Lake Annie in Restricted Area 01, just NW of Gate 02."
+10,Stashes,The Caveman part 1,Smuggler Coves,Cave Site,Operation Geenstone,N/A,On shore NW of White Cross Peak.,"Smuggler Coves - Traces of Ancient Ruins near the border with Mount Hodgson at the pass between Outlaws Valley and Shacks Valley. Circle is location of intel, x is treasure location."
+11,Stashes,The Caveman part 2,Whalers Bay,Cave Site,Operation Geenstone,N/A,Base of the cliff on the shore just E of Nor'Wester Cliff.,"Whalers Bay - Traces of Ancient Ruins at E end of Small Valley, W of Ship's Boy Peak. The one S of the stream, there are multiple in this area. Circle is location of intel, x is treasure location."
+12,Stashes,The Zoologist Part 1,Driftwood Islets,Skell Technology Location,Operation Geenstone,N/A,"Anchorage Island - map marker at observation blind, collectible at tent camp top of hill to WSW.",Windy Islands - Zoologist Part 2
+13,Stashes,The Zoologist Part 2,Windy Islands,Skell Technology Location,Operation Geenstone,N/A,"Whalers Island to S, on cliff on E part of island overlooking Cliff Cove.",Egg Island - Zoologist Part 3
+14,Stashes,The Zoologist Part 3,Egg Island,Skell Technology Location,Operation Geenstone,N/A,Observation blind on Guano Islet (not labeled on map) at N end of island.,Fen Bog - Zoologist Part 4
+15,Stashes,The Zoologist Part 4,Fen Bog,Skell Technology Location,Operation Geenstone,N/A,Observation blind on shore just SE of Stinking Slough.,New Stirling - Zoologist Par 6
+16,Stashes,The Zoologist Part 5,Lake Country,Skell Technology Location,Operation Geenstone,N/A,Observation tower/lab on SE slope of Steadman Mountain.,Driftwood Islets - Zoologist Part 1
+17,Stashes,The Zoologist Part 6,New Stirling,Skell Technology Location,Operation Geenstone,N/A,Observation tower on NW end of Ardmore Ridge.,Lake Country - Zoologist Part 5
+18,Stashes,The Castaway part 1,Sinking Country,Abandoned Site,Operation Geenstone,N/A,"Island in Typhoon Bay, NW of Anit-Aircraft Ruins.",Infinity - Castaway Part 4
+19,Stashes,The Castaway part 2,Wild Coast,Abandoned Site,Operation Geenstone,N/A,"SW of Lake Boomer, NNE of Drone Station W031.",Channels - Castaway Part 5
+20,Stashes,The Castaway part 3,Mount Hodgson,Abandoned Site,Operation Geenstone,N/A,Just NW of Eden Forest.,Sinking Country - Castaway Part 1
+21,Stashes,The Castaway part 4,Infinity,Abandoned Site,Operation Geenstone,N/A,On Lockett Cliff.,Wild Coast - Castaway Part 2
+22,Stashes,The Castaway part 5,Channels,Abandoned Site,Operation Geenstone,N/A,"High point between Harbor Cove, Landing Bay, and Bad Passage, S end of province.",Lake Country - Castaway Part 6
+23,Stashes,The Castaway part 6,Lake Country,Abandoned Site,Operation Geenstone,N/A,Middle of the W shore of Blackwater Lake.,Mount Hodgson - Castaway Part 3
+24,Stashes,U.S. Hidden Shelter part 1,Sinking Country,Cold War Site,Operation Geenstone,N/A,"E of Drone Station W052, W of Pelican Bank.","Sinking Country - Cold War Site 2km to the N, NE of Equipment Depot, on Gaer Arm."
+25,Stashes,U.S. Hidden Shelter part 2,Good Hope Mountain,Cold War Site,Operation Geenstone,N/A,"NE end of Misty Ridge, W of the bivouac by same name.","Good Hope Mountain - Cold War Site near border of Restricted Area 01, NW of Camp Ferret at the E end of Generals Valley."
+26,Stashes,U.S. Hidden Shelter part 3,Channels,Cold War Site,Operation Geenstone,N/A,"S end of Anchor Island, just NE of the map label.",Channels - Cold War Site at N end of Little Island.
+27,Stashes,U.S. Hidden Shelter part 4,Restricted Area 01,Cold War Site,Operation Geenstone,N/A,W end of Gold Digger Range. Climb to top of tower and jump down to roof to enter.,Restricted Area 01 - Cold War Site S of Generals Valley.
+28,Stashes,Communist Spy part 1,Channels,Cold War Site,Operation Geenstone,N/A,SW of Legion swarm tower S of Channels Port.,Restricted Area 01 - Spy Part 5
+29,Stashes,Communist Spy part 2,Channels,Cold War Site,Operation Geenstone,N/A,Hillside across channel to the NW of Fuel Storage.,Restricted Area 01 - Spy Part 6
+30,Stashes,Communist Spy part 3,Good Hope Mountain,Cold War Site,Operation Geenstone,N/A,"Just NE of Moon Lake, crawl through entrance on W side.",Channels - Spy Part 2
+31,Stashes,Communist Spy part 4,Seal Islands,Cold War Site,Operation Geenstone,N/A,"Just SE of Checkpoint Shark Bravo, underground bunker a bit up the hill.",Channels - Spy Part 1
+32,Stashes,Communist Spy part 5,Restricted Area 01,Cold War Site,Operation Geenstone,N/A,Rock bunker between Mount Elliot and Pikes Peak.,Good Hope Mountain - Spy Part 3
+33,Stashes,Communist Spy part 6,Restricted Area 01,Cold War Site,Operation Geenstone,N/A,"Wooden tower in road switchbacks, SSE of Forlorn Hope Highland.",Channels - Spy Part 7
+34,Stashes,Communist Spy part 7,Channels,Cold War Site,Operation Geenstone,N/A,"Island off West Cape, technically outside province. Two ladders on W side. On barrel.",Seal Islands - Spy Part 4
+35,Stashes,Gold Prospector part 1,Silent Mountain,Abandoned Site,Operation Geenstone,N/A,"Jonah Cave, W of Thunder Mountain.",Restricted Area 01 - Gold Part 5
+36,Stashes,Gold Prospector part 2,Silent Mountain,Abandoned Site,Operation Geenstone,N/A,SE of Fortune Lake.,Restricted Area 01 - Gold Part 8
+37,Stashes,Gold Prospector part 3,Silent Mountain,Abandoned Site,Operation Geenstone,N/A,"NW of Impetuous Stream, just SE of Behemoth Defense Area in N corner of province.",Restricted Area 01 - Gold Part 9
+38,Stashes,Gold Prospector part 4,Restricted Area 01,Abandoned Site,Operation Geenstone,N/A,"Shack just SE of Behemoth Defense Area, NNE of Gold Trail Testing Zone.",Silent Mountain - Gold Part 3
+39,Stashes,Gold Prospector part 5,Restricted Area 01,Abandoned Site,Operation Geenstone,N/A,"Mine NE of Mount Fools, SSE of Gold Mountain.",Silent Mountain - Gold Part 2
+40,Stashes,Gold Prospector part 6,Restricted Area 01,Abandoned Site,Operation Geenstone,N/A,"Mine in Incomers Valley, S of Mount Elliot.",Restricted Area 01 - Gold Part 7
+41,Stashes,Gold Prospector part 7,Restricted Area 01,Abandoned Site,Operation Geenstone,N/A,On stream just S of Teardrop Pond.,Silent Mountain - Gold Part 1
+42,Stashes,Gold Prospector part 8,Restricted Area 01,Abandoned Site,Operation Geenstone,N/A,"Shack on top of Pancake Range, just W of bivouac.",Restricted Area 01 - Gold Part 4
+43,Stashes,Gold Prospector part 9,Restricted Area 01,Abandoned Site,Operation Geenstone,N/A,Cave/mine off the natural tunnel under/NE of Drone Station W161.,Restricted Area 01 - Gold Part 6
+44,Stashes,Three Tombs,Lake Country,Traces of Ancient Ruins,Operation Geenstone,N/A,"On SW shore of lake just N of Sheep Moor, SE of Juice Processing Center.","Lake Country - Three separate Traces of Ancient Ruins. 1) NW is head of Fortune River, N of Trough Lake where four provinces meet. 2) SW is middle of Grandview Range on border with Restricted Area 01. 3) NE is N end of unamed lake between Skell Security R&D and Assembly Hall."
+45,Stashes,Brothers Legacy,New Stirling,Abandoned Site,Operation Geenstone,N/A,"W of Round Top, S of Drone Station W13.","Inside the church you're standing behind. (Really guys? Couldn't stick it in a gravesite or something, just there in the open where most probably open the chest before even finding the clue?)"
+46,Stashes,Crashed Drones,Restricted Area 01,Training Center,Operation Geenstone,N/A,Top of observation tower.,Restricted Area 01 - Four separate Skell Technology Locations. 1) NE of the Pleasant Island Bivouac. 2) SW of Camp Fox. 3) N of the E end of Blackburn Ridge. 4) SE of Training Center (Deep State mission goes here).
+47,Stashes,The Murderer,Wild Coast,Abandoned Site,Operation Geenstone,N/A,"Immediately S of Mac Pherson Gully, up on the hill/ridge.","Wild Coast - Abandoned Site to the N, on cliff over Ancient Harbor."
+48,Stashes,Moa Bonepit part 1,Wild Coast,Traces of Ancient Ruins,Operation Geenstone,N/A,"NE of Lochnagar Falls, SE of Murmur Patrol Area.","Wild Coast - Traces of Ancient Ruins on the NW edge of Mocha Dick Heights, NE of the Behemoth Defense Area."
+49,Stashes,Moa Bonepit part 2,Lake Country,Traces of Ancient Ruins,Operation Geenstone,N/A,"E shore of lake, SE of Shepher Wood, N of Skell Technology Head Office.","Infinity - Traces of Ancient Ruins at the W edge of Hanged Man Wood, SE of Diggers Gully Bivouac."
+50,Stashes,Moa Bonepit part 3,Channels,Traces of Ancient Ruins,Operation Geenstone,N/A,NW side of Calm Peak.,"Unmarked camp location along S edge of Grey Glacier, below the 'ie'. Skell chest will show on map with proximity?"
+51,Stashes,Gambling Den part 1,Wild Coast,Homesteader Site,Operation Geenstone,N/A,Along the road N of Wild Coast Freight Yard.,Wild Coast - Homesteader Site NE of Long Valley / Storage Depot.
+52,Stashes,Gambling Den part 2,New Argyll,Abandoned Site,Operation Geenstone,N/A,Between Fish Processing Center and Meal Packaging Center.,Spot marked on the map is a modern Skell Technology Location which doesn't make sense as a Gambling Den. However there are two nearby alternates that fit. 1) 590m to the SW on the other side of the winery in New Argyll is an Abandoned Site which is the most likely candidate - looks like a tiny shack on the surface but stairs lead down into a wooden bunker that is definitely a Gambling Den. 2) 1km to the E between Fen Bog Testing Zone and Alpha Centauri Residences in Fen Bog is another Abandoned Site - two story house you have to climb into the second floor of and is also definitely a Gambling Den. Both have Skell Credit chests.
+53,Stashes,Gambling Den part 3,Infinity,Abandoned Site,Operation Geenstone,N/A,"Just W of Polaris Residences, across the lake.","Spot marked on the map is a modern Sentinel facility, Control Station Viper 04, which doesn't make sense as a Gambling Den. However there are two nearby alternatives that fit. 1) 310m WSW in Infinity is an Abandoned Site - it's a standard cabin but instead of a drone on the table there is a card game, but it doesn't really look like a Gambling Den per se. 2) The same second option for Gambling Den 2 is 650m to the W and would more fit with being a Gambling Den."
+54,Stashes,Gambling Den part 4,Channels,Abandoned Site,Operation Geenstone,N/A,"E short of Petrel Island, NE of Doubtful Sound.","Channels - Abandoned Site, cabin on the N short of the unamed lake at the top of the cliff N / across the channel from Fuel Storage."
+55,Stashes,Mountain Expedition,Silent Mountain,Skell Technology Location,Operation Geenstone,N/A,Near the top of Sceptre Peak.,"Nowhere? You can follow prints in the snow downhill and find two others near a boulder, then continue on to a basecamp with an equipment chest (both marked as a Skell Technology Locations just like where you find the clue). But the clue says they were trekking Mount Hodgson and strayed from the path. They're on Sceptre Peak with a Behemoth Defense Area between them and Hodgson, but did not locate any additional chests trying to complete that route, which is inconsistent with other stashes/treasure leads."
+56,Stashes,Map to the first stone,Silent Mountain,Unmarked location,Tomb Raider,N/A,"Cave with Ancients decorations SE of Pumping Station, N of the three pipes to Auroa Data Farm.",First Serpent Stone / Map to the second stone
+57,Stashes,Map to the second stone,Wild Coast,Unmarked location,Tomb Raider,N/A,"Sea stack NW of Observatory Hill (access only from air, you can land a chopper on it).",Second Serpent Stone / Map to the third stone
+58,Stashes,Map to the third stone,Smuggler Coves,Unmarked location,Tomb Raider,N/A,Ancients alter on cliff overlooking Galleon Cove; bowsprit on shipwreck points at it.,Third Serpent Stone

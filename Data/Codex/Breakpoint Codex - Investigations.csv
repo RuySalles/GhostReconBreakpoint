@@ -1,0 +1,104 @@
+Order,Investigation,Clue Name,Province,Location,Episode,Mission,Notes
+1,What is Wonderland?,"? In time, everything will be revealed.",???,???,???,???,"Probably bugged from Episode 1, possibly intended to be tied to future content that never happened."
+1,What is Wonderland?,A memory of Walker,Sinking Country,Howard Airfield,Operation Greenstone,Brother vs Brother,Kill Walker.
+1,What is Wonderland?,First mention of Wonderland,Mount Hodgson,Erewhon,Operation Greenstone,The Enemy of My Enemy,Speak with Fox with mission prompt after rescuing Skell.
+1,What is Wonderland?,Josiah Hill's final words,Egg Island,Bioluminescent Cavern,Operation Greenstone,Point of No Return,Enter the cavern and finish the cutscene with Hill.
+2,Where is Project Deus Located?,"? In time, everything will be revealed.",???,???,???,???,"Investigation opened when completing Side Mission Price of Trust. Likely tied to original Episode 3, Transcendence."
+3,Does Stone approve all of Monroe's actions?,"? In time, everything will be revealed.",???,???,???,???,Investigation opened when completing Deep State mission Missing in Action. Likely bugged from Deep State.
+3,Does Stone approve all of Monroe's actions?,"? In time, everything will be revealed.",???,???,???,???,Investigation opened when completing Deep State mission Missing in Action. Likely bugged from Deep State.
+3,Does Stone approve all of Monroe's actions?,Leaks from Lieutenant Nixon.,Channels,Abandoned Site,Deep State,Missing in Action,Speak with Sam and complete the mission.
+4,Who is the mole?,A video from an anonymous source,Mount Hodgson,Erewhon,Operation Greenstone,Back to the Basics,Speak with Fox after speaking with Mads. Also unlocked Faction Story missions.
+4,Who is the mole?,Another video from Fox's informant,Mount Hodgson,Erewhon,Operation Greenstone,The Enemy of My Enemy,Speak with Fox with mission prompt after rescuing Skell.
+4,Who is the mole?,Jace Skell on the Mole's identity,Mount Hodgson,Erewhon,Operation Greenstone,Into the Wolf's Den,Speak with Skell after finishing at Shark Base.
+4,Who is the mole?,Third video from the Mole,Mount Hodgson,Erewhon,Operation Greenstone,Into the Wolf's Den,Speak with Skell after finishing at Shark Base.
+5,How to retrieve the AI from the Campus network?,Campus Network Design Overview,Cape North,Skell Foundation Campus,Operation Greenstone,Blake's Law,"Archimedes Hall - N building, server room near middle of building ground floor - need objective from Cromwell to collect."
+5,How to retrieve the AI from the Campus network?,Network reliability audit,Cape North,Skell Foundation Campus,Operation Greenstone,Blake's Law,"Archimedes Hall - N building, E end toward helipad, second floor - need objective from Cromwell to collect."
+5,How to retrieve the AI from the Campus network?,Yohav Umberg Interrogation Report,Cape North,Skell Foundation Campus,Operation Greenstone,Blake's Law,"Archimedes Hall - N building, E end toward helipad, first floor - need objective from Cromwell to collect."
+6,Where is Paula Madera?,Daigoroh Ito's guess,Restricted Area 01,Abandoned Site,Operation Greenstone,An Ingenuous Genius,"NW shore of Blue Lake, S of Gold Digger Range. Speak with Daigoroh after escorting him to site."
+6,Where is Paula Madera?,Prisoner Transfer Order,Liberty,Detention Center,Operation Greenstone,An Ingenuous Genius,"Laptop at front desk, mission must be active to collect."
+7,Who sank the US military ship?,"Jace Skell's Logs, part 1",Smuggler Coves,Abandoned Site,Operation Greenstone,Back to the Basics,Meet with Hill.
+7,Who sank the US military ship?,Maurice Fox on the drones' attack,Smuggler Coves,Freeport,Operation Greenstone,No Way Out,Kill all attacking Sentinel after the boat is destroyed by the swarm.
+8,Why didn't anybody outside Auroa raise the alarm?,An email from Skell to Puri on confidentiality,Infinity,Skell Foundation Head Office,Operation Greenstone,N/A,"Ground floor, central office tower with scaffolding, back elevator reception desk."
+8,Why didn't anybody outside Auroa raise the alarm?,Ayana Puri on extraordinary measures,Infinity,Skell Technology Head Office,Operation Greenstone,N/A,"Ground floor workroom, SW end of building over the train tunnel."
+9,How were the Wolves created?,A Win-win proposition,Silent Mountain,Auroa Internet Control,Operation Greenstone,N/A,"Largest (not tallest) building, top floor small office on NE side."
+9,How were the Wolves created?,Flycatcher's diary,Restricted Area 01,Arrow Testing Zone,Operation Greenstone,N/A,"Bottom back right of hangar, in transision room between hangar and garage."
+9,How were the Wolves created?,"Walker's Journal, part 2",Seal Islands,Shark Base,Operation Greenstone,N/A,"Upper floor, main Ops room, S side."
+10,How did Hill survive the manhunt after the crash?,A social call,Sinking Country,Anit-Aircraft Ruins,Operation Greenstone,N/A,"Second floor, largest building."
+10,How did Hill survive the manhunt after the crash?,Kill Count,Sinking Country,Camp Tiger,Operation Greenstone,N/A,"Second floor, main building."
+11,How was Hill turned by Walker?,A letter from Walker,Egg Island,Bioluminescent Cavern,Operation Greenstone,Point of No Return,Metal platform with map table. Only accessible during mission.
+11,How was Hill turned by Walker?,A memory from Middle-East,Egg Island,Bioluminescent Cavern,Operation Greenstone,Point of No Return,Table near turret. Only accessible during mission.
+12,What is the origin of Sentinel Corp's resources?,"""Sentinel Corp Secures Trend""",Infinity,Jace Skell Conference Hall,Operation Greenstone,N/A,"W end of building directly N of circular plaza, second floor work area."
+12,What is the origin of Sentinel Corp's resources?,"""Something Doesn't Add Up""",Cape North,Skell Foundation Campus,Operation Greenstone,N/A,"Euclid Hall S end - just W of S compass point of campus, ground floor."
+12,What is the origin of Sentinel Corp's resources?,M. Lomax' background check,Silent Mountain,Auroa Internet Control,Operation Greenstone,N/A,"Largest (not tallest) building, top floor by the big window W side (door facing helipad)."
+13,What happened to the Retaliation Team?,Correspondence between Walker and Stone,Silent Mountain,Auroa Internet Control,Operation Greenstone,N/A,Bulding 1 Data Storage across from main lobby.
+13,What happened to the Retaliation Team?,Ghost Stories,Good Hope Mountain,Camp Weasel,Operation Greenstone,N/A,"Main battle room, near Skell Credits chest."
+14,What are Project Deus' origins?,"""Jace Skell on Darwin 2.0""",Cape North,Skell Technology Location,Operation Greenstone,N/A,"Beach house compound (Cromwell's) with helipad, SW of Hidden Cove, NW from Sugarloaf Mount."
+14,What are Project Deus' origins?,"""Maddox Joins Skell Tech!""",Cape North,Construction Site,Operation Greenstone,N/A,"W of Lake Kathryn, on desk in Maddox's work area."
+14,What are Project Deus' origins?,An email from Accounting,Windy Islands,South Cape Station,Operation Greenstone,N/A,In a shack in the NW corner.
+14,What are Project Deus' origins?,Maddox' creed,Cape North,Skell Foundation Campus,Operation Greenstone,N/A,"Pythagoras Hall - main building, fifth floor (marked 4) lecture hall at N end of building."
+15,Does Skell have a personal enemy?,"""Tender Offer on Skell Tech""",Infinity,Skell Security,Deep State,N/A,"Two story building on S side, where the weapon blueprint is - under the SK in the label at max map zoom."
+15,Does Skell have a personal enemy?,"""World 2.0 Is a Pipe Dream""",Liberty,Auroa Parliament,Deep State,N/A,"Central building sunken plaza, NE side seating area."
+16,What is Peter Mile's personal ambition?,An email from Peter Miles,Cape North,Skell Foundation Campus,Operation Greenstone,N/A,"Pythagoras Hall - main building, ground floor reception desk in central atrium."
+16,What is Peter Mile's personal ambition?,Invitation to a fundraiser,Infinity,Auroa Airport,Operation Greenstone,N/A,Top of the air traffic control tower.
+17,Why did Jace Skell launch the Titan Program?,Jace Skell on the Titans,Mount Hodgson,Erewhon,Operation Greenstone,A Great Escape,Speak to Skell again after speaking with him to finish the mission.
+18,Why did Jace Skell launch Project Omega?,Jace Skell's reasons for Project Omega,Mount Hodgson,Erewhon,Operation Greenstone,The Enemy of My Enemy,Speak to Skell after escorting him to Erewhon. Can be done before mission is complete.
+19,Who bombed the Skell Foundation Head Office?,Haruhi Ito about the bombing,Windy Islands,South Cape Station,Operation Greenstone,Innocent Slaughter,Speak to Haruhi after taking the truck back from Sentinel.
+20,Where do the Homesteaders come from?,Mads Schulz on the origins of the Homesteaders,Mount Hodgson,Erewhon,Operation Greenstone,N/A,Speak to Mads after reaching Erewhon. Prompt: Homesteaders' background
+21,Is Erewhon safe from recon drones?,Mads Schulz on Erewhon's defenses,Mount Hodgson,Erewhon,Operation Greenstone,The Enemy of My Enemy,Speak to Mads after completing the mission.
+22,How did Sentinel take control of Auroa?,Haruhi Ito on Sentinel's takeover,Seal Islands,South Cape Station,Operation Greenstone,Coldish Heart (?),Speak to Haruhi (did after finding Madera's Husband but before talking to her).
+23,Why did Walker execute people in South-East Asia?,Jace Skell discusses the events in India,Mount Hodgson,Erewhon,Operation Greenstone,Into the Wolf's Den,Speak to Skell again after speaking with him to finish the mission.
+24,Is Midas still alive?,A cry of relief,Sinking Country,Bunker Edgehod South,Operation Greenstone,A Soul in Rest,Recover the stolen items in the Commander's office during the side mission.
+25,Where is Midas?,The Strategist's Guinea Pig,Mount Hodgson,Erewhon,Deep State,Two Birds One Stone,Find Midas and complete the mission.
+26,Who are the masked soldiers who executed the Ghosts?,Mads Shulz on the Wolves,Mount Hodgson,Erewhon,Operation Greenstone,No Way Out,Speak to Mads to launch the mission.
+27,Who created the disease that infected the Homesteaders?,Ballard and Coleman arguing about the virus,Mount Hodgson,Erewhon,Operation Greenstone,A Deadly Trap,Speak to Mads and complete the mission.
+28,Can Ballard be trusted?,Ballard's remorse,Wild Coast,Youth Spring,Operation Greenstone,Science Without Conscience,Speak to Ballard once you locate him.
+29,How did Kyle escape?,A warning about Kyle,Liberty,Auroa Hospital,Operation Greenstone,A Deadly Trap,Use the radio on the roof during the mission.
+30,Can the disease spread beyond the Homesteaders?,Mads Schulz's concerns about Emmett,Mount Hodgson,Erewhon,Operation Greenstone,Patient Zero,Speak to Mads to launch the mission.
+31,Who betrayed the Ghosts?,Jace Skell's on contracting with Sentinel Corp,Mount Hodgson,Erewhon,Operation Greenstone,The Enemy of My Enemy,Speak with Fox with mission prompt after rescuing Skell.
+32,Why did Becker turn against Sentinel Corp?,Becker's confession,Liberty,Construction Site,Operation Greenstone,Whistleblower,Speak with Sigrid and Becker during the mission.
+33,What is Operation Citadel?,Jace Skell's on Operation Citadel,Fen Bog,Unmarked location,Operation Greenstone,The Enemy of My Enemy,"Rescue Skell, awarded after escape cutscene."
+34,What is the true goal of Project Deus?,Haruhi Ito's take on Project Deus,Windy Islands,South Cape Station,Operation Greenstone,Without a Trace?,Speak to Haruhi after initial meeting (possible before mission?).
+35,Where is Jace Skell?,Jace Skell's email on structural maintenance,Fen Bog,Abandoned Site,Operation Greenstone,Skell on the Move,"S bank of channel Summers Swamp, NW of Summers Homestead. Talk to Hill."
+35,Where is Jace Skell?,"Jace Skell's Logs, part 2",New Argyll,Skell Estate,Operation Greenstone,Back to the Basics,"Second floor (dining and jazz) laptop on sideboard near center of house, triggers mission end."
+35,Where is Jace Skell?,Transmission Transcripts,Fen Bog,Fen Bog Testing Zone,Operation Greenstone,Skell on the Move,Hack the computer and finish the objective investigating the Testing Zone.
+36,What did the Virus do to the drone swarm?,Jace Skell on the future of the drone swarm,Mount Hodgson,Erewhon,Operation Greenstone,Checkmate,Speak to Skell again after the celebration cutscene.
+37,What is World 2.0?,Jace Skell on his World 2.0,Mount Hodgson,Erewhon,Operation Greenstone,A Great Escape,Speak to Skell after killing Herzog.
+38,Is Ayana Puri a traitor?,Ayana Puri on her relation with Sentinel Corp,Mount Hodgson,Erewhon,Operation Greenstone,Point of No Return,Speak to Puri in Erewhon after completing the mission.
+39,What is the plan to extract the Strategist?,MacKenzie Debriefs on Legion,Restricted Area 01,Freeman Residences,Deep State,Black Sheep,Speak with Mackenzie and complete the mission.
+39,What is the plan to extract the Strategist?,Security Intel from Sekulic,Seal Islands,Traces of Ancient Ruins,Deep State,Lone Wolf,Speak with Sekulic and complete the mission.
+39,What is the plan to extract the Strategist?,Van Dyke's Confession,Liberty,Auroa Solar Power Plant,Deep State,Spirit of the Hive,Speak with Van Dyke and complete the mission.
+40,Who is the Strategist?,Crossed off the Guest List.,Liberty,John Dewey Residences,Deep State,N/A,"Beach house with the double tennis courts, second floor bedroom."
+40,Who is the Strategist?,Stephanie Burgess comes clean.,Seal Islands,Traces of Ancient Ruins,Deep State,Lone Wolf,Speak with Sekulic and complete the mission.
+40,Who is the Strategist?,Ultralife issue #172,Seal Islands,Unmarked location,Deep State,N/A,"Intel Clue Location is wrong, it's the offshore platform S of naval base airfield to E, not stated mountain."
+41,What is the CLAW project?,Analysis of CLAW's Utility,Seal Islands,Cave Site,Deep State,N/A,"Sea cave S of Albatross Peak. Second collectible on the way in, roughly where cave becomes bunker. Mission doesn't have to be active."
+41,What is the CLAW project?,Bringing in Van Dyke,Liberty,Control Station Fox 01,Deep State,N/A,On a crate by the generator in the NE corner of camp.
+41,What is the CLAW project?,CLAW Demonstration Footage,Channels,Auroa Power Plant,Deep State,One Mind Army,View the personel list and complete the mission.
+41,What is the CLAW project?,Rejected Application Notice,Seal Islands,Sentinel Corp. Naval Base,Deep State,N/A,"Comms building, just S of server building by the main gate."
+42,Who is behind the CLAW project?,Inspection Debrief,Channels,Channels R&D Center,Deep State,N/A,"Office part of complex, near the middle, rooms protected by lasers."
+42,Who is behind the CLAW project?,Paxton's Files,Seal Islands,Cave Site,Deep State,Enemy Within,Speak with Paxton and finish the cutscene.
+42,Who is behind the CLAW project?,Stephanie Burgess' Insights,Seal Islands,Traces of Ancient Ruins,Deep State,Lone Wolf,Speak with Sekulic and complete the mission.
+43,Why was Sam Fisher sent to extract the Strategist?,A Worried Email,Channels,Channels R&D Center,Deep State,N/A,"Up top, N most end of base near one of the five microwave dishes."
+43,Why was Sam Fisher sent to extract the Strategist?,Friendly email from Miles,Channels,Channels R&D Center,Deep State,N/A,First floor lab building near center of complex.
+43,Why was Sam Fisher sent to extract the Strategist?,Leaked CIA File,Channels,Channels R&D Center,Deep State,N/A,Checkpoint building on docks.
+44,"What, exactly, did they do to Midas?",CLAW and Project Deus' Tech,Restricted Area 01,Checkpoint Fox Echo,Deep State,N/A,Checkpoint building on E side of road.
+44,"What, exactly, did they do to Midas?",CLAW Engineering Report,Channels,Navy Fueling Station,Deep State,N/A,Largest warehouse building at S end of base.
+44,"What, exactly, did they do to Midas?",Maddox and Mind-Scanning,Seal Islands,Sentinel Corp. Naval Base,Deep State,N/A,"Second floor of server building, just W of main admin building."
+44,"What, exactly, did they do to Midas?",Report on Ghosts Status,Channels,Navy Fueling Station,Deep State,N/A,"Motor pool garage, NE corner of base."
+45,What happened to Midas after the crash?,Capture Report,Liberty,Liberty Airport,Deep State,N/A,"Mobile building, SE side of main terminal."
+45,What happened to Midas after the crash?,Drone Support Request,Liberty,Liberty Airport,Deep State,N/A,Outside base of ATC tower at S end.
+45,What happened to Midas after the crash?,Encrypted Note from Midas,Smuggler Coves,Abandoned Site,Deep State,N/A,"Plane crash just NE of Abandoned Site, S of Discovery Mountain, W of Outpost Red Tiger. Moved here, was originally found in the cafeteria building at the Airship Air Station where you start the game when introduced with Deep State."
+45,What happened to Midas after the crash?,Recording of Midas' Capture.,Channels,Abandoned Site,Deep State,Missing in Action,Speak with Sam and complete the mission.
+45,What happened to Midas after the crash?,Suspicous Individual Report,Restricted Area 01,Outpost Red Fox,Deep State,N/A,"Armory tent, W edge of camp core."
+46,What is the origin of the Dark Cell?,Email from Stone,Good Hope Mountain,Bunker Edgehod South,Deep State,N/A,Lower level of E bunker.
+46,What is the origin of the Dark Cell?,Extract from Grant's Diary,Good Hope Mountain,Bunker Edgehod South,Deep State,N/A,W bunker.
+46,What is the origin of the Dark Cell?,Intimidation from Monroe,Lake Country,Camp Viper,Deep State,N/A,Cafeteria tent in SE corner of compound.
+46,What is the origin of the Dark Cell?,Memo from Stone to Monroe,Lake Country,Camp Viper,Deep State,N/A,Mobile building in NW corner of compound.
+47,What is Walker's plan?,Drone propelling missle schematics,Seal Islands,Shark Base,Operation Greenstone,Into the Wolf's Den,Torpedo storage control room. Shows up as a blueprint when viewed in mission intel but black and white drawing when viewed in Investigations.
+47,What is Walker's plan?,LINCHPIN program progress eport,Seal Islands,Shark Base,Operation Greenstone,Into the Wolf's Den,"Upper floor, main Ops room, N side. Lapotop, mission must be active."
+47,What is Walker's plan?,Walker's email about the Linchpin program,Mount Hodgson,Erewhon,Operation Greenstone,Into the Wolf's Den,Speak to Skell after finishing at Shark Base.
+47,What is Walker's plan?,"Walker's Journal, part 1",Seal Islands,Shark Base,Operation Greenstone,Into the Wolf's Den,"Upper floor, main Ops room, S side. Folders on table, mission must be active."
+48,What is the relationship between Stone and Coste?,Greetings from Coste,Liberty,Jace Skell Dam,Deep State,N/A,"Second floor, two story building just SE of the map marker."
+48,What is the relationship between Stone and Coste?,Info about Paladin Nine,Channels,Auroa Power Plant,Deep State,N/A,"NW most warehouse, N end of building by the truck dock."
+48,What is the relationship between Stone and Coste?,Reassurance from Skell,Liberty,Jace Skell Dam,Deep State,N/A,"Upper catwalk, middle of main generator house."
+48,What is the relationship between Stone and Coste?,Security Breach Warning,Liberty,Control Station Fox 01,Deep State,N/A,Workbench in the garage on the W side.
+48,What is the relationship between Stone and Coste?,Update on cover,Channels,Auroa Power Plant,Deep State,N/A,Third floor of office tower on E side of compound by the helipad.

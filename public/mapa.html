@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAPA OPERACIONAL - GHOST SQUAD</title>
+    
+    <!-- Leaflet API (Map Library) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+        :root {
+            --term-green: #33ff33;
+            --term-dark: #050505;
+            --term-dim: #123d12;
+            --term-bright: #adff2f;
+            --hud-bg: rgba(5, 5, 5, 0.9);
+            --border-glow: 0 0 10px rgba(51, 255, 51, 0.2);
+
+            /* POI Colors */
+            --color-bivouac: #00f0ff;
+            --color-camp: #ff3333;
+            --color-outpost: #ff9900;
+            --color-village: #ffff33;
+            --color-station: #cc33ff;
+            --color-other: #55a855;
+        }
+
+        * {
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        body {
+            background-color: var(--term-dark);
+            color: var(--term-green);
+            font-family: 'Share Tech Mono', monospace;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+        }
+
+        /* Efeito de scanline */
+        body::after {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.12) 50%);
+            z-index: 10000;
+            background-size: 100% 2px;
+            pointer-events: none;
+        }
+
+        /* Main Layout split screen */
+        .app-container {
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Left Side: Map Viewport */
+        .map-viewport {
+            flex: 1;
+            height: 100%;
+            position: relative;
+            background-color: #030303;
+            border-right: 2px solid var(--term-dim);
+        }
+
+        #map {
+            width: 100%;
+            height: 100%;
+            display: block;
+            background: #030303;
+        }
+
+        /* Custom Leaflet overrides for cyberpunk theme */
+        .leaflet-container {
+            font-family: 'Share Tech Mono', monospace !important;
+            background: #030303 !important;
+        }
+
+        .leaflet-popup-content-wrapper, .leaflet-popup-tip {
+            background: var(--hud-bg) !important;
+            border: 1px solid var(--term-green) !important;
+            color: var(--term-green) !important;
+            box-shadow: var(--border-glow) !important;
+            border-radius: 0px !important;
+        }
+
+        .leaflet-popup-content {
+            margin: 12px 16px !important;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .leaflet-popup-close-button {
+            color: var(--term-green) !important;
+        }
+
+        .leaflet-bar {
+            border: 1px solid var(--term-green) !important;
+            box-shadow: var(--border-glow) !important;
+            border-radius: 0px !important;
+            overflow: hidden;
+        }
+
+        .leaflet-bar a {
+            background-color: var(--hud-bg) !important;
+            color: var(--term-green) !important;
+            border-bottom: 1px solid var(--term-dim) !important;
+            border-radius: 0px !important;
+        }
+
+        .leaflet-bar a:hover {
+            background-color: var(--term-green) !important;
+            color: var(--term-dark) !important;
+        }
+
+        /* Right Side: HUD Controls Control Panel */
+        .hud-panel {
+            width: 400px;
+            height: 100%;
+            background-color: var(--hud-bg);
+            border-left: 1px solid var(--term-green);
+            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            padding: 25px;
+            z-index: 5;
+            overflow-y: auto;
+        }
+
+        .hud-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            border-bottom: 2px dashed var(--term-green);
+            padding-bottom: 10px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 5px rgba(51, 255, 51, 0.5);
+        }
+
+        .btn-back {
+            background-color: var(--term-dim);
+            color: var(--term-green);
+            border: 1px solid var(--term-green);
+            padding: 10px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .btn-back:hover {
+            background-color: var(--term-green);
+            color: var(--term-dark);
+            box-shadow: 0 0 10px rgba(51, 255, 51, 0.5);
+        }
+
+        .control-section {
+            border: 1px solid var(--term-dim);
+            padding: 15px;
+            margin-bottom: 20px;
+            background: rgba(0, 20, 0, 0.2);
+        }
+
+        .control-section h4 {
+            margin-top: 0;
+            margin-bottom: 12px;
+            color: var(--term-bright);
+            letter-spacing: 1px;
+            border-bottom: 1px solid var(--term-dim);
+            padding-bottom: 5px;
+        }
+
+        /* Search input */
+        .search-container {
+            display: flex;
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        #searchInput {
+            width: 100%;
+            background: #000;
+            border: 1px solid var(--term-green);
+            color: var(--term-green);
+            padding: 10px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        #searchInput:focus {
+            outline: none;
+            box-shadow: var(--border-glow);
+        }
+
+        /* Province Select */
+        #provinceSelect {
+            width: 100%;
+            background: #000;
+            border: 1px solid var(--term-green);
+            color: var(--term-green);
+            padding: 8px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        #provinceSelect:focus {
+            outline: none;
+        }
+
+        /* Type Checkboxes */
+        .filter-types {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .type-item {
+            display: flex;
+            align-items: center;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        .type-item input {
+            margin-right: 8px;
+            cursor: pointer;
+            accent-color: var(--term-green);
+        }
+
+        .type-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 6px;
+        }
+
+        /* Details Card */
+        .details-card {
+            border: 1px solid var(--term-green);
+            background: rgba(0, 10, 0, 0.6);
+            padding: 15px;
+            margin-bottom: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            min-height: 150px;
+        }
+
+        .details-placeholder {
+            color: var(--term-dim);
+            text-align: center;
+            margin: auto;
+            font-style: italic;
+        }
+
+        .details-title {
+            color: #fff;
+            font-weight: bold;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            word-break: break-all;
+            border-bottom: 1px dashed var(--term-green);
+            padding-bottom: 5px;
+        }
+
+        .details-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            margin-bottom: 6px;
+        }
+
+        .details-label {
+            color: var(--term-bright);
+        }
+
+        .details-value {
+            color: #fff;
+            text-align: right;
+            word-break: break-all;
+        }
+
+        /* Stats & HUD Foot */
+        .hud-stats {
+            font-size: 0.75rem;
+            color: var(--term-dim);
+            border-top: 1px solid var(--term-dim);
+            padding-top: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Overlay map instructions UI */
+        .map-overlay-info {
+            position: absolute;
+            top: 20px;
+            left: 50px;
+            background: rgba(5, 5, 5, 0.85);
+            border: 1px solid var(--term-dim);
+            padding: 10px 15px;
+            pointer-events: none;
+            font-size: 0.8rem;
+            line-height: 1.4;
+            z-index: 1000;
+        }
+
+        .map-overlay-info h5 {
+            margin: 0 0 5px 0;
+            color: var(--term-bright);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Coordinate HUD at bottom of canvas */
+        .coords-display {
+            position: absolute;
+            bottom: 20px;
+            left: 50px;
+            background: rgba(5, 5, 5, 0.85);
+            border: 1px solid var(--term-green);
+            padding: 8px 12px;
+            font-size: 0.85rem;
+            pointer-events: none;
+            box-shadow: var(--border-glow);
+            z-index: 1000;
+        }
+
+        /* Loading indicator overlay */
+        .loader-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--term-dark);
+            z-index: 100000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s;
+        }
+
+        .loader-box {
+            border: 2px solid var(--term-green);
+            padding: 40px;
+            box-shadow: var(--border-glow);
+            text-align: center;
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        .loader-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px dashed var(--term-green);
+            border-radius: 50%;
+            margin: 20px auto;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="loader-overlay" id="loader">
+    <div class="loader-box">
+        <h2>// INICIANDO UPLINK TÁTICO</h2>
+        <div class="loader-spinner"></div>
+        <p id="loaderText">Carregando dados de telemetria de Auroa...</p>
+    </div>
+</div>
+
+<div class="app-container">
+    <!-- MAP VIEWPORT (Leaflet container) -->
+    <div class="map-viewport" id="map">
+        <div class="map-overlay-info">
+            <h5>// SISTEMA DE NAVEGAÇÃO</h5>
+            • Roda do mouse: ZOOM In / Out<br>
+            • Clique esquerdo + Arrastar: MOVER<br>
+            • Clique em um ponto: INSPECIONAR COORDENADAS
+        </div>
+
+        <div class="coords-display" id="coordsDisplay">
+            X: 0.0000 | Y: 0.0000
+        </div>
+    </div>
+
+    <!-- HUD SIDEBAR PANEL -->
+    <div class="hud-panel">
+        <h3 class="hud-title">// CENTRAL DE MAPA TÁTICO</h3>
+        
+        <a href="index.html" class="btn-back">< RETORNAR AO MENU</a>
+
+        <!-- Search -->
+        <div class="control-section">
+            <h4>// BUSCA OPERACIONAL</h4>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Filtrar por nome ou ID...">
+            </div>
+        </div>
+
+        <!-- Province Filter -->
+        <div class="control-section">
+            <h4>// FILTRAR POR PROVÍNCIA</h4>
+            <select id="provinceSelect">
+                <option value="ALL">-- TODAS AS PROVÍNCIAS --</option>
+            </select>
+        </div>
+
+        <!-- Type Filter -->
+        <div class="control-section">
+            <h4>// CATEGORIAS DE ENTIDADES</h4>
+            <div class="filter-types">
+                <label class="type-item">
+                    <input type="checkbox" id="chkBivouac" checked>
+                    <span class="type-dot" style="background-color: var(--color-bivouac);"></span>
+                    Bivouac
+                </label>
+                <label class="type-item">
+                    <input type="checkbox" id="chkCamp" checked>
+                    <span class="type-dot" style="background-color: var(--color-camp);"></span>
+                    Camp
+                </label>
+                <label class="type-item">
+                    <input type="checkbox" id="chkOutpost" checked>
+                    <span class="type-dot" style="background-color: var(--color-outpost);"></span>
+                    Outpost
+                </label>
+                <label class="type-item">
+                    <input type="checkbox" id="chkVillage" checked>
+                    <span class="type-dot" style="background-color: var(--color-village);"></span>
+                    Village
+                </label>
+                <label class="type-item">
+                    <input type="checkbox" id="chkStation" checked>
+                    <span class="type-dot" style="background-color: var(--color-station);"></span>
+                    Station
+                </label>
+                <label class="type-item">
+                    <input type="checkbox" id="chkOther" checked>
+                    <span class="type-dot" style="background-color: var(--color-other);"></span>
+                    Other
+                </label>
+            </div>
+        </div>
+
+        <!-- Map Calibration (HUD Overlay Controllers) -->
+        <div class="control-section" style="border-color: rgba(255,170,0,0.5);">
+            <h4 style="color: #ffaa00;">// AJUSTE DE IMAGEM DE FUNDO</h4>
+
+            <div style="margin-bottom: 10px;">
+                <div style="display: flex; justify-content: space-between; font-size: 0.75rem;">
+                    <span>OFFSET X (ESQUERDA/DIREITA):</span>
+                    <span id="valCX">-4600</span>
+                </div>
+                <input type="range" id="slideCX" min="-15000" max="5000" step="50" value="-4600" style="width: 100%; accent-color: #ffaa00;">
+            </div>
+
+            <div style="margin-bottom: 10px;">
+                <div style="display: flex; justify-content: space-between; font-size: 0.75rem;">
+                    <span>OFFSET Y (CIMA/BAIXO):</span>
+                    <span id="valCY">-1400</span>
+                </div>
+                <input type="range" id="slideCY" min="-10000" max="10000" step="50" value="-1400" style="width: 100%; accent-color: #ffaa00;">
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <div style="display: flex; justify-content: space-between; font-size: 0.75rem;">
+                    <span>OPACIDADE:</span>
+                    <span id="valOpacity">0.60</span>
+                </div>
+                <input type="range" id="slideOpacity" min="0" max="1" step="0.05" value="0.60" style="width: 100%; accent-color: #ffaa00;">
+            </div>
+
+            <button id="btnCopyCalib" style="width: 100%; padding: 8px; background: rgba(50, 20, 0, 0.4); border: 1px solid #ffaa00; color: #ffaa00; font-family: 'Share Tech Mono', monospace; font-size: 0.8rem; font-weight: bold; cursor: pointer;">
+                COPIAR VALORES FINAIS
+            </button>
+        </div>
+
+        <!-- POI Details -->
+        <div class="hud-title" style="font-size: 1rem; margin-top: 10px; margin-bottom: 10px;">// DETALHES DO PERÍMETRO</div>
+        <div class="details-card" id="detailsCard">
+            <div class="details-placeholder" id="detailsPlaceholder">
+                Selecione um ponto tático no mapa para descriptografar telemetria.
+            </div>
+            <div id="detailsContent" style="display: none;">
+                <div class="details-title" id="detName">GL001_RespawnPoint_PhotographerHouse</div>
+                <div class="details-row">
+                    <span class="details-label">ID Único:</span>
+                    <span class="details-value" id="detId">0x0000019b29f0dd88</span>
+                </div>
+                <div class="details-row">
+                    <span class="details-label">Província:</span>
+                    <span class="details-value" id="detProvince">Cape North</span>
+                </div>
+                <div class="details-row">
+                    <span class="details-label">Tipo:</span>
+                    <span class="details-value" id="detType" style="text-transform: uppercase;">Bivouac</span>
+                </div>
+                <div class="details-row" style="margin-top: 12px; border-top: 1px dashed var(--term-dim); padding-top: 8px;">
+                    <span class="details-label">X (Longitude):</span>
+                    <span class="details-value" id="detX">-8511.9463</span>
+                </div>
+                <div class="details-row">
+                    <span class="details-label">Y (Latitude):</span>
+                    <span class="details-value" id="detY">-5590.4072</span>
+                </div>
+                <div class="details-row">
+                    <span class="details-label">Z (Altitude):</span>
+                    <span class="details-value" id="detZ">195.0164</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- HUD stats footer -->
+        <div class="hud-stats">
+            <span id="txtUplink">UPLINK: SEGURO (HTTPS)</span>
+            <span id="txtCounter">POIs: 0 / 0</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    // State variables
+    let poiData = [];
+    let filteredData = [];
+    let selectedPoi = null;
+
+    // Background Image Calibration Parameters (Auroa-Optimized WebP mathematically calculated center/bounds)
+    let mapWidthGameUnits = 18000;
+    let mapHeightGameUnits = 22658; // matches 12710x16000 aspect ratio
+    let mapCenterX = -4600;         // Center of main island (excluding Golem)
+    let mapCenterY = -1400;         // Center of main island (excluding Golem)
+    let mapOpacity = 0.60;
+
+    let overlay = null;
+    let isHoveringMarker = false; // Prevents coordinate conflict during hover
+
+    // Canvas elements & HUD controls
+    const coordsDisplay = document.getElementById('coordsDisplay');
+    const searchInput = document.getElementById('searchInput');
+    const provinceSelect = document.getElementById('provinceSelect');
+    const detailsPlaceholder = document.getElementById('detailsPlaceholder');
+    const detailsContent = document.getElementById('detailsContent');
+    const txtCounter = document.getElementById('txtCounter');
+
+    // Checkboxes
+    const typeFilters = {
+        'Bivouac': document.getElementById('chkBivouac'),
+        'Camp': document.getElementById('chkCamp'),
+        'Outpost': document.getElementById('chkOutpost'),
+        'Village': document.getElementById('chkVillage'),
+        'Station': document.getElementById('chkStation'),
+        'Other': document.getElementById('chkOther')
+    };
+
+    // Color definitions
+    const COLORS = {
+        'Bivouac': '#00f0ff',
+        'Camp': '#ff3333',
+        'Outpost': '#ff9900',
+        'Village': '#ffff33',
+        'Station': '#cc33ff',
+        'Other': '#55a855'
+    };
+
+    // Initialize Leaflet Map
+    // We use CRS.Simple for flat 2D game coordinates where Y is north and X is east
+    const map = L.map('map', {
+        crs: L.CRS.Simple,
+        minZoom: -6, // Expanded to allow massive zoom out
+        maxZoom: 4,  // Expanded to allow deeper zoom in
+        zoomSnap: 0.1,
+        attributionControl: false,
+        renderer: L.canvas({ padding: 0.5 }) // High-performance Leaflet canvas renderer
+    });
+
+    // Create a layer group to hold all points
+    const markerGroup = L.layerGroup().addTo(map);
+
+    // Initialize Page
+    window.addEventListener('load', () => {
+        loadData();
+    });
+
+    // Load map data
+    function loadData() {
+        const loaderText = document.getElementById('loaderText');
+        fetch('data-out/map_data.json')
+            .then(res => {
+                if (!res.ok) throw new Error("Falha ao abrir telemetria.");
+                return res.json();
+            })
+            .then(data => {
+                poiData = data;
+                
+                // Populate Provinces Selector
+                const provinces = new Set();
+                data.forEach(poi => {
+                    if (poi.province && poi.province !== 'Unknown') {
+                        provinces.add(poi.province);
+                    }
+                });
+
+                Array.from(provinces).sort().forEach(p => {
+                    const opt = document.createElement('option');
+                    opt.value = p;
+                    opt.textContent = p.toUpperCase();
+                    provinceSelect.appendChild(opt);
+                });
+
+                // Setup dynamic image overlay bounds
+                updateOverlayBounds();
+
+
+
+                // Auto-fit to coordinates bounds on load
+                let minX = Infinity, maxX = -Infinity;
+                let minY = Infinity, maxY = -Infinity;
+                let hasPoints = false;
+                poiData.forEach(poi => {
+                    if (Math.abs(poi.x) > 100 && Math.abs(poi.y) > 100) {
+                        if (poi.x < minX) minX = poi.x;
+                        if (poi.x > maxX) maxX = poi.x;
+                        if (poi.y < minY) minY = poi.y;
+                        if (poi.y > maxY) maxY = poi.y;
+                        hasPoints = true;
+                    }
+                });
+
+                if (hasPoints) {
+                    // Zoom directly into the archipelago bounds
+                    map.fitBounds([[minY, minX], [maxY, maxX]]);
+                } else {
+                    map.setView([0, 0], -1);
+                }
+
+                applyFilters();
+
+                // Hide loader overlay
+                document.getElementById('loader').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('loader').style.display = 'none';
+                }, 500);
+            })
+            .catch(err => {
+                console.error(err);
+                loaderText.innerHTML = `<span style="color:#ff3333;">ERRO DE CONEXÃO: ${err.message}</span><br><br>Verifique se o servidor HTTP/HTTPS está rodando.`;
+            });
+    }
+
+    // Render Overlay Bounds
+    function updateOverlayBounds() {
+        const cx = mapCenterX;
+        const cy = mapCenterY;
+        const w = mapWidthGameUnits;
+        const h = mapHeightGameUnits;
+
+        // Leaflet bounds: [[minY, minX], [maxY, maxX]]
+        const southWest = [cy - h/2, cx - w/2];
+        const northEast = [cy + h/2, cx + w/2];
+        const bounds = [southWest, northEast];
+
+        if (!overlay) {
+            overlay = L.imageOverlay('assets/aurora-optimized.webp', bounds, {
+                opacity: mapOpacity
+            }).addTo(map);
+        } else {
+            overlay.setBounds(bounds);
+            overlay.setOpacity(mapOpacity);
+        }
+    }
+
+    // Filter Logic
+    function applyFilters() {
+        const query = searchInput.value.toLowerCase().replace(/[^a-z0-9]/g, '');
+        const selProvince = provinceSelect.value;
+
+        filteredData = poiData.filter(poi => {
+            // Type filters
+            const typeActive = typeFilters[poi.type] ? typeFilters[poi.type].checked : typeFilters['Other'].checked;
+            if (!typeActive) return false;
+
+            // Province filter
+            if (selProvince !== 'ALL' && poi.province !== selProvince) return false;
+
+            // Text search
+            if (query) {
+                const normName = poi.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+                const normId = poi.id.toLowerCase().replace(/[^a-z0-9]/g, '');
+                if (!normName.includes(query) && !normId.includes(query)) return false;
+            }
+
+            return true;
+        });
+
+        txtCounter.textContent = `POIs: ${filteredData.length} / ${poiData.length}`;
+        renderPoints();
+    }
+
+    // Plot Points in Leaflet using high performance Canvas markers
+    function renderPoints() {
+        markerGroup.clearLayers();
+
+        filteredData.forEach(poi => {
+            const color = COLORS[poi.type] || COLORS['Other'];
+
+            // L.circleMarker performs beautifully at 20,000+ points on canvas renderer
+            const marker = L.circleMarker([poi.y, poi.x], {
+                radius: 3,
+                fillColor: color,
+                color: '#000',
+                weight: 0.5,
+                fillOpacity: 0.85
+            });
+
+            // Handle hover to update coords display (extremely lightweight, zero DOM overhead!)
+            marker.on('mouseover', () => {
+                isHoveringMarker = true;
+                coordsDisplay.textContent = `X: ${poi.x.toFixed(4)} | Y: ${poi.y.toFixed(4)} | ALVO: ${poi.name}`;
+                coordsDisplay.style.borderColor = color; // Border glows in category color!
+            });
+            marker.on('mouseout', () => {
+                isHoveringMarker = false;
+                coordsDisplay.style.borderColor = 'var(--term-green)';
+            });
+
+            // Handle selection on click
+            marker.on('click', () => {
+                selectedPoi = poi;
+                showDetails(poi);
+
+                // Open standard Leaflet popup with quick info
+                marker.bindPopup(`
+                    <div style="font-weight:bold; font-size: 0.9rem; border-bottom: 1px dashed var(--term-green); padding-bottom:5px; margin-bottom:8px;">${poi.name}</div>
+                    <b>Tipo:</b> ${poi.type.toUpperCase()}<br>
+                    <b>Província:</b> ${poi.province}<br>
+                    <b>Coord:</b> X: ${poi.x.toFixed(2)} | Y: ${poi.y.toFixed(2)}
+                `).openPopup();
+            });
+
+            marker.addTo(markerGroup);
+        });
+    }
+
+    // Attach HUD listeners
+    searchInput.addEventListener('input', applyFilters);
+    provinceSelect.addEventListener('change', applyFilters);
+    Object.values(typeFilters).forEach(chk => {
+        chk.addEventListener('change', applyFilters);
+    });
+
+    // Mouse Coordinates overlay tracking
+    map.on('mousemove', (e) => {
+        if (isHoveringMarker) return;
+        const gameX = e.latlng.lng;
+        const gameY = e.latlng.lat;
+        coordsDisplay.textContent = `X: ${gameX.toFixed(4)} | Y: ${gameY.toFixed(4)}`;
+    });
+
+    // Simple offset sliders for visual alignment
+    const slideCX = document.getElementById('slideCX');
+    const slideCY = document.getElementById('slideCY');
+    const slideOpacity = document.getElementById('slideOpacity');
+    const valCX = document.getElementById('valCX');
+    const valCY = document.getElementById('valCY');
+    const valOpacity = document.getElementById('valOpacity');
+    const btnCopyCalib = document.getElementById('btnCopyCalib');
+
+    slideCX.addEventListener('input', () => {
+        mapCenterX = parseInt(slideCX.value);
+        valCX.textContent = mapCenterX;
+        updateOverlayBounds();
+    });
+
+    slideCY.addEventListener('input', () => {
+        mapCenterY = parseInt(slideCY.value);
+        valCY.textContent = mapCenterY;
+        updateOverlayBounds();
+    });
+
+    slideOpacity.addEventListener('input', () => {
+        mapOpacity = parseFloat(slideOpacity.value);
+        valOpacity.textContent = mapOpacity.toFixed(2);
+        updateOverlayBounds();
+    });
+
+    btnCopyCalib.addEventListener('click', () => {
+        const text = `mapWidthGameUnits = ${mapWidthGameUnits};\nmapHeightGameUnits = ${mapHeightGameUnits};\nmapCenterX = ${mapCenterX};\nmapCenterY = ${mapCenterY};\nmapOpacity = ${mapOpacity.toFixed(2)};`;
+        navigator.clipboard.writeText(text).catch(() => {});
+        alert('Valores copiados!\n\n' + text);
+    });
+
+    // Selection Details cards
+    function showDetails(poi) {
+        detailsPlaceholder.style.display = 'none';
+        detailsContent.style.display = 'block';
+
+        document.getElementById('detName').textContent = poi.name;
+        document.getElementById('detId').textContent = poi.id;
+        document.getElementById('detProvince').textContent = poi.province;
+        
+        const typeEl = document.getElementById('detType');
+        typeEl.textContent = poi.type;
+        typeEl.style.color = COLORS[poi.type] || COLORS['Other'];
+
+        document.getElementById('detX').textContent = poi.x.toFixed(4);
+        document.getElementById('detY').textContent = poi.y.toFixed(4);
+        document.getElementById('detZ').textContent = poi.z.toFixed(4);
+    }
+
+    function hideDetails() {
+        detailsPlaceholder.style.display = 'block';
+        detailsContent.style.display = 'none';
+    }
+
+
+</script>
+
+</body>
+</html>

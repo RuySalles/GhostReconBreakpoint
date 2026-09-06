@@ -16,17 +16,26 @@
     </div>
 
     <div class="container" style="border-color: var(--term-red);">
-        <div class="header" style="border-bottom-color: var(--term-red);">
-            <h1 class="typing-effect" style="color: var(--term-red); border-left-color: var(--term-red);">OPERAÇÃO: COLD ORE [ACESSO OVERLORD]</h1>
-            <p><strong>DE:</strong> CENTRO DE COMANDO TÁTICO (OVERLORD)</p>
-            <p><strong>PARA:</strong> ESQUADRÃO GHOST</p>
+        <div class="header">
+            <h1 class="typing-effect" style="color: var(--term-red); border-left-color: var(--term-red);">OVERLORD: COLD ORE</h1>
+            <p><strong>DE:</strong> COMANDO CENTRAL (VOCÊ)</p>
+            <p><strong>PARA:</strong> ESQUADRÃO GHOST (CAMPO)</p>
             <p><strong>LOCALIZAÇÃO:</strong> MOUNT HODGSON, AUROA</p>
-            <p class="warning" style="color: var(--term-red);">&gt;&gt; UPLINK SEGURO ESTABELECIDO - MODO MESTRE ATIVO...</p>
+            <p class="warning" style="color: var(--term-red);">&gt;&gt; UPLINK MESTRE ESTABELECIDO...</p>
+        </div>
+
+        <div style="display: flex; gap: 15px; align-items: center; margin-bottom: 25px; font-family: 'Courier Prime', monospace; font-size: 1.1em;">
+            <a href="#" onclick="document.getElementById('settingsModal').classList.add('active'); document.body.classList.add('modal-open'); return false;" style="text-decoration: none; color: #888; border: 1px solid #333; padding: 5px 10px; background: rgba(0,0,0,0.5);" title="Parâmetros de Imersão e Loadout">⚙️ SETUP</a>
+            <a href="relatorio_gm.html" style="text-decoration: none; color: #888; border: 1px solid #333; padding: 5px 10px; background: rgba(0,0,0,0.5);" title="Dossiê de Arbitragem (GM)">📄 DOSSIÊ GM</a>
         </div>
 
         <p>Senhores, a Inteligência confirmou nossos piores temores. O inimigo ativou um complexo logístico focado na extração e transporte de minérios essenciais para a fabricação em massa de drones autônomos. A cadeia logística de "Cold Ore" já está operando a todo vapor em um dos cumes mais hostis de Auroa.</p>
 
         <p>Vocês serão inseridos na face congelada da cordilheira, à sombra de uma gigantesca ponte metálica. O frio cortante será o menor de seus problemas: bloqueios de sinal pesados naquela altitude inutilizaram todo o suporte de drones e mapeamento aéreo da equipe no momento da queda.</p>
+        <div style="display: flex; gap: 15px; margin-top: 10px; margin-bottom: 25px; align-items: center; background: rgba(0,255,0,0.05); padding: 10px; border-left: 2px solid var(--term-green);">
+            <img src="../../assets/missao-02/squad_sat_ponte.jpg" alt="[SEM SINAL]" onclick="openModalByUrl(this.src, 'Reconhecimento: Ponte Estrutural')" style="flex-shrink: 0; width: 140px; height: 78px; object-fit: cover; border: 1px solid var(--term-green); cursor: pointer; background: #111; opacity: 0.8;" title="Clique para Ampliar" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+            <small style="color: #777; font-size: 0.85em; text-transform: none; line-height: 1.4;"><strong>(Visão Squad: squad_sat_ponte.jpg)</strong><br><em>Direção de Arte:</em> Drone de longe, contra-plongée (baixo para cima), mostrando a ponte gigante contra o céu cinza.</small>
+        </div>
 
         <p>Se quiserem "olhos no céu" durante a incursão, terão que invadir a zona de testes montanhosa por conta própria e montar um equipamento a partir de componentes sobressalentes deixados nas antigas estações da Skell Tech. A escolha é de vocês: percam tempo recuperando os sensores, ou executem a operação inteira completamente cegos.</p>
         
@@ -41,19 +50,86 @@
             <p style="color: #aaa; text-align: left;">Mecanicamente: Você (como GM in-game) pode lançar drones de sincronização no ar ou apenas forçar o esquadrão a rastejar na neve por alguns minutos, criando paranóia.</p>
         </div>
         
-        <h2 style="margin-top: 50px; color: var(--term-red); border-left-color: var(--term-red);">// ANEXOS E DOSSIÊS (OVERLORD)</h2>
-        
-        <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 20px;">
-            <!-- Documento 1: Modal de Parâmetros -->
-            <button onclick="document.getElementById('settingsModal').classList.add('active'); document.body.classList.add('modal-open');" class="btn" style="text-align: left; padding: 15px; background: rgba(50, 0, 0, 0.5); border-color: var(--term-red); color: #fff;">
-                [ANEXO 01] PARÂMETROS DE IMERSÃO E LOADOUT (REGRAS DO JOGO)
-            </button>
+        <h2 style="margin-top: 40px; color: var(--term-green); border-left-color: var(--term-green);">// OBJETIVOS PRIMÁRIOS</h2>
+        <ul style="color: #aaa; margin-bottom: 20px; line-height: 1.6;">
+            <li><strong>AMOSTRAS DE ÁGUA (SKELL TECH):</strong> Monitorar se o Squad coleta os dados nos 3 focos de vazamento:
+                <ul style="margin-top: 5px; margin-bottom: 15px; color: #888; list-style-type: square;">
+                    <li style="margin-bottom: 15px;"><em>Reservatório Principal:</em> Localizado dentro do Complexo de Extrações.<br>
+                        <div style="display: flex; gap: 15px; margin-top: 8px; align-items: flex-start;">
+                            <img src="../../assets/missao-02/squad_water_reservatorio.jpg" alt="[SEM SINAL]" onclick="openModalByUrl(this.src, 'Reservatório Principal')" style="flex-shrink: 0; width: 140px; height: 78px; object-fit: cover; border: 1px solid var(--term-green); cursor: pointer; background: #111; opacity: 0.8;" title="Clique para Ampliar" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+                            <small style="color: #777; font-size: 0.85em; text-transform: none; line-height: 1.4;"><strong>(Visão Squad: squad_water_reservatorio.jpg)</strong><br><em>Direção de Arte:</em> Modo Foto (Drone) em ângulo baixo. Enquadre os tanques de água de forma que a neve ao redor e a iluminação industrial criem uma atmosfera opressiva de contaminação.</small>
+                        </div>
+                    </li>
+                    <li style="margin-bottom: 15px;"><em>Lago Alice:</em> Imediatamente a Leste do Complexo de Extrações.<br>
+                        <div style="display: flex; gap: 15px; margin-top: 8px; align-items: flex-start;">
+                            <img src="../../assets/missao-02/squad_water_lago_alice.jpg" alt="[SEM SINAL]" onclick="openModalByUrl(this.src, 'Lago Alice')" style="flex-shrink: 0; width: 140px; height: 78px; object-fit: cover; border: 1px solid var(--term-green); cursor: pointer; background: #111; opacity: 0.8;" title="Clique para Ampliar" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+                            <small style="color: #777; font-size: 0.85em; text-transform: none; line-height: 1.4;"><strong>(Visão Squad: squad_water_lago_alice.jpg)</strong><br><em>Direção de Arte:</em> Câmera no nível do solo na margem congelada, apontando para o leste. Aplique filtro azulado/ciano.</small>
+                        </div>
+                    </li>
+                    <li style="margin-bottom: 15px;"><em>Dove Stream:</em> Imediatamente ao Sul da Mina do Pico Bald.<br>
+                        <div style="display: flex; gap: 15px; margin-top: 8px; align-items: flex-start;">
+                            <img src="../../assets/missao-02/squad_water_dove_stream.jpg" alt="[SEM SINAL]" onclick="openModalByUrl(this.src, 'Dove Stream')" style="flex-shrink: 0; width: 140px; height: 78px; object-fit: cover; border: 1px solid var(--term-green); cursor: pointer; background: #111; opacity: 0.8;" title="Clique para Ampliar" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+                            <small style="color: #777; font-size: 0.85em; text-transform: none; line-height: 1.4;"><strong>(Visão Squad: squad_water_dove_stream.jpg)</strong><br><em>Direção de Arte:</em> Foto bem de perto da água corrente com rochas nevadas. Capture neblina/vapor da água.</small>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li><strong>SABOTAGEM LOGÍSTICA (COLD ORE):</strong> O esquadrão deve destruir a infraestrutura inimiga em três áreas distintas:
+                <ul style="margin-top: 5px; margin-bottom: 5px; color: #888; list-style-type: square;">
+                    <li style="margin-bottom: 15px;"><em>Mina Vale Silent:</em> Instalar C4 nas 5 esteiras transportadoras e na antena de comunicação.<br>
+                        <div style="display: flex; gap: 15px; margin-top: 8px; align-items: flex-start;">
+                            <img src="../../assets/missao-02/squad_target_vale_silent.jpg" alt="[SEM SINAL]" onclick="openModalByUrl(this.src, 'Mina Vale Silent')" style="flex-shrink: 0; width: 140px; height: 78px; object-fit: cover; border: 1px solid var(--term-green); cursor: pointer; background: #111; opacity: 0.8;" title="Clique para Ampliar" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+                            <small style="color: #777; font-size: 0.85em; text-transform: none; line-height: 1.4;"><strong>(Visão Squad: squad_target_vale_silent.jpg)</strong><br><em>Tática Topográfica:</em> Drone a 90 graus para baixo. Filtro P&B de alto contraste simulando satélite.</small>
+                        </div>
+                    </li>
+                    <li style="margin-bottom: 15px;"><em>Complexo de Extrações:</em> Destruir os 2 motores primários e interceptar o painel de controle.<br>
+                        <div style="display: flex; gap: 15px; margin-top: 8px; align-items: flex-start;">
+                            <img src="../../assets/missao-02/squad_target_processamento.jpg" alt="[SEM SINAL]" onclick="openModalByUrl(this.src, 'Complexo de Extrações')" style="flex-shrink: 0; width: 140px; height: 78px; object-fit: cover; border: 1px solid var(--term-green); cursor: pointer; background: #111; opacity: 0.8;" title="Clique para Ampliar" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+                            <small style="color: #777; font-size: 0.85em; text-transform: none; line-height: 1.4;"><strong>(Visão Squad: squad_target_processamento.jpg)</strong><br><em>Visão Isométrica:</em> Drone a 45 graus capturando os edifícios para mapeamento arquitetônico.</small>
+                        </div>
+                    </li>
+                    <li style="margin-bottom: 15px;"><em>Mina Pico Bald:</em> Eliminar a infraestrutura destruindo 10 tambores inflamáveis e 2 silos de sílica.<br>
+                        <div style="display: flex; gap: 15px; margin-top: 8px; align-items: flex-start;">
+                            <img src="../../assets/missao-02/squad_target_pico_bald.jpg" alt="[SEM SINAL]" onclick="openModalByUrl(this.src, 'Mina Pico Bald')" style="flex-shrink: 0; width: 140px; height: 78px; object-fit: cover; border: 1px solid var(--term-green); cursor: pointer; background: #111; opacity: 0.8;" title="Clique para Ampliar" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+                            <small style="color: #777; font-size: 0.85em; text-transform: none; line-height: 1.4;"><strong>(Visão Squad: squad_target_pico_bald.jpg)</strong><br><em>Câmera Espiã:</em> Chão, colina distante, FOV mínimo (zoom máximo).</small>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
 
-            <!-- Documento 2: Dossiê de Arbitragem (A4) -->
-            <button onclick="window.location.href='relatorio_gm.html'" class="btn" style="text-align: left; padding: 15px; background: rgba(50, 0, 0, 0.5); border-color: var(--term-red); color: #fff;">
-                [DOCUMENTO] DOSSIÊ DE ARBITRAGEM (GM)
-            </button>
-        </div>
+        <h2 style="margin-top: 30px; color: #ffaa00; border-left-color: #ffaa00;">// OBJETIVOS SECUNDÁRIOS (OPCIONAIS)</h2>
+        <ul style="color: #aaa; margin-bottom: 40px; line-height: 1.6;">
+            <li style="margin-bottom: 15px;"><strong>ESTAÇÃO W041 E LAGO FORTUNE:</strong> Para reestabelecer suporte de drones, o esquadrão deve recuperar 4 peças sobressalentes (Bateria, Hélices, Sensores e Carcaça).<br>
+                <div style="display: flex; gap: 15px; margin-top: 8px; align-items: flex-start; flex-wrap: wrap;">
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <img src="../../assets/missao-02/squad_recon_fortune_lake.jpg" alt="[SEM SINAL]" onclick="openModalByUrl(this.src, 'Lago Fortune')" style="flex-shrink: 0; width: 140px; height: 78px; object-fit: cover; border: 1px solid #ffaa00; cursor: pointer; background: #111; opacity: 0.8;" title="Clique para Ampliar" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+                        <small style="color: #777; font-size: 0.85em; text-transform: none; line-height: 1.4;"><strong>(Visão Squad: squad_recon_fortune_lake.jpg)</strong><br><em>Satélite:</em> Visão reta (90 graus) com ruído/interferência.</small>
+                    </div>
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <img src="../../assets/missao-02/squad_drone_station_blur.jpg" alt="[SEM SINAL]" onclick="openModalByUrl(this.src, 'Estação de Drones')" style="flex-shrink: 0; width: 140px; height: 78px; object-fit: cover; border: 1px solid #ffaa00; cursor: pointer; background: #111; opacity: 0.8;" title="Clique para Ampliar" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+                        <small style="color: #777; font-size: 0.85em; text-transform: none; line-height: 1.4;"><strong>(Visão Squad: squad_drone_station_blur.jpg)</strong><br><em>Profundidade:</em> Foco estrito na antena, fundo desfocado.</small>
+                    </div>
+                </div>
+            </li>
+            <li><strong>DIAGRAMA DE ARMAMENTO:</strong> Monitorar o esquadrão na localização e recuperação do diagrama (blueprint) do fuzil de precisão de última geração na Mina Pico Bald.<br>
+                <div style="display: flex; gap: 15px; margin-top: 8px; align-items: flex-start;">
+                    <img src="../../assets/missao-02/squad_recon_blueprint.jpg" alt="[SEM SINAL]" onclick="openModalByUrl(this.src, 'Diagrama de Sniper')" style="flex-shrink: 0; width: 140px; height: 78px; object-fit: cover; border: 1px solid #ffaa00; cursor: pointer; background: #111; opacity: 0.8;" title="Clique para Ampliar" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+                    <small style="color: #777; font-size: 0.85em; text-transform: none; line-height: 1.4;"><strong>(Visão Squad: squad_recon_blueprint.jpg)</strong><br>Print de uma sniper no Armeiro (com blur) simulando planta vazada.</small>
+                </div>
+            </li>
+        </ul>
+
+        <h2 style="margin-top: 50px; color: var(--term-green); border-left-color: var(--term-green);">// PROTOCOLO DE EXTRAÇÃO (EXFIL)</h2>
+        <p style="color: #aaa; margin-bottom: 20px;">A extração só será autorizada após a confirmação da destruição da infraestrutura logística inimiga.</p>
+        <ul style="color: #aaa; margin-bottom: 40px; line-height: 1.6;">
+            <li style="margin-bottom: 15px;"><strong>PONTO DE ENCONTRO (RV): Bivaque Serrania STAG</strong><br>
+                <div style="display: flex; gap: 15px; margin-top: 8px; align-items: flex-start;">
+                    <img src="../../assets/missao-02/squad_exfil_stag.jpg" alt="[SEM SINAL]" onclick="openModalByUrl(this.src, 'Satélite: Bivaque Serrania STAG')" style="flex-shrink: 0; width: 140px; height: 78px; object-fit: cover; border: 1px solid var(--term-green); cursor: pointer; background: #111; opacity: 0.8;" title="Clique para Ampliar" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+                    <small style="color: #777; font-size: 0.85em; text-transform: none; line-height: 1.4;"><strong>(Visão Squad: squad_exfil_stag.jpg)</strong><br><em>Direção de Arte:</em> Print direto do TacMap (sem interface) mostrando o relevo e as curvas de nível do bivaque.</small>
+                </div>
+            </li>
+        </ul>
 
         <h2 style="margin-top: 50px; color: var(--term-red); border-left-color: var(--term-red);">// GABARITOS DE ARBITRAGEM (OVERLORD CHEAT SHEET)</h2>
         <p style="color: #aaa; margin-bottom: 20px;">Estes mapas contêm spoilers críticos. Use para monitorar o avanço do Squad.</p>

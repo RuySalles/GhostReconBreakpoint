@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPORD-002: Cold Ore - Lore & Briefing</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="missao_02.css">
+</head>
+<body>
+    
+    <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='../../index.html'">&lt; RETORNAR AO HUB</button>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1 class="typing-effect">OPERAÇÃO: COLD ORE</h1>
+            <p><strong>DE:</strong> CENTRO DE COMANDO TÁTICO (OVERLORD)</p>
+            <p><strong>PARA:</strong> ESQUADRÃO GHOST</p>
+            <p><strong>LOCALIZAÇÃO:</strong> MOUNT HODGSON, AUROA</p>
+            <p class="warning">&gt;&gt; UPLINK SEGURO ESTABELECIDO...</p>
+        </div>
+
+        <p>Senhores, a Inteligência confirmou nossos piores temores. O inimigo ativou um complexo logístico focado na extração e transporte de minérios essenciais para a fabricação em massa de drones autônomos. A cadeia logística de "Cold Ore" já está operando a todo vapor em um dos cumes mais hostis de Auroa.</p>
+
+        <p>Vocês serão inseridos na face congelada da cordilheira, à sombra de uma gigantesca ponte metálica. O frio cortante será o menor de seus problemas: bloqueios de sinal pesados naquela altitude inutilizaram todo o suporte de drones e mapeamento aéreo da equipe no momento da queda.</p>
+
+        <p>Se quiserem "olhos no céu" durante a incursão, terão que invadir a zona de testes montanhosa por conta própria e montar um equipamento a partir de componentes sobressalentes deixados nas antigas estações da Skell Tech. A escolha é de vocês: percam tempo recuperando os sensores, ou executem a operação inteira completamente cegos.</p>
+        
+        <p>O alvo principal de vocês são três instalações focadas na extração, processamento e armazenamento do minério. O material que sai dessas correias está alimentando diretamente a linha de montagem das máquinas que a Sentinel usa para caçar nossa equipe pela ilha.</p>
+        
+        <p>O objetivo é claro: desçam a montanha, paralizem as instalações, destruam o maquinário e cortem essa matéria-prima na fonte. Consultem os dossiês operacionais em anexo e preparem seus loadouts.</p>
+        
+        <h2 style="margin-top: 50px;">// ANEXOS E DOSSIÊS OPERACIONAIS</h2>
+        
+        <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 20px;">
+            <!-- Documento 1: Modal de Parâmetros -->
+            <button onclick="document.getElementById('settingsModal').classList.add('active'); document.body.classList.add('modal-open');" class="btn" style="text-align: left; padding: 15px; background: rgba(0, 50, 0, 0.5);">
+                [ANEXO 01] PARÂMETROS DE IMERSÃO E LOADOUT (REGRAS DO JOGO)
+            </button>
+
+            <!-- Documento 2: OPORD (A4) -->
+            <button onclick="window.location.href='briefing_tatico.html'" class="btn" style="text-align: left; padding: 15px; background: rgba(0, 50, 0, 0.5);">
+                [DOCUMENTO] OPORD-002: EXECUÇÃO TÁTICA (ESQUADRÃO)
+            </button>
+        </div>
+
+    </div>
+
+    <!-- Modal de Regras/Configurações -->
+    <div id="settingsModal" class="spoiler-modal-overlay">
+        <div class="spoiler-modal" style="max-width: 800px; text-align: left; border-color: var(--term-green);">
+            <h2 style="color: var(--term-green); border-bottom: 1px solid var(--term-green); padding-bottom: 10px;">CONFIGURAÇÕES DE IMERSÃO (GHOST EXPERIENCE)</h2>
+            <p style="color: #aaa; font-size: 0.9em;">Ajustem os parâmetros do jogo de acordo com a tabela abaixo antes de iniciar a operação.</p>
+            
+            <table>
+                <tr>
+                    <th>Elemento</th>
+                    <th>Diretriz Obrigatória</th>
+                </tr>
+                <tr>
+                    <td><strong>Interface (HUD) e Teclado</strong></td>
+                    <td>Desabilitar atalho de drone e visão térmica. HUD no modo Personalizado/Extremo: Retículo, Energia, Arma e Técnica NUNCA. Marcadores NUNCA.</td>
+                </tr>
+                <tr>
+                    <td><strong>Ponto de Entrada</strong></td>
+                    <td>Bivaque Lago Fortune (Fortune Lake) entre 06:00 e 08:00 da manhã.</td>
+                </tr>
+                <tr>
+                    <td><strong>Transporte (Logística)</strong></td>
+                    <td>Viagem rápida e Helicópteros PROIBIDOS. Motocicletas conjuradas permitidas nos Bivaques. Carros podem ser roubados se encontrados.</td>
+                </tr>
+                <tr>
+                    <td><strong>Camuflagem Fase 1 (Neve)</strong></td>
+                    <td>Tudo Branco (Cabeça, Coletes, Mochila), KT Yeti (Calças, Torso, Máscara), Cinza (Mãos, Calçados). Armas Kryptek Yeti. PROIBIDO OVN.</td>
+                </tr>
+                <tr>
+                    <td><strong>Camuflagem Fase 2+ (Urbano)</strong></td>
+                    <td>Tudo Preto (Coletes, Mãos, Calçados), ERDL Urbano (Calças, Mochila, Torso), Cinza (Máscara). Armas Pretas. PROIBIDO OVN.</td>
+                </tr>
+                <tr>
+                    <td><strong>Regras de Sobrevivência</strong></td>
+                    <td>Squad Wipe total encerra a missão. Somente a classe Medic pode reviver aliados abatidos.</td>
+                </tr>
+            </table>
+
+            <div style="text-align: center; margin-top: 20px;">
+                <button onclick="document.getElementById('settingsModal').classList.remove('active'); document.body.classList.remove('modal-open');" class="btn">ENTENDIDO / FECHAR</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Anti-Spoiler para acesso do Overlord -->
+    <div id="spoilerModal" class="spoiler-modal-overlay">
+        <div class="spoiler-modal">
+            <h2>⚠️ ALERTA DE SEGURANÇA</h2>
+            <p>PROTOCOLO OVERLORD // TOC RESTRITO.</p>
+            <p>Este dossiê contém diretrizes de arbitragem e eventos imprevistos exclusivos para o GHOST 1-1 (LEAD / GM DA SESSÃO).</p>
+            <p>A visualização por operadores de campo comprometerá a imersão da missão.</p>
+            <p><strong>Deseja prosseguir?</strong></p>
+            <div style="margin-top: 20px;">
+                <button onclick="hideSpoilerModal()" class="btn" style="background: var(--term-dark); color: #ccc; border-color: #555;">CANCELAR / SOU OPERADOR</button>
+                <button id="btnConfirmSpoiler" class="btn btn-red" style="margin-left: 15px;">CONFIRMAR / SOU GHOST 1-1 LEAD</button>
+            </div>
+        </div>
+    </div>
+
+    <a href="#" onclick="showSpoilerModal('lore_hub_gm.html')" class="secret-map-link" title="Acesso Overlord" style="bottom: 15px; left: 15px; right: auto;">👁️</a>
+
+    <script src="missao_02.js"></script>
+</body>
+</html>

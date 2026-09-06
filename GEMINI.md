@@ -123,6 +123,102 @@ O parser principal deve ser otimizado para lidar com a varredura massiva de **99
 
 ---
 
+## 🎭 DIRETRIZ FUNDAMENTAL — PAPÉIS E HIERARQUIA
+
+Esta regra deve ser considerada permanente e deve ser respeitada em qualquer interpretação, alteração ou criação relacionada à experiência.
+
+### 1. Ghost Squad
+
+O **Ghost Squad** representa os jogadores que estão participando da missão pela imersão.
+
+* Recebe as informações necessárias para participar e tomar decisões dentro da missão.
+* Não precisa conhecer a estrutura operacional da missão.
+* Não precisa conhecer scripts, spoilers, gatilhos ou instruções internas do GM.
+* Deve confiar no Ghost Lead para receber direcionamento quando necessário.
+
+O Ghost Squad representa a perspectiva do jogador dentro da experiência.
+
+### 2. Ghost Lead
+
+O **Ghost Lead** representa o **GM (Game Master)**.
+
+Ele também participa da experiência, porém possui a responsabilidade adicional de conduzir e controlar a missão.
+
+O Ghost Lead:
+
+* conhece a estrutura completa da missão;
+* acompanha o progresso e o estado da missão;
+* conhece spoilers e informações ocultas;
+* possui acesso aos scripts e às diretrizes de condução;
+* decide quando determinadas situações devem acontecer;
+* executa os gatilhos necessários para fazer a missão avançar;
+* direciona o Ghost Squad;
+* possui todas as informações disponíveis ao Ghost Squad, além das informações exclusivas necessárias para exercer a função de GM.
+
+Regra de acesso:
+
+**Ghost Lead = tudo que o Ghost Squad pode acessar + informações e ferramentas exclusivas do GM.**
+
+Nunca interpretar Ghost Lead e Ghost Squad como dois grupos com informações equivalentes ou independentes.
+
+### 3. Overlord
+
+**Overlord não é um usuário, perfil ou terceiro participante do sistema.**
+
+Overlord é um **elemento narrativo/diegético** criado para preservar a imersão da experiência.
+
+As ações que, na prática, são executadas pelo Ghost Lead devem ser apresentadas dentro da narrativa como se fossem comandos, ordens ou intervenções provenientes do:
+
+**CENTRO DE COMANDO TÁTICO — OVERLORD**
+
+Isso permite que a experiência mantenha a ilusão de que existe uma autoridade externa acompanhando e coordenando a missão remotamente.
+
+Exemplo conceitual:
+
+Na realidade:
+**Ghost Lead ativa um gatilho.**
+
+Na narrativa:
+**OVERLORD envia uma ordem para o Ghost Squad.**
+
+### 4. Relação entre os papéis
+
+A relação correta é:
+
+**Ghost Squad** → executa a missão dentro da experiência.
+
+**Ghost Lead** → conduz a missão e executa as ações necessárias como GM.
+
+**Overlord** → é a identidade narrativa utilizada para representar as ações do Ghost Lead dentro da história.
+
+Portanto:
+
+**Ghost Lead ≠ Overlord como entidades independentes.**
+
+**Ghost Lead opera o Overlord.**
+
+O Overlord é, essencialmente, a **máscara narrativa do Ghost Lead**.
+
+### 5. Regra de interpretação
+
+Sempre que houver dúvida sobre conteúdo, acesso, interface, documentos, eventos, scripts ou funcionalidades, aplicar esta hierarquia:
+
+**Ghost Squad = perspectiva do jogador**
+
+**Ghost Lead = perspectiva do GM**
+
+**Overlord = representação narrativa das ações do GM**
+
+Não criar, inferir ou implementar um terceiro perfil de usuário chamado Overlord.
+
+Não tratar Ghost Lead como um simples jogador com uma versão diferente da interface.
+
+Não limitar o Ghost Lead ao conteúdo do Ghost Squad.
+
+O Ghost Lead deve sempre ser considerado capaz de acessar o conteúdo do Ghost Squad e, adicionalmente, todo o conteúdo necessário para conduzir a missão como GM.
+
+---
+
 ## 🚀 Como Iniciar Tarefas
 Sempre que uma nova tarefa for solicitada:
 1. Re-leia este arquivo `GEMINI.md` para garantir conformidade.

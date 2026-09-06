@@ -15,6 +15,22 @@ function openModal(imgElement) {
     }
 }
 
+function openModalByUrl(url, caption) {
+    const modal = document.getElementById("imgModal");
+    const modalImg = document.getElementById("modalImg");
+    const modalCaption = document.getElementById("modalCaption");
+    
+    if (modal && modalImg) {
+        modal.style.display = "flex";
+        modalImg.src = url;
+        
+        if (modalCaption) {
+            modalCaption.innerText = caption || "";
+        }
+        document.body.classList.add("modal-open");
+    }
+}
+
 function closeModal() {
     const modal = document.getElementById("imgModal");
     if (modal) {

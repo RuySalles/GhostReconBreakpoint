@@ -35,8 +35,10 @@
         <p>O objetivo é claro: desçam a montanha, paralizem as instalações, destruam o maquinário e cortem essa matéria-prima na fonte. Consultem os dossiês operacionais em anexo e preparem seus loadouts.</p>
         
         <div class="intel-card" style="border-color: var(--term-red); margin-top: 30px;">
-            <h3 style="color: var(--term-red); margin-top: 10px; border-left: none;">// NOTAS DO GM (OVERLORD)</h3>
-            <p style="color: #aaa; text-align: left;"><em>[Espaço reservado para o Mestre construir informações extras da operação, gatilhos ocultos ou contexto expandido que o esquadrão não deve saber...]</em></p>
+            <h3 style="color: var(--term-red); margin-top: 10px; border-left: none;">// SCRIPT DO MESTRE (OVERLORD)</h3>
+            <p style="color: #ccc; text-align: left;"><strong>EVENTO AZRAEL (Tensão Térmica):</strong></p>
+            <p style="color: #aaa; text-align: left;">Ao se aproximarem do Complexo de Processamento (ou se o ritmo da missão estiver muito calmo), acione seu rádio no Discord e anuncie: <em>"Atenção Ghost 1-1, satélites detectaram assinatura de calor e rotas de patrulha Azrael na sua malha. Disciplina de luz e som rigorosa."</em></p>
+            <p style="color: #aaa; text-align: left;">Mecanicamente: Você (como GM in-game) pode lançar drones de sincronização no ar ou apenas forçar o esquadrão a rastejar na neve por alguns minutos, criando paranóia.</p>
         </div>
         
         <h2 style="margin-top: 50px; color: var(--term-red); border-left-color: var(--term-red);">// ANEXOS E DOSSIÊS (OVERLORD)</h2>
@@ -50,6 +52,92 @@
             <!-- Documento 2: Dossiê de Arbitragem (A4) -->
             <button onclick="window.location.href='relatorio_gm.html'" class="btn" style="text-align: left; padding: 15px; background: rgba(50, 0, 0, 0.5); border-color: var(--term-red); color: #fff;">
                 [DOCUMENTO] DOSSIÊ DE ARBITRAGEM (GM)
+            </button>
+        </div>
+
+        <h2 style="margin-top: 50px; color: var(--term-red); border-left-color: var(--term-red);">// GABARITOS DE ARBITRAGEM (OVERLORD CHEAT SHEET)</h2>
+        <p style="color: #aaa; margin-bottom: 20px;">Estes mapas contêm spoilers críticos. Use para monitorar o avanço do Squad.</p>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 40px;">
+            <button onclick="openModalByUrl('../../assets/missao-02/gm_infil_enemies.jpg', 'Gabarito: Inimigos na Infiltração')" class="btn" style="border-color: var(--term-red); color: var(--term-red); text-align: left;">
+                [GM] PATRULHAS INICIAIS (LAGO)<br>
+                <small style="color: #aaa; font-size: 0.8em; text-transform: none;"><strong>(gm_infil_enemies.jpg)</strong> Mapa marcando patrulhas Murmur iniciais.</small>
+            </button>
+            <button onclick="openModalByUrl('../../assets/missao-02/gm_drone_baterias.jpg', 'Gabarito: Baterias do Drone')" class="btn" style="border-color: var(--term-red); color: var(--term-red); text-align: left;">
+                [GM] DRONE: BATERIAS<br>
+                <small style="color: #aaa; font-size: 0.8em; text-transform: none;"><strong>(gm_drone_baterias.jpg)</strong> Gabarito exato: Onde estão as Baterias do Drone.</small>
+            </button>
+            <button onclick="openModalByUrl('../../assets/missao-02/gm_drone_sensores.jpg', 'Gabarito: Sensores do Drone')" class="btn" style="border-color: var(--term-red); color: var(--term-red); text-align: left;">
+                [GM] DRONE: SENSORES<br>
+                <small style="color: #aaa; font-size: 0.8em; text-transform: none;"><strong>(gm_drone_sensores.jpg)</strong> Gabarito exato: Onde estão os Sensores do Drone.</small>
+            </button>
+            <button onclick="openModalByUrl('../../assets/missao-02/gm_drone_carcaca.jpg', 'Gabarito: Carcaça do Drone')" class="btn" style="border-color: var(--term-red); color: var(--term-red); text-align: left;">
+                [GM] DRONE: CARCAÇA<br>
+                <small style="color: #aaa; font-size: 0.8em; text-transform: none;"><strong>(gm_drone_carcaca.jpg)</strong> Gabarito exato: Onde está a Carcaça.</small>
+            </button>
+            <button onclick="openModalByUrl('../../assets/missao-02/gm_drone_helices.jpg', 'Gabarito: Hélices do Drone')" class="btn" style="border-color: var(--term-red); color: var(--term-red); text-align: left;">
+                [GM] DRONE: HÉLICES<br>
+                <small style="color: #aaa; font-size: 0.8em; text-transform: none;"><strong>(gm_drone_helices.jpg)</strong> Gabarito exato: Onde estão as Hélices.</small>
+            </button>
+            <button onclick="openModalByUrl('../../assets/missao-02/gm_obj1_c4_targets.jpg', 'Gabarito: Esteiras e Antena (Vale Silent)')" class="btn" style="border-color: var(--term-red); color: var(--term-red); text-align: left;">
+                [GM] ALVOS C4 (VALE SILENT)<br>
+                <small style="color: #aaa; font-size: 0.8em; text-transform: none;"><strong>(gm_obj1_c4_targets.jpg)</strong> Setas indicando as 5 esteiras e antena para C4.</small>
+            </button>
+            <button onclick="openModalByUrl('../../assets/missao-02/gm_obj1_snipers.jpg', 'Gabarito: Ninhos de Sniper (Vale Silent)')" class="btn" style="border-color: var(--term-red); color: var(--term-red); text-align: left;">
+                [GM] SNIPERS (VALE SILENT)<br>
+                <small style="color: #aaa; font-size: 0.8em; text-transform: none;"><strong>(gm_obj1_snipers.jpg)</strong> Posições de ninhos de franco-atiradores inimigos.</small>
+            </button>
+            <button onclick="openModalByUrl('../../assets/missao-02/gm_obj2_rotas_seguras.jpg', 'Gabarito: Rotas de Transição')" class="btn" style="border-color: var(--term-red); color: var(--term-red); text-align: left;">
+                [GM] ROTAS SEGURAS (FASE 2)<br>
+                <small style="color: #aaa; font-size: 0.8em; text-transform: none;"><strong>(gm_obj2_rotas_seguras.jpg)</strong> Rotas mapeadas para o Bivaque Vale Fugitives.</small>
+            </button>
+            <button onclick="openModalByUrl('../../assets/missao-02/gm_obj3_motores.jpg', 'Gabarito: Motores no Complexo')" class="btn" style="border-color: var(--term-red); color: var(--term-red); text-align: left;">
+                [GM] MOTORES (COMPLEXO)<br>
+                <small style="color: #aaa; font-size: 0.8em; text-transform: none;"><strong>(gm_obj3_motores.jpg)</strong> Localização exata dos 2 motores (Complexo de Extrações).</small>
+            </button>
+            <button onclick="openModalByUrl('../../assets/missao-02/gm_obj3_paineis.jpg', 'Gabarito: Painéis Eletrônicos')" class="btn" style="border-color: var(--term-red); color: var(--term-red); text-align: left;">
+                [GM] PAINÉIS (COMPLEXO)<br>
+                <small style="color: #aaa; font-size: 0.8em; text-transform: none;"><strong>(gm_obj3_paineis.jpg)</strong> Posição do painel no 2º andar do prédio da sucata.</small>
+            </button>
+            <button onclick="openModalByUrl('../../assets/missao-02/gm_obj3_heavy_armor.jpg', 'Gabarito: Inimigos Pesados')" class="btn" style="border-color: var(--term-red); color: var(--term-red); text-align: left;">
+                [GM] TROPAS PESADAS (COMPLEXO)<br>
+                <small style="color: #aaa; font-size: 0.8em; text-transform: none;"><strong>(gm_obj3_heavy_armor.jpg)</strong> Onde os Wolves/Pesados ficam agrupados.</small>
+            </button>
+            <button onclick="openModalByUrl('../../assets/missao-02/gm_agua_reservatorio.jpg', 'Gabarito: Ponto Granada Reservatório')" class="btn" style="border-color: var(--term-red); color: var(--term-red); text-align: left;">
+                [GM] ÁGUA: RESERVATÓRIO<br>
+                <small style="color: #aaa; font-size: 0.8em; text-transform: none;"><strong>(gm_agua_reservatorio.jpg)</strong> Marcação de onde a granada informativa deve cair.</small>
+            </button>
+            <button onclick="openModalByUrl('../../assets/missao-02/gm_agua_lago_alice.jpg', 'Gabarito: Ponto Granada Lago Alice')" class="btn" style="border-color: var(--term-red); color: var(--term-red); text-align: left;">
+                [GM] ÁGUA: LAGO ALICE<br>
+                <small style="color: #aaa; font-size: 0.8em; text-transform: none;"><strong>(gm_agua_lago_alice.jpg)</strong> Gabarito do ponto de granada no Lago Alice.</small>
+            </button>
+            <button onclick="openModalByUrl('../../assets/missao-02/gm_agua_dove_stream.jpg', 'Gabarito: Ponto Granada Dove Stream')" class="btn" style="border-color: var(--term-red); color: var(--term-red); text-align: left;">
+                [GM] ÁGUA: DOVE STREAM<br>
+                <small style="color: #aaa; font-size: 0.8em; text-transform: none;"><strong>(gm_agua_dove_stream.jpg)</strong> Gabarito do ponto de granada no Dove Stream.</small>
+            </button>
+            <button onclick="openModalByUrl('../../assets/missao-02/gm_obj4_tambores.jpg', 'Gabarito: Tambores Pico Bald')" class="btn" style="border-color: var(--term-red); color: var(--term-red); text-align: left;">
+                [GM] TAMBORES (PICO BALD)<br>
+                <small style="color: #aaa; font-size: 0.8em; text-transform: none;"><strong>(gm_obj4_tambores.jpg)</strong> Posição exata dos 10 tambores inflamáveis.</small>
+            </button>
+            <button onclick="openModalByUrl('../../assets/missao-02/gm_obj4_silos.jpg', 'Gabarito: Silos Sílica Pico Bald')" class="btn" style="border-color: var(--term-red); color: var(--term-red); text-align: left;">
+                [GM] SILOS (PICO BALD)<br>
+                <small style="color: #aaa; font-size: 0.8em; text-transform: none;"><strong>(gm_obj4_silos.jpg)</strong> Onde ficam os 2 Silos de Sílica.</small>
+            </button>
+            <button onclick="openModalByUrl('../../assets/missao-02/gm_obj4_rifle_loot.jpg', 'Gabarito: Localização do Rifle VIP')" class="btn" style="border-color: var(--term-red); color: var(--term-red); text-align: left;">
+                [GM] LOOT RIFLE VIP<br>
+                <small style="color: #aaa; font-size: 0.8em; text-transform: none;"><strong>(gm_obj4_rifle_loot.jpg)</strong> A caixa exata contendo o Rifle de Precisão.</small>
+            </button>
+            <button onclick="openModalByUrl('../../assets/missao-02/gm_azrael_patrols.jpg', 'Gabarito: Zonas de Azrael')" class="btn" style="border-color: var(--term-red); color: var(--term-red); text-align: left;">
+                [GM] ROTAS AZRAEL (SCRIPT)<br>
+                <small style="color: #aaa; font-size: 0.8em; text-transform: none;"><strong>(gm_azrael_patrols.jpg)</strong> Rota provável de passagem de drones Azrael.</small>
+            </button>
+            <button onclick="openModalByUrl('../../assets/missao-02/gm_reinforcements.jpg', 'Gabarito: Spawns de Reforço Inimigo')" class="btn" style="border-color: var(--term-red); color: var(--term-red); text-align: left;">
+                [GM] SPAWN DE REFORÇOS<br>
+                <small style="color: #aaa; font-size: 0.8em; text-transform: none;"><strong>(gm_reinforcements.jpg)</strong> Onde helicópteros/carros de reforço vão surgir.</small>
+            </button>
+            <button onclick="openModalByUrl('../../assets/missao-02/gm_exfil_route.jpg', 'Gabarito: Melhor Rota de Fuga')" class="btn" style="border-color: var(--term-red); color: var(--term-red); text-align: left;">
+                [GM] ROTA DE EXFILTRAÇÃO<br>
+                <small style="color: #aaa; font-size: 0.8em; text-transform: none;"><strong>(gm_exfil_route.jpg)</strong> Rota mais dramática e cheia de inimigos para fuga.</small>
             </button>
         </div>
 

@@ -42,9 +42,60 @@
                 [ANEXO 01] PARÂMETROS DE IMERSÃO E LOADOUT (REGRAS DO JOGO)
             </button>
 
-            <!-- Documento 2: OPORD (A4) -->
+            <!-- Documento 2: Relatório Skell -->
+            <button onclick="window.location.href='doc_skell_agua.html'" class="btn" style="text-align: left; padding: 15px; background: rgba(0, 50, 0, 0.5);">
+                [DOCUMENTO] RELATÓRIO INTERCEPTADO (SKELL TECH)
+            </button>
+
+            <!-- Documento 3: OPORD (A4) -->
             <button onclick="window.location.href='briefing_tatico.html'" class="btn" style="text-align: left; padding: 15px; background: rgba(0, 50, 0, 0.5);">
                 [DOCUMENTO] OPORD-002: EXECUÇÃO TÁTICA (ESQUADRÃO)
+            </button>
+        </div>
+
+        <h2 style="margin-top: 50px;">// INTELIGÊNCIA DE RECONHECIMENTO (IMINT)</h2>
+        <p style="color: #aaa; margin-bottom: 20px;">Imagens de satélite e reconhecimento para planejamento tático antes da inserção.</p>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <button onclick="openModalByUrl('../../assets/missao-02/squad_recon_fortune_lake.jpg', 'Satélite: Lago Fortune')" class="btn" style="text-align: left;">
+                IMINT-01: LAGO FORTUNE<br>
+                <small style="color: #888; font-size: 0.8em; text-transform: none;"><strong>(squad_recon_fortune_lake.jpg)</strong> Foto de satélite do Lago Fortune (Ponto de inserção inicial).</small>
+            </button>
+            <button onclick="openModalByUrl('../../assets/missao-02/squad_sat_ponte.jpg', 'Reconhecimento: Ponte de Ferro')" class="btn" style="text-align: left;">
+                IMINT-02: PONTE ESTRUTURAL<br>
+                <small style="color: #888; font-size: 0.8em; text-transform: none;"><strong>(squad_sat_ponte.jpg)</strong> Visão aérea da gigantesca ponte de ferro na montanha (para dar escala e clima frio).</small>
+            </button>
+            <button onclick="openModalByUrl('../../assets/missao-02/squad_drone_station_blur.jpg', 'Satélite: Estação W041')" class="btn" style="text-align: left;">
+                IMINT-03: ESTAÇÃO DE DRONES<br>
+                <small style="color: #888; font-size: 0.8em; text-transform: none;"><strong>(squad_drone_station_blur.jpg)</strong> Foto da W041 Drone Station (focada no clima, levemente borrada como foto espiã).</small>
+            </button>
+            <button onclick="openModalByUrl('../../assets/missao-02/squad_target_vale_silent.jpg', 'Reconhecimento: Mina Vale Silent')" class="btn" style="text-align: left;">
+                IMINT-04: MINA VALE SILENT<br>
+                <small style="color: #888; font-size: 0.8em; text-transform: none;"><strong>(squad_target_vale_silent.jpg)</strong> Mapa topográfico ou visão de cima da Mina do Vale Silent.</small>
+            </button>
+            <button onclick="openModalByUrl('../../assets/missao-02/squad_target_processamento.jpg', 'Satélite: Complexo de Extrações')" class="btn" style="text-align: left;">
+                IMINT-05: COMPLEXO DE EXTRAÇÕES<br>
+                <small style="color: #888; font-size: 0.8em; text-transform: none;"><strong>(squad_target_processamento.jpg)</strong> Imagem de reconhecimento do Complexo de Extrações.</small>
+            </button>
+            <button onclick="openModalByUrl('../../assets/missao-02/squad_target_pico_bald.jpg', 'Reconhecimento: Mina Pico Bald')" class="btn" style="text-align: left;">
+                IMINT-06: MINA PICO BALD<br>
+                <small style="color: #888; font-size: 0.8em; text-transform: none;"><strong>(squad_target_pico_bald.jpg)</strong> Imagem de reconhecimento da Mina do Pico Bald.</small>
+            </button>
+            <button onclick="openModalByUrl('../../assets/missao-02/squad_water_reservatorio.jpg', 'Fotografia: Reservatório Principal')" class="btn" style="text-align: left;">
+                IMINT-07: RESERVATÓRIO DE ÁGUA<br>
+                <small style="color: #888; font-size: 0.8em; text-transform: none;"><strong>(squad_water_reservatorio.jpg)</strong> Foto puramente imersiva da área do Reservatório Principal.</small>
+            </button>
+            <button onclick="openModalByUrl('../../assets/missao-02/squad_water_lago_alice.jpg', 'Fotografia: Lago Alice')" class="btn" style="text-align: left;">
+                IMINT-08: LAGO ALICE<br>
+                <small style="color: #888; font-size: 0.8em; text-transform: none;"><strong>(squad_water_lago_alice.jpg)</strong> Foto puramente imersiva do Lago Alice.</small>
+            </button>
+            <button onclick="openModalByUrl('../../assets/missao-02/squad_water_dove_stream.jpg', 'Fotografia: Nascente Dove Stream')" class="btn" style="text-align: left;">
+                IMINT-09: DOVE STREAM<br>
+                <small style="color: #888; font-size: 0.8em; text-transform: none;"><strong>(squad_water_dove_stream.jpg)</strong> Foto da nascente do Dove Stream.</small>
+            </button>
+            <button onclick="openModalByUrl('../../assets/missao-02/squad_exfil_stag.jpg', 'Satélite: Bivaque Serrania STAG')" class="btn" style="text-align: left;">
+                IMINT-10: PONTO DE EXTRAÇÃO<br>
+                <small style="color: #888; font-size: 0.8em; text-transform: none;"><strong>(squad_exfil_stag.jpg)</strong> Mapa de relevo mostrando os arredores do Bivaque Serrania STAG.</small>
             </button>
         </div>
 

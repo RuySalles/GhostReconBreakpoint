@@ -4,6 +4,7 @@
     --term-green: #33ff33;
     --term-dark: #0a0a0a;
     --term-dim: #1a4d1a;
+    --term-red: #ff3333;
 }
 
 * {
@@ -25,4 +26,62 @@ body::after {
     top: 0; left: 0; bottom: 0; right: 0;
     z-index: 10000;
     pointer-events: none;
+}
+
+/* ==========================================================================
+   COMPONENTES GLOBAIS (Botões, Modais)
+   ========================================================================== */
+.btn {
+    background: var(--term-dim);
+    color: var(--term-green);
+    border: 1px solid var(--term-green);
+    padding: 10px 20px;
+    font-family: inherit;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 0 10px;
+}
+.btn:hover { background: var(--term-green); color: var(--term-dark); }
+
+/* MODAL DE SPOILER */
+.spoiler-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9);
+    z-index: 100000;
+    justify-content: center;
+    align-items: center;
+}
+.spoiler-modal-overlay.active {
+    display: flex;
+}
+.spoiler-modal {
+    background: #0a0a0a;
+    border: 2px solid var(--term-red);
+    padding: 30px;
+    max-width: 600px;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+}
+.spoiler-modal h2 { border: none; color: var(--term-red); margin-top: 0; }
+.spoiler-modal p { font-size: 1.1em; margin: 20px 0; color: var(--term-green); }
+.btn-red { background: rgba(100,0,0,0.5); border-color: var(--term-red); color: #fff; }
+.btn-red:hover { background: var(--term-red); color: #000; }
+
+/* LINKS SECRETOS DE CANTO DE TELA */
+.secret-map-link {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    font-size: 16px;
+    color: rgba(51, 255, 51, 0.15);
+    text-decoration: none;
+    transition: color 0.3s;
+    z-index: 100;
+}
+
+.secret-map-link:hover {
+    color: rgba(51, 255, 51, 0.8);
 }

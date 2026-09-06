@@ -1,0 +1,212 @@
+:root {
+    --term-red: #ff3333;
+    --term-green: #33ff33;
+    --term-dark: #0a0a0a;
+    --term-dim: #1a4d1a;
+}
+
+/* ==========================================================================
+   MODO TERMINAL TÁTICO (PADRÃO)
+   ========================================================================== */
+body {
+    background-color: var(--term-dark);
+    color: var(--term-green);
+    font-family: 'Share Tech Mono', monospace;
+    margin: 0;
+    padding: 20px;
+    background-image: 
+        linear-gradient(rgba(51, 255, 51, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(51, 255, 51, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+    line-height: 1.6;
+}
+
+/* Trava o scroll do body quando o modal estiver ativo */
+body.modal-open {
+    overflow: hidden;
+}
+
+/* Efeito de scanline (Monitor de Comando) */
+body::after {
+    content: " ";
+    display: block;
+    position: fixed;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 2;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    border: 2px solid var(--term-green);
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.85);
+    box-shadow: 0 0 15px rgba(51, 255, 51, 0.2);
+    position: relative;
+    z-index: 3;
+}
+
+.header {
+    border-bottom: 2px dashed var(--term-green);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.header p { margin: 5px 0; }
+.warning { color: var(--term-red); font-weight: bold; animation: blink 2s infinite; }
+@keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0.5; } }
+
+h1, h2, h3, h4 {
+    text-transform: uppercase;
+    border-left: 5px solid var(--term-green);
+    padding-left: 10px;
+    margin-top: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 0.9em;
+}
+th, td { border: 1px solid var(--term-dim); padding: 10px; text-align: left; }
+th { background-color: var(--term-dim); color: var(--term-green); }
+
+.highlight { background-color: var(--term-dim); color: #fff; padding: 0 5px; }
+.intel-card {
+    border: 1px solid var(--term-dim);
+    padding: 5px;
+    background: rgba(0,20,0,0.5);
+    text-align: center;
+    font-size: 0.8em;
+    margin-bottom: 15px;
+}
+.intel-card p { margin: 5px 0; color: #88cc88; }
+.typing-effect {
+    border-right: 2px solid var(--term-green);
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 3s steps(40, end), blink-caret .75s step-end infinite;
+}
+@keyframes typing { from { width: 0 } to { width: 100% } }
+@keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--term-green); } }
+
+/* ==========================================================================
+   MODO IMPRESSÃO / DOSSIÊ A4 (Ativo pela classe .a4-mode e @media print)
+   ========================================================================== */
+.a4-mode {
+    background: #1e1e1e;
+    background-image: none;
+    color: #111;
+}
+.a4-mode::after { display: none; }
+.a4-mode .container {
+    background-color: #fdfdfd;
+    width: 210mm;
+    min-height: 297mm;
+    padding: 20mm;
+    box-sizing: border-box;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    margin: 0 auto;
+    border: none;
+    font-family: 'Courier Prime', 'Courier New', monospace;
+}
+.a4-mode .header { border-bottom: 2px dashed #444; }
+.a4-mode h1, .a4-mode h2, .a4-mode h3, .a4-mode h4 { border-left: none; color: #000; }
+.a4-mode table th { background-color: #eee; color: #000; border-color: #444; }
+.a4-mode table td { border-color: #444; }
+.a4-mode .warning { color: #b30000; animation: none; }
+.a4-mode .intel-card { border: 1px solid #444; background: #fff; }
+.a4-mode .intel-card p { color: #444; }
+.a4-mode .highlight { background: #eee; color: #000; }
+
+.a4-stamp {
+    display: none;
+    text-align: center;
+    font-size: 15pt;
+    font-weight: bold;
+    color: #b30000;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    border-top: 3px solid #b30000;
+    border-bottom: 3px solid #b30000;
+    padding: 8px 0;
+    margin-bottom: 25px;
+}
+.a4-mode .a4-stamp { display: block; }
+.a4-watermark {
+    display: none;
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    font-size: 45pt;
+    font-weight: bold;
+    color: rgba(179, 0, 0, 0.05);
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 1000;
+}
+.a4-mode .a4-watermark { display: block; }
+
+@media print {
+    @page { margin: 15mm; }
+    body { background: #fff; padding: 0; }
+    body::after { display: none; }
+    .container { box-shadow: none; width: 100%; max-width: none; padding: 0; border: none; background: transparent; color: #000; }
+    .a4-stamp { display: block; border-color: #000; color: #000; }
+    .a4-watermark { display: block; color: rgba(0,0,0,0.05); }
+    .nav-buttons, #spoilerModal { display: none !important; }
+}
+
+/* ==========================================================================
+   COMPONENTES EXTRAS (Modais, Botões)
+   ========================================================================== */
+.nav-buttons {
+    margin-bottom: 20px;
+    text-align: center;
+    position: relative;
+    z-index: 4;
+}
+.btn {
+    background: var(--term-dim);
+    color: var(--term-green);
+    border: 1px solid var(--term-green);
+    padding: 10px 20px;
+    font-family: inherit;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 0 10px;
+}
+.btn:hover { background: var(--term-green); color: var(--term-dark); }
+.a4-mode .btn { background: #eee; color: #111; border: 1px solid #444; }
+.a4-mode .btn:hover { background: #ddd; }
+
+/* MODAL DE SPOILER */
+.spoiler-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9);
+    z-index: 100000;
+    justify-content: center;
+    align-items: center;
+}
+.spoiler-modal-overlay.active {
+    display: flex;
+}
+.spoiler-modal {
+    background: #0a0a0a;
+    border: 2px solid var(--term-red);
+    padding: 30px;
+    max-width: 600px;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+}
+.spoiler-modal h2 { border: none; color: var(--term-red); margin-top: 0; }
+.spoiler-modal p { font-size: 1.1em; margin: 20px 0; }
+.btn-red { background: rgba(100,0,0,0.5); border-color: var(--term-red); color: #fff; }
+.btn-red:hover { background: var(--term-red); color: #000; }

@@ -305,3 +305,26 @@ th { background-color: var(--term-dim); color: var(--term-green); }
     /* Força botões do GM a ficarem em coluna única */
     div[style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
 }
+
+/* ==========================================================================
+   EFEITOS DE HOVER EM IMAGENS (CAMUFLAGEM)
+   ========================================================================== */
+.camo-img {
+    width: 20px; 
+    height: 20px; 
+    border: 1px solid #555; 
+    vertical-align: text-bottom; 
+    margin-right: 8px;
+    transition: transform 0.15s ease-in-out, border-color 0.15s;
+    cursor: crosshair;
+    position: relative;
+}
+
+.camo-img:hover {
+    transform: scale(8); /* Amplia 8x (160x160px) */
+    transform-origin: left center;
+    border-color: var(--term-green);
+    z-index: 9999;
+    box-shadow: 0 0 20px rgba(0,0,0,1);
+}
+

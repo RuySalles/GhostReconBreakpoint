@@ -97,7 +97,7 @@ th { background-color: var(--term-dim); color: var(--term-green); }
 /* GALERIA DE INTELIGÊNCIA */
 .intel-gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 15px;
     margin-top: 15px;
     margin-bottom: 25px;
@@ -115,7 +115,7 @@ th { background-color: var(--term-dim); color: var(--term-green); }
     grid-column: 1 / -1;
 }
 .intel-item-large img {
-    height: 180px;
+    height: 220px;
 }
 .intel-item:hover {
     border-color: var(--term-green);
@@ -124,7 +124,7 @@ th { background-color: var(--term-dim); color: var(--term-green); }
 }
 .intel-item img {
     width: 100%;
-    height: 110px;
+    height: 135px;
     object-fit: cover;
     border: 1px solid #111;
     cursor: pointer;
@@ -265,3 +265,43 @@ th { background-color: var(--term-dim); color: var(--term-green); }
 .spoiler-modal p { font-size: 1.1em; margin: 20px 0; }
 .btn-red { background: rgba(100,0,0,0.5); border-color: var(--term-red); color: #fff; }
 .btn-red:hover { background: var(--term-red); color: #000; }
+
+/* ==========================================================================
+   RESPONSIVIDADE E DISPOSITIVOS MÓVEIS
+   ========================================================================== */
+@media (max-width: 768px) {
+    body { padding: 10px; }
+    .container { padding: 15px; }
+    
+    .header h1 { 
+        font-size: 1.8em; 
+        white-space: normal; 
+        animation: none; 
+        border-right: none; 
+        word-wrap: break-word; 
+    }
+    
+    .nav-buttons { 
+        display: flex; 
+        flex-direction: column; 
+        gap: 10px; 
+    }
+    .nav-buttons .btn { margin: 0; width: 100%; box-sizing: border-box; }
+    
+    div[style*="flex"] { flex-wrap: wrap; }
+    
+    .intel-gallery { grid-template-columns: 1fr; }
+    
+    .intel-item img, 
+    .intel-item-large img { 
+        height: auto; 
+        aspect-ratio: 16/9; 
+        max-height: 250px; 
+    }
+    
+    .spoiler-modal { padding: 15px; }
+    .spoiler-modal table { display: block; overflow-x: auto; }
+    
+    /* Força botões do GM a ficarem em coluna única */
+    div[style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
+}

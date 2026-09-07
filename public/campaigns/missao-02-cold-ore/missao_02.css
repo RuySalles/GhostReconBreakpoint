@@ -94,6 +94,61 @@ th { background-color: var(--term-dim); color: var(--term-green); }
 @keyframes typing { from { width: 0 } to { width: 100% } }
 @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--term-green); } }
 
+/* GALERIA DE INTELIGÊNCIA */
+.intel-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+.intel-item {
+    background: rgba(0, 20, 0, 0.4);
+    border: 1px solid var(--term-dim);
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+.intel-item-large {
+    grid-column: 1 / -1;
+}
+.intel-item-large img {
+    height: 180px;
+}
+.intel-item:hover {
+    border-color: var(--term-green);
+    background: rgba(0, 40, 0, 0.6);
+    box-shadow: 0 0 10px rgba(51, 255, 51, 0.1);
+}
+.intel-item img {
+    width: 100%;
+    height: 110px;
+    object-fit: cover;
+    border: 1px solid #111;
+    cursor: pointer;
+    margin-bottom: 8px;
+    filter: brightness(0.8) contrast(1.1);
+    transition: filter 0.2s ease;
+}
+.intel-item:hover img {
+    filter: brightness(1) contrast(1.1);
+    border-color: var(--term-green);
+}
+.intel-caption {
+    color: #88cc88;
+    font-size: 0.85em;
+    text-align: center;
+    line-height: 1.3;
+}
+.intel-caption strong {
+    color: var(--term-green);
+    display: block;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+
 /* ==========================================================================
    MODO IMPRESSÃO / DOSSIÊ A4 (Ativo pela classe .a4-mode e @media print)
    ========================================================================== */

@@ -75,3 +75,35 @@ document.addEventListener("keydown", function(event) {
         hideSpoilerModal();
     }
 });
+
+// Controle de Áudio Overlord
+document.addEventListener("DOMContentLoaded", function() {
+    const audio = document.getElementById('overlord-transmission');
+    const btnPlay = document.getElementById('btn-play-comms');
+    const statusText = document.getElementById('comms-status');
+
+    if (audio && btnPlay && statusText) {
+        btnPlay.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                btnPlay.innerHTML = '<span class="icon">⏸</span> PAUSAR TRANSMISSÃO';
+                btnPlay.classList.add('playing');
+                statusText.innerText = 'STATUS: DESCRIPTOGRAFANDO E REPRODUZINDO...';
+                statusText.style.color = '#ffaa00';
+            } else {
+                audio.pause();
+                btnPlay.innerHTML = '<span class="icon">▶</span> RETOMAR TRANSMISSÃO';
+                btnPlay.classList.remove('playing');
+                statusText.innerText = 'STATUS: TRANSMISSÃO PAUSADA';
+                statusText.style.color = '#888';
+            }
+        });
+
+        audio.addEventListener('ended', () => {
+            btnPlay.innerHTML = '<span class="icon">↺</span> REPETIR TRANSMISSÃO';
+            btnPlay.classList.remove('playing');
+            statusText.innerText = 'STATUS: TRANSMISSÃO CONCLUÍDA';
+            statusText.style.color = '#33ff33';
+        });
+    }
+});

@@ -328,3 +328,59 @@ th { background-color: var(--term-dim); color: var(--term-green); }
     box-shadow: 0 0 20px rgba(0,0,0,1);
 }
 
+/* ==========================================================================
+   CONTROLES DE ÁUDIO OVERLORD
+   ========================================================================== */
+.comms-panel {
+    background-color: rgba(10, 15, 20, 0.85);
+    border: 1px solid var(--term-green);
+    padding: 15px;
+    margin-bottom: 20px;
+    width: fit-content;
+}
+
+.comms-header {
+    color: var(--term-green);
+    font-size: 0.8em;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.btn-overlord {
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s;
+    font-size: 1em;
+}
+
+.btn-overlord:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn-overlord.playing {
+    border-color: #ffaa00;
+    color: #ffaa00;
+    animation: pulse-comms 1.5s infinite alternate;
+}
+
+@keyframes pulse-comms {
+    0% { box-shadow: 0 0 2px #ffaa00; }
+    100% { box-shadow: 0 0 10px #ffaa00; }
+}
+
+.comms-status {
+    font-family: inherit;
+    font-size: 0.75em;
+    color: #888;
+    margin-top: 8px;
+}
+
+.a4-mode .comms-panel { display: none; } /* Oculta na impressão */

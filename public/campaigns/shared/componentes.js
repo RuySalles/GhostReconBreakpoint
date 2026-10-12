@@ -89,6 +89,7 @@
     //   { img, titulo, legenda, zoom, alt, larga, natural, centro }
     // ----------------------------------------------------------------------
     var primeiraImagem = true;
+    var estiloGaleriaPadrao = '';   // missão pode definir (ex.: filtro NVG na Missão 01)
 
     function itemGaleria(it, base) {
         var src = caminho(base, it.img);
@@ -102,7 +103,7 @@
     }
 
     function galeria(itens, base, extra) {
-        return '<div' + classes('intel-gallery', extra) + '>' +
+        return '<div' + classes('intel-gallery', extra || estiloGaleriaPadrao) + '>' +
             itens.map(function (it) { return itemGaleria(it, base); }).join('') +
             '</div>';
     }
@@ -117,6 +118,9 @@
     //   { galeria: [...] }            -> galeria de imagens
     //   { callout, titulo, perigo }   -> bloco de destaque (texto ou lista de blocos)
     //   { complicacoes: [...] }       -> complicações do GM (gatilho/ação/resposta)
+    //   { video, legenda }            -> vídeo "uplink" com moldura
+    //   { kneeboard, galeria }        -> cartas de navegação (título + galeria)
+    //   { tabela: [col1, col2], linhas: [[rótulo, valor] | { perigo, celulas }] }
     // ----------------------------------------------------------------------
     function blocos(lista, base) {
         return (lista || []).map(function (b) { return bloco(b, base); }).join('');
@@ -124,10 +128,22 @@
 
     function bloco(b, base) {
         if (typeof b === 'string') return '<p>' + b + '</p>';
+        // Blocos com chaves próprias vêm antes dos genéricos (tabela também usa 'linhas')
+        if (b.tabela) {
+            return '<div class="table-wrap"><table class="table-stack">' +
+                '<thead><tr>' + b.tabela.map(function (c) { return '<th scope="col">' + c + '</th>'; }).join('') + '</tr></thead>' +
+                '<tbody>' + b.linhas.map(function (l) {
+                    if (Array.isArray(l)) return '<tr><td><strong>' + l[0] + '</strong></td><td>' + l[1] + '</td></tr>';
+                    return '<tr' + classes(l.perigo && 'row-danger') + '>' + l.celulas.map(function (c) { return '<td>' + c + '</td>'; }).join('') + '</tr>';
+                }).join('') + '</tbody></table></div>';
+        }
         if (b.p) return '<p' + classes(b.classe) + '>' + b.p + '</p>';
         if (b.linhas) return '<p' + classes(b.classe) + '>' + b.linhas.join('<br>') + '</p>';
         if (b.h3) return '<h3>' + b.h3 + '</h3>';
         if (b.lista) return '<ul' + classes(b.classe) + '>' + b.lista.map(function (li) { return '<li>' + li + '</li>'; }).join('') + '</ul>';
+        if (b.kneeboard) {
+            return '<section class="kneeboard"><h4>' + b.kneeboard + '</h4>' + galeria(b.galeria, base, b.classe) + '</section>';
+        }
         if (b.galeria) return galeria(b.galeria, base, b.classe);
         if (b.callout) {
             var conteudo = Array.isArray(b.callout) ? blocos(b.callout, base) : b.callout;
@@ -142,17 +158,27 @@
                     '<br><strong>Resposta dos jogadores:</strong> ' + c.resposta + '</p>';
             }).join('');
         }
+        if (b.video) {
+            return '<div class="video-frame">' +
+                '<span class="video-frame__label">' + (b.legenda || 'SINAL DE VÍDEO SEGURO - UPLINK ESTABELECIDO') + '</span>' +
+                '<video controls preload="metadata" playsinline><source src="' + esc(caminho(base, b.video)) + '" type="video/mp4">' +
+                'Seu navegador não suporta a tag de vídeo.</video></div>';
+        }
         return '';
     }
 
     // ----------------------------------------------------------------------
     // CABEÇALHO DE MEMORANDO
-    //   { titulo, digitando, perigo, linhas: [[rótulo, valor]], aviso }
+    //   { titulo, digitando, perigo, linhas: [[rótulo, valor] | { aviso }], aviso }
+    //   Uma linha { aviso: '...' } vira o alerta piscando naquela posição.
     // ----------------------------------------------------------------------
     function cabecalho(h) {
         return '<header class="header">' +
             (h.titulo ? '<h1' + classes(h.digitando !== false && 'typing-effect', h.perigo && 'h-danger') + '>' + h.titulo + '</h1>' : '') +
-            (h.linhas || []).map(function (l) { return '<p><strong>' + l[0] + ':</strong> ' + l[1] + '</p>'; }).join('') +
+            (h.linhas || []).map(function (l) {
+                if (!Array.isArray(l)) return '<p class="warning">' + l.aviso + '</p>';
+                return '<p><strong>' + l[0] + ':</strong> ' + l[1] + '</p>';
+            }).join('') +
             (h.aviso ? '<p class="warning">' + h.aviso + '</p>' : '') +
             '</header>';
     }
@@ -274,7 +300,9 @@
         var hub = m.hub;
         var base = m.imagens;
         var html =
-            '<nav class="nav-buttons" aria-label="Navegação da missão"><a class="btn" href="../../index.html">&lt; RETORNAR AO HUB</a></nav>' +
+            '<nav class="nav-buttons" aria-label="Navegação da missão"><a class="btn" href="../../index.html">&lt; RETORNAR AO HUB</a>' +
+            (hub.imprimir ? '<button type="button" class="btn" data-action="print">IMPRIMIR DOSSIÊ</button>' : '') +
+            '</nav>' +
             '<main' + classes('container', GM && 'is-gm') + '>' +
             cabecalho({ titulo: hub.titulo, perigo: GM, linhas: hub.cabecalho, aviso: hub.aviso }) +
             (m.audio ? canalOverlord(m.audio) : '') +
@@ -285,7 +313,7 @@
             (hub.gabaritos ? gabaritos(hub.gabaritos, base) : '') +
             '</main>' +
             (m.configuracoes ? modalConfiguracoes(m.configuracoes) : '') +
-            (GM ? '' : acessoGm(ARQUIVOS.hubGm));
+            (GM || hub.acessoGm === false ? '' : acessoGm(ARQUIVOS.hubGm));
 
         document.title = hub.tituloPagina || document.title;
         body.insertAdjacentHTML('afterbegin', html);
@@ -325,6 +353,7 @@
 
     function registrarMissao(dados) {
         var m = resolver(dados);
+        estiloGaleriaPadrao = m.estiloGaleria || '';
         var pagina = body.getAttribute('data-pagina');
         if (pagina === 'hub') return paginaHub(m);
         if (pagina === 'documento') return paginaDocumento(m, body.getAttribute('data-doc'));

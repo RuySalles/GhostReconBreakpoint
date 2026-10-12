@@ -26,7 +26,7 @@ E:\Trabalho\GhostReconBreakpoint\
 │   ├── assets/                         <- Imagens, ícones e assets de interface
 │   ├── campaigns/                      <- Conteúdo narrativo estático e missões (ex: missao-01-growler-silent)
 │   │   ├── shared/                     <- ops.css + ops.js (tema, modais, zoom, áudio) e componentes.js (monta as páginas)
-│   │   └── missao-02-cold-ore/         <- missao.js = TODO o conteúdo (Squad + GM); os .html são só esqueletos
+│   │   └── missao-XX-nome/             <- missao.js = TODO o conteúdo (Squad + GM); os .html são só esqueletos
 │   ├── index.html                      <- Ponto de entrada principal
 │   └── mapa.html                       <- Aplicação do mapa operacional
 ├── src/                                <- Código-fonte (backend e scripts)

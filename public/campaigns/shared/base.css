@@ -1,9 +1,9 @@
 /* ==========================================================================
-   OPS — estilo compartilhado das campanhas (Missão 01, Missão 02, ...)
+   BASE — estilo compartilhado das campanhas (Missão 01, Missão 02, ...)
 
    Tema escuro  = "terminal NVG" (fósforo verde, scanlines)
    Tema claro   = "manual de campo" (papel, tinta verde-oliva)
-   O tema vem de <html data-theme="dark|light">, definido no <head> e por ops.js.
+   O tema vem de <html data-theme="dark|light">, definido no <head> e por base.js.
    ========================================================================== */
 
 /* --------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 /* ==========================================================================
    MISSÃO 01 — OPORD: GROWLER SILENT
-   Todo o conteúdo da missão. A página briefing_v4.html é montada a partir daqui.
+   Todo o conteúdo da missão. A página hub.html é montada a partir daqui.
    Missão de página única: sem hub do GM e sem dossiês.
    ========================================================================== */
 (function (GRB) {

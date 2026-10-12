@@ -7,11 +7,11 @@ window.GRB_MISSOES = [
     {
         titulo: 'OPORD: GROWLER SILENT',
         resumo: 'Status: Ativo | Alvo: Instalação Clandestina Skell Tech',
-        pagina: 'campaigns/missao-01-growler-silent/briefing_v4.html'
+        pagina: 'campaigns/missao-01-growler-silent/hub.html'
     },
     {
         titulo: 'OPORD: COLD ORE',
         resumo: 'Status: Ativo | Setor: Mount Hodgson',
-        pagina: 'campaigns/missao-02-cold-ore/lore_hub.html'
+        pagina: 'campaigns/missao-02-cold-ore/hub.html'
     }
 ];

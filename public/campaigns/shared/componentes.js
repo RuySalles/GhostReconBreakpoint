@@ -3,11 +3,11 @@
 
    Cada página da missão é só um esqueleto que diz QUAL página é e para QUEM:
      <body data-pagina="hub"       data-papel="squad|gm">
-     <body data-pagina="documento" data-papel="squad|gm" data-doc="tatico|inteligencia">
+     <body data-pagina="documento" data-papel="squad|gm" data-doc="dossie|inteligencia">
 
    O missao.js chama GRB.registrarMissao({...}) e esta página é desenhada na hora.
    Ordem dos scripts no <head> (todos com defer):
-     componentes.js -> missao.js -> ops.js
+     componentes.js -> missao.js -> base.js
 
    Conteúdo por papel (Ghost Squad x Ghost Lead/GM), dentro do missao.js:
      GRB.papel('texto do squad', 'texto do GM')  -> escolhe conforme a página
@@ -292,8 +292,8 @@
     // PÁGINAS
     // ----------------------------------------------------------------------
     var ARQUIVOS = {
-        hubSquad: 'lore_hub.html',
-        hubGm: 'lore_hub_gm.html'
+        hubSquad: 'hub.html',
+        hubGm: 'hub-gm.html'
     };
 
     function paginaHub(m) {

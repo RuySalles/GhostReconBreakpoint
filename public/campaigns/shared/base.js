@@ -1,5 +1,5 @@
 /* ==========================================================================
-   OPS — comportamento compartilhado das campanhas
+   BASE — comportamento compartilhado das campanhas
 
    Marcações reconhecidas no HTML:
      data-zoom [data-caption="..."]  abre a imagem (href ou valor de data-zoom) em tela cheia

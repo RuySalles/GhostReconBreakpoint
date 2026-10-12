@@ -18,7 +18,7 @@
         audio: '../../assets/missao-02/audio/briefing_cold_ore.mp3',
 
         // ------------------------------------------------------------------
-        // HUB (lore_hub.html = Squad / lore_hub_gm.html = GM)
+        // HUB (hub.html = Squad / hub-gm.html = GM)
         // ------------------------------------------------------------------
         hub: {
             tituloPagina: papel('OPORD-002: Cold Ore - Lore & Briefing', '[OVERLORD] OPORD-002: Cold Ore - Hub do GM'),
@@ -44,9 +44,9 @@
 
             documentos: [
                 { configuracoes: true, rotulo: '⚙️ CONFIGURAÇÕES', dica: 'Parâmetros de Imersão e Loadout' },
-                { rotulo: '📄 CONFIDENCIAL', href: 'briefing_tatico.html', dica: 'OPORD-002: Execução Tática (Esquadrão)' },
-                { rotulo: '📖 INTELIGÊNCIA', href: 'doc_skell_agua.html', dica: 'Relatório Interceptado (Skell Tech)' },
-                soGm({ rotulo: '📄 DOSSIÊ GM', href: 'relatorio_gm.html', dica: 'Dossiê de Arbitragem (GM)', estilo: 'amber' })
+                { rotulo: '📄 CONFIDENCIAL', href: 'dossie.html', dica: 'OPORD-002: Execução Tática (Esquadrão)' },
+                { rotulo: '📖 INTELIGÊNCIA', href: 'intel-skell-agua.html', dica: 'Relatório Interceptado (Skell Tech)' },
+                soGm({ rotulo: '📄 DOSSIÊ GM', href: 'dossie-gm.html', dica: 'Dossiê de Arbitragem (GM)', estilo: 'amber' })
             ],
 
             script: soGm({
@@ -223,8 +223,8 @@
         // ------------------------------------------------------------------
         documentos: {
 
-            // briefing_tatico.html (Squad) / relatorio_gm.html (GM)
-            tatico: {
+            // dossie.html (Squad) / dossie-gm.html (GM)
+            dossie: {
                 tituloPagina: papel('OPORD-002: Cold Ore - Briefing Tático (Ghost Squad)', 'OPORD-002: Cold Ore - DOSSIÊ OVERLORD (RESTRITO)'),
                 marcaDagua: papel('CONFIDENCIAL // USO RESTRITO', 'USO RESTRITO GHOST LEAD'),
                 carimbo: papel('ULTRA SECRETO - APENAS GHOST SQUAD', 'SOMENTE LEITURA GHOST 1-1 / OVERLORD'),
@@ -346,11 +346,11 @@
                 carimboFim: papel('FIM DE RELATÓRIO', 'FIM DE RELATÓRIO DO GM')
             },
 
-            // doc_skell_agua.html — documento interceptado (mesmo para Squad e GM)
+            // intel-skell-agua.html — documento interceptado (mesmo para Squad e GM)
             inteligencia: {
                 tituloPagina: 'SKELL TECH: Relatório de Impacto Ambiental (Vazamento)',
                 estilo: 'skell',
-                voltar: { href: 'lore_hub.html', rotulo: 'RETORNAR AO HUB' },
+                voltar: { href: 'hub.html', rotulo: 'RETORNAR AO HUB' },
                 marcaDagua: 'SKELL TECH R&amp;D // CONFIDENCIAL',
                 carimbo: 'SKELL TECH - ASSUNTOS INTERNOS',
                 titulo: 'AVALIAÇÃO DE RISCO ECOLÓGICO: PROJETO COLD ORE',

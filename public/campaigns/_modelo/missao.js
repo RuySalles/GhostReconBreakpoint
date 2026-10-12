@@ -1,11 +1,12 @@
 /* ==========================================================================
    {{CODIGO}} — {{NOME}}
    Todo o conteúdo da missão fica aqui. As páginas são montadas a partir deste arquivo:
-     lore_hub.html        -> Hub do Ghost Squad (jogadores)
-     lore_hub_gm.html     -> Hub do Ghost Lead (GM) = tudo do Squad + o que for soGm
-     briefing_tatico.html -> Dossiê tático do Squad      (documentos.tatico)
-     relatorio_gm.html    -> Dossiê do GM                (documentos.tatico, versão GM)
-     doc_intel.html       -> Documento interceptado      (documentos.inteligencia)
+     hub.html             -> Hub do Ghost Squad (jogadores)
+     hub-gm.html          -> Hub do Ghost Lead (GM) = tudo do Squad + o que for soGm
+     dossie.html          -> Dossiê tático do Squad   (documentos.dossie)
+     dossie-gm.html       -> Dossiê do GM             (documentos.dossie, versão GM)
+     intel-documento.html -> Documento interceptado   (documentos.inteligencia)
+                             renomeie para intel-<assunto>.html (ex.: intel-skell-agua.html)
 
    GRB.papel('squad', 'gm')  -> texto diferente para Squad e GM
    GRB.soGm(...)             -> aparece só para o GM (item de lista, linha, seção inteira...)
@@ -67,9 +68,9 @@
             // Botões de documentos abaixo do briefing
             documentos: [
                 { configuracoes: true, rotulo: '⚙️ CONFIGURAÇÕES', dica: 'Parâmetros de Imersão e Loadout' },
-                { rotulo: '📄 CONFIDENCIAL', href: 'briefing_tatico.html', dica: '{{CODIGO}}: Execução Tática (Esquadrão)' },
-                { rotulo: '📖 INTELIGÊNCIA', href: 'doc_intel.html', dica: 'Documento Interceptado' },
-                soGm({ rotulo: '📄 DOSSIÊ GM', href: 'relatorio_gm.html', dica: 'Dossiê de Arbitragem (GM)', estilo: 'amber' })
+                { rotulo: '📄 CONFIDENCIAL', href: 'dossie.html', dica: '{{CODIGO}}: Execução Tática (Esquadrão)' },
+                { rotulo: '📖 INTELIGÊNCIA', href: 'intel-documento.html', dica: 'Documento Interceptado' },
+                soGm({ rotulo: '📄 DOSSIÊ GM', href: 'dossie-gm.html', dica: 'Dossiê de Arbitragem (GM)', estilo: 'amber' })
             ],
 
             // Script do mestre (só GM)
@@ -138,7 +139,7 @@
         // DOCUMENTOS (dossiês em papel)
         // ------------------------------------------------------------------
         documentos: {
-            tatico: {
+            dossie: {
                 tituloPagina: papel('{{CODIGO}}: {{NOME_TITULO}} - Briefing Tático (Ghost Squad)', '{{CODIGO}}: {{NOME_TITULO}} - DOSSIÊ OVERLORD (RESTRITO)'),
                 marcaDagua: papel('CONFIDENCIAL // USO RESTRITO', 'USO RESTRITO GHOST LEAD'),
                 carimbo: papel('ULTRA SECRETO - APENAS GHOST SQUAD', 'SOMENTE LEITURA GHOST 1-1 / OVERLORD'),
@@ -186,7 +187,7 @@
             inteligencia: {
                 tituloPagina: 'Documento Interceptado',
                 // estilo: 'skell',     // visual corporativo azul da Skell Tech
-                voltar: { href: 'lore_hub.html', rotulo: 'RETORNAR AO HUB' },
+                voltar: { href: 'hub.html', rotulo: 'RETORNAR AO HUB' },
                 marcaDagua: 'CONFIDENCIAL',
                 carimbo: 'ASSUNTOS INTERNOS',
                 titulo: 'TÍTULO DO DOCUMENTO',

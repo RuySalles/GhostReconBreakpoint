@@ -9,7 +9,7 @@
  * Resultado:
  *   public/campaigns/missao-03-silent-storm/   <- páginas + missao.js para preencher
  *   public/assets/missao-03/                   <- pasta para as imagens (e audio/)
- *   public/campaigns/missoes.js                <- missão adicionada à lista do hub
+ *   public/campaigns/catalogo.js                <- missão adicionada à lista do hub
  */
 
 'use strict';
@@ -20,7 +20,7 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..', '..');
 const CAMPAIGNS = path.join(ROOT, 'public', 'campaigns');
 const MODELO = path.join(CAMPAIGNS, '_modelo');
-const REGISTRO = path.join(CAMPAIGNS, 'missoes.js');
+const REGISTRO = path.join(CAMPAIGNS, 'catalogo.js');
 
 function sair(mensagem) {
     console.error('ERRO: ' + mensagem);
@@ -71,17 +71,17 @@ fs.writeFileSync(path.join(pastaImagens, '.gitkeep'), '');
 // 3. Cadastra no hub inicial
 const registro = fs.readFileSync(REGISTRO, 'utf8');
 const fim = registro.lastIndexOf('];');
-if (fim === -1) sair('não encontrei o final da lista em campaigns/missoes.js.');
+if (fim === -1) sair('não encontrei o final da lista em campaigns/catalogo.js.');
 const antes = registro.slice(0, fim).replace(/\s*$/, '');
 const entrada =
     ',\n    {\n' +
     `        titulo: 'OPORD: ${nome.toUpperCase().replace(/'/g, "\\'")}',\n` +
     `        resumo: 'Status: Em preparação | Setor: (definir)',\n` +
-    `        pagina: 'campaigns/${pasta}/lore_hub.html'\n` +
+    `        pagina: 'campaigns/${pasta}/hub.html'\n` +
     '    }\n';
 fs.writeFileSync(REGISTRO, antes + entrada + registro.slice(fim), 'utf8');
 
 console.log(`Missão criada: public/campaigns/${pasta}/`);
 console.log(`Imagens em:    public/assets/missao-${nn}/  (áudio em audio/briefing.mp3)`);
-console.log('Hub inicial:   cadastrada em public/campaigns/missoes.js (ajuste o "resumo")');
+console.log('Hub inicial:   cadastrada em public/campaigns/catalogo.js (ajuste o "resumo")');
 console.log(`Próximo passo: preencha public/campaigns/${pasta}/missao.js`);

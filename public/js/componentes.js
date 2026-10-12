@@ -291,6 +291,9 @@
     // ----------------------------------------------------------------------
     // PÁGINAS
     // ----------------------------------------------------------------------
+    // Link de acessibilidade para quem navega pelo teclado
+    var PULAR = '<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>';
+
     var ARQUIVOS = {
         hubSquad: 'hub.html',
         hubGm: 'hub-gm.html'
@@ -303,7 +306,7 @@
             '<nav class="nav-buttons" aria-label="Navegação da missão"><a class="btn" href="../../index.html">&lt; RETORNAR AO HUB</a>' +
             (hub.imprimir ? '<button type="button" class="btn" data-action="print">IMPRIMIR DOSSIÊ</button>' : '') +
             '</nav>' +
-            '<main' + classes('container', GM && 'is-gm') + '>' +
+            '<main id="conteudo"' + classes('container', GM && 'is-gm') + '>' +
             cabecalho({ titulo: hub.titulo, perigo: GM, linhas: hub.cabecalho, aviso: hub.aviso }) +
             (m.audio ? canalOverlord(m.audio) : '') +
             blocos(hub.briefing, base) +
@@ -316,7 +319,7 @@
             (GM || hub.acessoGm === false ? '' : acessoGm(ARQUIVOS.hubGm));
 
         document.title = hub.tituloPagina || document.title;
-        body.insertAdjacentHTML('afterbegin', html);
+        body.insertAdjacentHTML('afterbegin', PULAR + html);
     }
 
     function paginaDocumento(m, chave) {
@@ -330,7 +333,7 @@
             '<a class="btn btn--ghost" href="' + esc(voltar.href) + '">&lt; ' + voltar.rotulo + '</a>' +
             '<button type="button" class="btn" data-action="print">🖨️ IMPRIMIR DOSSIÊ</button>' +
             '</nav>' +
-            '<main' + classes('container', GM && 'is-gm') + '>' +
+            '<main id="conteudo"' + classes('container', GM && 'is-gm') + '>' +
             (doc.carimbo ? '<div class="a4-stamp">' + doc.carimbo + '</div>' : '') +
             cabecalho({ titulo: doc.titulo, digitando: doc.digitando, linhas: doc.cabecalho, aviso: doc.aviso }) +
             (doc.secoes || []).map(function (s) {
@@ -343,7 +346,7 @@
         body.classList.add('dossier');
         if (doc.estilo) body.classList.add('dossier--' + doc.estilo);
         document.title = doc.tituloPagina || document.title;
-        body.insertAdjacentHTML('afterbegin', html);
+        body.insertAdjacentHTML('afterbegin', PULAR + html);
     }
 
     function erro(mensagem) {

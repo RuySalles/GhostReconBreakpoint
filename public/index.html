@@ -1,56 +1,54 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#060906">
     <title>CENTRO DE COMANDO - GHOST SQUAD</title>
-    <link rel="stylesheet" href="css/global.css">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <script src="js/tema.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap">
+    <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/index.css">
+    <script src="campaigns/catalogo.js" defer></script>
+    <script src="js/index.js" defer></script>
+    <script src="js/base.js" defer></script>
 </head>
-<body>
+<body class="hub-inicial">
 
-<div class="container">
-    <h2>// SALA DE OPERAÇÕES - GHOST SQUAD</h2>
-    <p>SELECIONE O BRIEFING TÁTICO DESEJADO:</p>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
-    <!-- Preenchida a partir de campaigns/catalogo.js -->
-    <div class="mission-list" id="mission-list"></div>
+<!-- O botão de tema é inserido aqui por base.js -->
+<nav class="nav-buttons" aria-label="Preferências"></nav>
 
-    <!-- GLOSSÁRIO DE ACRÔNIMOS -->
-    <div class="acronyms-box">
-        <h4>// GLOSSÁRIO TÁTICO DE CAMPO</h4>
-        <div class="acronym-grid">
-            <div><strong>OPORD:</strong> Ordem de Operações (Instruções de Missão)</div>
-            <div><strong>ROE:</strong> Regras de Engajamento (Condutas de Combate)</div>
-            <div><strong>SITREP:</strong> Relatório de Situação (Resumo Tático)</div>
-            <div><strong>VFR:</strong> Voo Visual (Navegação sem instrumentos)</div>
-        </div>
+<main id="conteudo" class="container">
+    <h1>// SALA DE OPERAÇÕES - GHOST SQUAD</h1>
+    <p class="hub-intro">SELECIONE O BRIEFING TÁTICO DESEJADO:</p>
+
+    <!-- Preenchida por js/index.js a partir de campaigns/catalogo.js -->
+    <div class="mission-list" id="mission-list">
+        <noscript><p class="noscript">A lista de missões precisa de JavaScript ativado.</p></noscript>
     </div>
 
-    <div class="footer-status">
-        STATUS DO UPLINK: SEGURO / CRIPTOGRAFADO &mdash; OPERADORES: MUGUIGA & EPYON12
-    </div>
-</div>
+    <section class="acronyms-box" aria-labelledby="glossario">
+        <h2 id="glossario">// GLOSSÁRIO TÁTICO DE CAMPO</h2>
+        <dl class="acronym-grid">
+            <div><dt>OPORD:</dt> <dd>Ordem de Operações (Instruções de Missão)</dd></div>
+            <div><dt>ROE:</dt> <dd>Regras de Engajamento (Condutas de Combate)</dd></div>
+            <div><dt>SITREP:</dt> <dd>Relatório de Situação (Resumo Tático)</dd></div>
+            <div><dt>VFR:</dt> <dd>Voo Visual (Navegação sem instrumentos)</dd></div>
+        </dl>
+    </section>
 
-<a href="mapa.html" class="secret-map-link" title="Acesso Alpha - Mapa Tático">🌐</a>
+    <footer class="footer-status">
+        STATUS DO UPLINK: SEGURO / CRIPTOGRAFADO &mdash; OPERADORES: MUGUIGA &amp; EPYON12
+    </footer>
+</main>
 
-<script src="campaigns/catalogo.js"></script>
-<script>
-    (function () {
-        var lista = document.getElementById('mission-list');
-        (window.GRB_MISSOES || []).forEach(function (m) {
-            var item = document.createElement('div');
-            item.className = 'mission-item';
-            item.innerHTML =
-                '<div class="mission-info"><h3></h3><p></p></div>' +
-                '<a class="btn-access">ACESSAR OPORD</a>';
-            item.querySelector('h3').textContent = m.titulo;
-            item.querySelector('p').textContent = m.resumo;
-            item.querySelector('a').href = m.pagina;
-            lista.appendChild(item);
-        });
-    })();
-</script>
+<a href="mapa.html" class="secret-link secret-link--direita" title="Acesso Alpha - Mapa Tático" aria-label="Mapa tático">🌐</a>
 
 </body>
 </html>

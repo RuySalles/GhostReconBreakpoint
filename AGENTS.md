@@ -26,10 +26,20 @@ E:\Trabalho\GhostReconBreakpoint\
 │   ├── assets/                         <- Imagens, ícones e assets de interface
 │   ├── campaigns/                      <- Conteúdo narrativo estático e missões (ex: missao-01-growler-silent)
 │   │   ├── catalogo.js                 <- Lista de missões exibida no hub inicial (index.html)
-│   │   ├── shared/                     <- base.css + base.js (tema, modais, zoom, áudio) e componentes.js (monta as páginas)
 │   │   ├── _modelo/                    <- Modelo copiado por "npm run nova-missao" (não é uma missão publicada)
 │   │   └── missao-XX-nome/             <- missao.js = TODO o conteúdo (Squad + GM); os .html são só esqueletos
-│   ├── index.html                      <- Ponto de entrada principal
+│   ├── css/
+│   │   ├── base.css                    <- Estilo e tema (escuro/claro) do hub inicial e de TODAS as missões
+│   │   ├── index.css                   <- Só o que é exclusivo do hub inicial
+│   │   ├── global.css / mapa.css       <- Estilos do mapa (mapa.html)
+│   ├── js/
+│   │   ├── tema.js                     <- Aplica o tema salvo antes da página aparecer (no <head>, sem defer)
+│   │   ├── base.js                     <- Botão de tema, modais, zoom de imagem, áudio Overlord
+│   │   ├── componentes.js              <- Monta as páginas das missões a partir do missao.js
+│   │   ├── index.js                    <- Monta a lista de missões do hub inicial
+│   │   └── mapa.js
+│   ├── favicon.svg                     <- Ícone da aba (todas as páginas)
+│   ├── index.html                      <- Ponto de entrada principal (hub inicial)
 │   └── mapa.html                       <- Aplicação do mapa operacional
 ├── src/                                <- Código-fonte (backend e scripts)
 │   ├── parser/                         <- Lógica de extração de dados
@@ -232,15 +242,15 @@ O Ghost Lead deve sempre ser considerado capaz de acessar o conteúdo do Ghost S
 
 ## 🎯 Como Criar uma Missão
 
-As missões são **orientadas a dados**: todo o conteúdo fica em `public/campaigns/missao-XX-nome/missao.js`, e as páginas `.html` são esqueletos idênticos que o `shared/componentes.js` preenche. Não escreva conteúdo de missão direto em HTML.
+As missões são **orientadas a dados**: todo o conteúdo fica em `public/campaigns/missao-XX-nome/missao.js`, e as páginas `.html` são esqueletos idênticos que o `js/componentes.js` preenche. Não escreva conteúdo de missão direto em HTML.
 
 ### Padrão de nomes
 - Tudo em **minúsculas com hífen**, sem acentos e sem versão no nome (`_v4`, `-final`...): o histórico fica no Git.
-- Arquivos de conteúdo em **português**. Pastas estruturais (`public`, `assets`, `src`, `css`, `js`, `campaigns`, `shared`) mantêm o nome atual.
+- Arquivos de conteúdo em **português**. Pastas estruturais (`public`, `assets`, `src`, `css`, `js`, `campaigns`) mantêm o nome atual.
 - Pasta da missão: `missao-NN-nome-da-operacao/` (ex.: `missao-02-cold-ore/`).
 - Mesmo tipo de página = **mesmo nome em todas as missões**: `hub.html`, `dossie.html`, `intel-<assunto>.html`, `missao.js`.
 - Versão do GM = nome da versão do Squad + `-gm` (`hub-gm.html`, `dossie-gm.html`).
-- Compartilhados: `campaigns/catalogo.js` (lista do hub), `shared/base.css`, `shared/base.js`, `shared/componentes.js`.
+- Compartilhados: `campaigns/catalogo.js` (lista do hub), `css/base.css`, `js/tema.js`, `js/base.js`, `js/componentes.js`.
 - Imagens ainda **não** seguem este padrão (Missão 01 usa `ASSETS/` local); não renomear sem combinar antes.
 
 ### Passo a passo
@@ -283,7 +293,16 @@ Para outro documento, crie um novo esqueleto com outro `data-doc` e a chave corr
 
 Componentes próprios do hub: `cabecalho` (aceita `{ aviso }` no meio), `audio`, `documentos` (barra de botões), `script` (script do mestre), `objetivos` (seções com `itens` e `sub`), `gabaritos` (grade do GM), `configuracoes` (modal ⚙️, com `camuflagens` de `assets/paint/`), `imprimir`, `acessoGm: false`, `estiloGaleria`.
 
-Componente novo? Adicione em `shared/componentes.js` (e o estilo em `shared/base.css`) para que todas as missões possam usar.
+Componente novo? Adicione em `js/componentes.js` (e o estilo em `css/base.css`) para que todas as missões possam usar.
+
+### Boas práticas obrigatórias (frontend)
+- **Tema escuro e claro sempre**: nunca use cor fixa (`#fff`, `#33ff33`...) em componentes; use os tokens de `css/base.css` (`--text`, `--accent`, `--surface-2`, `--danger`...). Cor nova = token novo definido nos DOIS temas.
+- **Contraste mínimo 4,5:1** (WCAG AA) para texto, nos dois temas.
+- **Toda página** carrega no `<head>`: `meta theme-color`, `favicon.svg`, `js/tema.js` (sem `defer`) e `css/base.css`; tem um único `<h1>`, `<main id="conteudo">` e o link "Pular para o conteúdo".
+- **Celular primeiro**: nada de largura fixa; testar em 375px sem rolagem lateral; alvos de toque com no mínimo 44px.
+- **Sem estilo inline nem `onclick` no HTML**: use classes de `base.css` e os atributos `data-zoom`, `data-open`, `data-close`, `data-action`.
+- **Imagens** com `alt` descritivo e `loading="lazy"` (o `componentes.js` já faz isso).
+- Testar hub do Squad, hub do GM e dossiês nos dois temas antes de publicar.
 
 ---
 

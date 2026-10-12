@@ -1,5 +1,5 @@
 /* ==========================================================================
-   BASE — comportamento compartilhado das campanhas
+   BASE — comportamento compartilhado do site (hub inicial e missões)
 
    Marcações reconhecidas no HTML:
      data-zoom [data-caption="..."]  abre a imagem (href ou valor de data-zoom) em tela cheia
@@ -24,6 +24,8 @@
     function applyTheme(theme) {
         root.setAttribute('data-theme', theme);
         try { localStorage.setItem(THEME_KEY, theme); } catch (e) { /* modo privado */ }
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta && window.GRB_CORES_TEMA) meta.setAttribute('content', window.GRB_CORES_TEMA[theme]);
         syncThemeToggles();
     }
 

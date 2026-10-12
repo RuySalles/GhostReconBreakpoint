@@ -1,9 +1,10 @@
 /* ==========================================================================
-   BASE — estilo compartilhado das campanhas (Missão 01, Missão 02, ...)
+   BASE — estilo compartilhado do site (hub inicial e missões)
 
    Tema escuro  = "terminal NVG" (fósforo verde, scanlines)
    Tema claro   = "manual de campo" (papel, tinta verde-oliva)
-   O tema vem de <html data-theme="dark|light">, definido no <head> e por base.js.
+   O tema vem de <html data-theme="dark|light">: js/tema.js aplica ao abrir a página
+   e js/base.js troca pelo botão. Usado pelo hub inicial (index.html) e pelas missões.
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -19,7 +20,7 @@
     --surface-3: #112211;
     --text: #c9f5c2;
     --text-muted: #93b98c;
-    --text-faint: #62805c;
+    --text-faint: #6f9168;
     --accent: #33ff33;
     --accent-ink: #031003;
     --line: #1d4a1d;
@@ -43,6 +44,7 @@
     --stamp: #ff5a5a;
     --skell: #6aa5ff;
     --watermark: rgba(255, 90, 90, 0.06);
+    --sheet-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
 }
 
 [data-theme="light"] {
@@ -54,7 +56,7 @@
     --surface-3: #dde4c8;
     --text: #1c2315;
     --text-muted: #46513b;
-    --text-faint: #6b735f;
+    --text-faint: #575f4c;
     --accent: #2f5a12;
     --accent-ink: #f7f3e7;
     --line: #c4c8ad;
@@ -77,6 +79,7 @@
     --stamp: #b30000;
     --skell: #004aad;
     --watermark: rgba(179, 0, 0, 0.05);
+    --sheet-shadow: 0 6px 22px rgba(60, 50, 20, 0.22);
 }
 
 /* --------------------------------------------------------------------------
@@ -147,6 +150,36 @@ a {
 ::selection {
     background: var(--accent);
     color: var(--accent-ink);
+}
+
+/* Link "pular para o conteúdo": só aparece ao navegar pelo teclado */
+.skip-link {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 200;
+    padding: 0.5em 1em;
+    border: 1px solid var(--amber);
+    background: var(--surface-2);
+    color: var(--amber);
+    transform: translateY(-200%);
+}
+
+.skip-link:focus {
+    transform: none;
+}
+
+/* Aviso exibido quando o JavaScript está desligado */
+.noscript {
+    position: relative;
+    z-index: 2;
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 1.5em;
+    border: 1px dashed var(--danger);
+    background: var(--surface-2);
+    color: var(--danger);
+    text-align: center;
 }
 
 /* --------------------------------------------------------------------------
@@ -382,7 +415,7 @@ li {
 
 .btn--danger:hover {
     background: var(--danger);
-    color: #fff;
+    color: var(--bg);
 }
 
 .btn--amber {
@@ -937,6 +970,11 @@ th {
     filter: none;
 }
 
+.secret-link--direita {
+    left: auto;
+    right: 8px;
+}
+
 /* --------------------------------------------------------------------------
    DOSSIÊ (documentos "impressos": briefing tático, relatórios)
    -------------------------------------------------------------------------- */
@@ -955,7 +993,7 @@ body.dossier::after {
     background: var(--paper);
     color: var(--paper-text);
     font-family: 'Courier Prime', 'Courier New', monospace;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+    box-shadow: var(--sheet-shadow);
 }
 
 .dossier h1,

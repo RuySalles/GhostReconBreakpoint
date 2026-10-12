@@ -12,6 +12,7 @@
 
         hub: {
             tituloPagina: '[CLASSIFICADO] OPORD: Growler Silent',
+            titulo: 'OPERAÇÃO: GROWLER SILENT',
             imprimir: true,
             acessoGm: false,
             cabecalho: [

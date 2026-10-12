@@ -266,6 +266,11 @@ As missões são **orientadas a dados**: o conteúdo fica em `missao.js` (Squad)
 4. Ajuste o `resumo` da missão em `campaigns/catalogo.js` (texto mostrado no hub inicial).
 5. `npm run validar` (precisa terminar com **0 erros**) e `npm start` para conferir hub do Squad, hub do GM e dossiês nos dois temas e no celular.
 
+### Trilha sonora tática
+A trilha é ouvida em conjunto pelo **GroupTube** (https://group.tube/): o GM cria a sala e compartilha com o Squad.
+- Playlist de exemplo: https://music.youtube.com/playlist?list=OLAK5uy_l8iRphS6RGl3HxbTyLXf3dR0cDZYBvd10
+- Link de sala com chave de acesso **não vai para o repositório** (ele é público): crie a sala na hora da sessão.
+
 ### Páginas geradas
 | Arquivo | `<body>` | Conteúdo |
 |---|---|---|

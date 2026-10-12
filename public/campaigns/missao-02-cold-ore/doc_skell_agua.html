@@ -1,78 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-BR" data-theme="dark">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="dark light">
-    <title>SKELL TECH: Relatório de Impacto Ambiental (Vazamento)</title>
+    <title>OPORD-002: Cold Ore</title>
     <script>(function(){try{var t=localStorage.getItem('grb-theme');if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap">
     <link rel="stylesheet" href="../shared/ops.css">
+    <!-- Conteúdo: missao.js. Ordem: componentes.js -> missao.js -> ops.js -->
+    <script src="../shared/componentes.js" defer></script>
+    <script src="missao.js" defer></script>
     <script src="../shared/ops.js" defer></script>
 </head>
-
-<body class="dossier dossier--skell">
-
-    <div class="a4-watermark" aria-hidden="true">SKELL TECH R&amp;D // CONFIDENCIAL</div>
-
-    <nav class="nav-buttons" aria-label="Navegação do dossiê">
-        <a class="btn btn--ghost" href="lore_hub.html">&lt; RETORNAR AO HUB</a>
-        <button type="button" class="btn" data-action="print">🖨️ IMPRIMIR DOSSIÊ</button>
-    </nav>
-
-    <main class="container">
-        <div class="a4-stamp">SKELL TECH - ASSUNTOS INTERNOS</div>
-
-        <header class="header">
-            <h1>AVALIAÇÃO DE RISCO ECOLÓGICO: PROJETO COLD ORE</h1>
-            <p><strong>DE:</strong> DIRETORIA DE SUSTENTABILIDADE E HIDROLOGIA DA SKELL TECH</p>
-            <p><strong>PARA:</strong> COMANDO CENTRAL DA SENTINEL CORP.</p>
-            <p><strong>ASSUNTO:</strong> CONTAMINAÇÃO DO LENÇOL FREÁTICO NO MOUNT HODGSON</p>
-            <p class="warning">&gt;&gt; DOCUMENTO INTERCEPTADO PELA INTELIGÊNCIA GHOST...</p>
-        </header>
-
-        <h2>1. RESUMO EXECUTIVO DO PROBLEMA</h2>
-        <p>
-            O recente aumento na extração e processamento de Bauxita nas instalações da Mina do Vale Silent e do
-            Complexo de Extrações gerou um subproduto químico altamente tóxico. Nossa análise hidrológica confirma que
-            os resíduos não estão sendo devidamente contidos nos reservatórios de decantação. O vazamento atingiu níveis
-            críticos.
-        </p>
-
-        <h2>2. VETORES DE CONTAMINAÇÃO (FOCOS)</h2>
-        <p>
-            O subproduto refinado do minério infiltrou-se no lençol freático local, contaminando as três principais
-            fontes de água que abastecem as comunidades civis das províncias ao sul. As medições mais recentes indicam
-            toxidade letal aguda nos seguintes pontos críticos:
-        </p>
-        <ul>
-            <li><strong>PONTO ALFA: O Reservatório Principal</strong> (Imediatamente abaixo do Complexo de Extrações).</li>
-            <li><strong>PONTO BRAVO: Lago Alice</strong> (Sistema de escoamento secundário).</li>
-            <li><strong>PONTO CHARLIE: Nascente do Dove Stream</strong> (Canal de distribuição para as áreas baixas).</li>
-        </ul>
-
-        <h2>3. CONSEQUÊNCIAS E DIRETRIZ SENTINEL</h2>
-        <p>
-            O consumo desta água pela população local resultará em falência múltipla de órgãos em 72 horas. O comando da
-            Sentinel emitiu ordens não documentadas para abafar o caso e continuar a produção de blindagens de drones
-            ininterruptamente, ignorando os protocolos da Skell Tech de evacuação e purificação.
-        </p>
-
-        <p>
-            <em>Aviso aos Operadores Ghost: Para que possamos sintetizar um purificador em Erewhon e evitar um massacre
-                civil, precisamos de amostras físicas imediatas. Infiltrem os três focos de contaminação e ativem
-                sensores de análise diretamente na água.</em>
-        </p>
-
-        <p class="end-mark fine-print">
-            DOCUMENTO CORPORATIVO SKELL TECH. A DIVULGAÇÃO DESTE RELATÓRIO RESULTARÁ EM DEMISSÃO POR JUSTA CAUSA E
-            PROCESSO LEGAL.
-        </p>
-    </main>
-
-</body>
-
+<body data-pagina="documento" data-papel="squad" data-doc="inteligencia"></body>
 </html>

@@ -214,13 +214,27 @@ a {
     margin-left: auto;
 }
 
+/* Celular: botões dividem a linha e o botão de tema vira só ícone */
 @media (max-width: 600px) {
     .nav-buttons .btn {
-        flex: 1 1 160px;
+        flex: 1 1 auto;
+        padding-inline: 0.8em;
+        font-size: 0.92em;
     }
 
-    .theme-toggle {
+    .nav-buttons .theme-toggle {
+        flex: 0 0 auto;
+        min-width: 44px;
         margin-left: 0;
+    }
+
+    .theme-toggle__label {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
     }
 }
 
@@ -347,12 +361,14 @@ li {
     animation: reveal 2.2s steps(36, end) both;
 }
 
+/* Margem negativa: o cursor nunca força o título a quebrar para uma linha vazia */
 .typing-effect::after {
     content: "";
     display: inline-block;
     width: 0.55em;
     height: 1em;
     margin-left: 0.15em;
+    margin-right: -0.7em;
     vertical-align: -0.12em;
     background: currentColor;
     animation: caret 0.8s step-end infinite;
@@ -360,7 +376,7 @@ li {
 
 @keyframes reveal {
     from { clip-path: inset(0 100% 0 0); }
-    to { clip-path: inset(0 0 0 0); }
+    to { clip-path: inset(0 -1em 0 0); }
 }
 
 @keyframes caret {
@@ -430,7 +446,7 @@ li {
 }
 
 .btn--sm {
-    min-height: 40px;
+    min-height: 44px;
     padding: 0.4em 0.85em;
     font-size: 0.95em;
 }
@@ -440,6 +456,12 @@ li {
     flex-wrap: wrap;
     gap: 10px;
     margin: 2.2em 0 0.5em;
+}
+
+@media (max-width: 600px) {
+    .btn-row .btn {
+        flex: 1 1 140px;
+    }
 }
 
 .theme-toggle__icon::before {
@@ -795,9 +817,11 @@ th {
     line-height: 1.9;
 }
 
+/* A amostra tem 22px, mas a área de toque é 44px (padding compensado por margem negativa) */
 .camo-swatch {
     display: inline-block;
-    margin-right: 8px;
+    margin: -11px -3px -11px -11px;
+    padding: 11px;
     vertical-align: middle;
     line-height: 0;
     cursor: zoom-in;
@@ -955,7 +979,7 @@ th {
     bottom: 8px;
     left: 8px;
     z-index: 5;
-    padding: 10px;
+    padding: 13px;
     font-size: 18px;
     line-height: 1;
     text-decoration: none;
@@ -1050,6 +1074,12 @@ body.dossier::after {
     letter-spacing: 0.3em;
     text-align: center;
     text-transform: uppercase;
+}
+
+@media (max-width: 600px) {
+    .a4-stamp {
+        letter-spacing: 0.12em;
+    }
 }
 
 .a4-stamp--end {

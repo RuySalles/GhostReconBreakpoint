@@ -25,7 +25,9 @@ E:\Trabalho\GhostReconBreakpoint\
 ├── public/                             <- [NOVO] Frontend estático da aplicação
 │   ├── assets/                         <- Imagens, ícones e assets de interface
 │   ├── campaigns/                      <- Conteúdo narrativo estático e missões (ex: missao-01-growler-silent)
+│   │   ├── missoes.js                  <- Lista de missões exibida no hub inicial (index.html)
 │   │   ├── shared/                     <- ops.css + ops.js (tema, modais, zoom, áudio) e componentes.js (monta as páginas)
+│   │   ├── _modelo/                    <- Modelo copiado por "npm run nova-missao" (não é uma missão publicada)
 │   │   └── missao-XX-nome/             <- missao.js = TODO o conteúdo (Squad + GM); os .html são só esqueletos
 │   ├── index.html                      <- Ponto de entrada principal
 │   └── mapa.html                       <- Aplicação do mapa operacional
@@ -35,7 +37,9 @@ E:\Trabalho\GhostReconBreakpoint\
 │   │   └── clean_map_data.js           <- map_data_raw.json -> data-out/map_data.json
 │   ├── server/                         <- Servidor local (Node http/https puro, porta 8443)
 │   │   └── server.js
-│   └── diagnostics/                    <- Scripts de testes e ferramentas de análise estrutural
+│   ├── diagnostics/                    <- Scripts de testes e ferramentas de análise estrutural
+│   └── tools/
+│       └── nova_missao.js              <- "npm run nova-missao -- 03 \"Nome\"": cria missão a partir do _modelo
 ├── AGENTS.md                           <- Este arquivo: diretrizes permanentes para todas as IAs
 ├── CLAUDE.md                           <- Importa AGENTS.md (+ notas exclusivas do Claude)
 └── GEMINI.md                           <- Importa AGENTS.md (+ notas exclusivas do Gemini)
@@ -223,6 +227,54 @@ Não tratar Ghost Lead como um simples jogador com uma versão diferente da inte
 Não limitar o Ghost Lead ao conteúdo do Ghost Squad.
 
 O Ghost Lead deve sempre ser considerado capaz de acessar o conteúdo do Ghost Squad e, adicionalmente, todo o conteúdo necessário para conduzir a missão como GM.
+
+---
+
+## 🎯 Como Criar uma Missão
+
+As missões são **orientadas a dados**: todo o conteúdo fica em `public/campaigns/missao-XX-nome/missao.js`, e as páginas `.html` são esqueletos idênticos que o `shared/componentes.js` preenche. Não escreva conteúdo de missão direto em HTML.
+
+### Passo a passo
+1. `npm run nova-missao -- 03 "Nome da Operação"` → cria `campaigns/missao-03-nome-da-operacao/`, a pasta `assets/missao-03/` (com `audio/`) e cadastra a missão em `campaigns/missoes.js`.
+2. Coloque as imagens em `public/assets/missao-03/` e o áudio em `public/assets/missao-03/audio/briefing.mp3`.
+3. Preencha o `missao.js` da missão. O arquivo do `_modelo` já traz um exemplo comentado de cada bloco.
+4. Ajuste o `resumo` da missão em `campaigns/missoes.js` (texto mostrado no hub inicial).
+5. Teste localmente com `npm start` e confira hub do Squad, hub do GM e dossiês nos dois temas e no celular.
+
+### Páginas geradas
+| Arquivo | `<body>` | Conteúdo (`missao.js`) |
+|---|---|---|
+| `lore_hub.html` | `data-pagina="hub" data-papel="squad"` | `hub` |
+| `lore_hub_gm.html` | `data-pagina="hub" data-papel="gm"` | `hub` (versão GM) |
+| `briefing_tatico.html` | `data-pagina="documento" data-papel="squad" data-doc="tatico"` | `documentos.tatico` |
+| `relatorio_gm.html` | `data-pagina="documento" data-papel="gm" data-doc="tatico"` | `documentos.tatico` (versão GM) |
+| `doc_intel.html` | `data-pagina="documento" data-papel="squad" data-doc="inteligencia"` | `documentos.inteligencia` |
+
+Para outro documento, crie um novo esqueleto com outro `data-doc` e a chave correspondente em `documentos`.
+
+### Squad x GM no mesmo arquivo (regra de papéis)
+- `GRB.papel('texto Squad', 'texto GM')` → versão diferente por papel.
+- `GRB.soGm(valor)` / `GRB.soSquad(valor)` → item de lista, linha de cabeçalho, botão, seção inteira etc. que só aparece para aquele papel.
+- O GM sempre vê tudo do Squad + o que for `soGm`. **Nunca** crie conteúdo de GM em arquivo separado do Squad.
+
+### Blocos disponíveis (em `briefing`, `secoes[].blocos` e `callout`)
+| Bloco | Uso |
+|---|---|
+| `'texto'` | Parágrafo (aceita `<strong>`, `<em>`, `<br>`) |
+| `{ p, classe }` | Parágrafo com classe (ex.: `'sign-off typing-effect'`) |
+| `{ linhas: [...] }` | Parágrafo com uma linha por item |
+| `{ h3 }` | Subtítulo |
+| `{ lista: [...] }` | Lista com marcadores |
+| `{ galeria: [{ img, titulo, legenda, zoom, alt, larga, natural, centro }] }` | Fotos clicáveis (`zoom` = legenda ampliada) |
+| `{ kneeboard, galeria }` | Cartas de navegação |
+| `{ video }` | Vídeo "uplink" |
+| `{ tabela: [col1, col2], linhas: [[rótulo, valor], { perigo, celulas }] }` | Tabela SITREP |
+| `{ callout, titulo, perigo }` | Bloco de destaque (texto ou lista de blocos) |
+| `{ complicacoes: [{ nome, gatilho, acao, resposta }] }` | Complicações do GM |
+
+Componentes próprios do hub: `cabecalho` (aceita `{ aviso }` no meio), `audio`, `documentos` (barra de botões), `script` (script do mestre), `objetivos` (seções com `itens` e `sub`), `gabaritos` (grade do GM), `configuracoes` (modal ⚙️, com `camuflagens` de `assets/paint/`), `imprimir`, `acessoGm: false`, `estiloGaleria`.
+
+Componente novo? Adicione em `shared/componentes.js` (e o estilo em `shared/ops.css`) para que todas as missões possam usar.
 
 ---
 

@@ -13,23 +13,8 @@
     <h2>// SALA DE OPERAÇÕES - GHOST SQUAD</h2>
     <p>SELECIONE O BRIEFING TÁTICO DESEJADO:</p>
 
-    <div class="mission-list">
-        <div class="mission-item">
-            <div class="mission-info">
-                <h3>OPORD: GROWLER SILENT</h3>
-                <p>Status: Ativo | Alvo: Instalação Clandestina Skell Tech</p>
-            </div>
-            <a href="campaigns/missao-01-growler-silent/briefing_v4.html" class="btn-access">ACESSAR OPORD</a>
-        </div>
-        
-        <div class="mission-item" style="border-left-color: #33ff33;">
-            <div class="mission-info">
-                <h3>OPORD: COLD ORE</h3>
-                <p>Status: Ativo | Setor: Mount Hodgson</p>
-            </div>
-            <a href="campaigns/missao-02-cold-ore/lore_hub.html" class="btn-access">ACESSAR OPORD</a>
-        </div>
-    </div>
+    <!-- Preenchida a partir de campaigns/missoes.js -->
+    <div class="mission-list" id="mission-list"></div>
 
     <!-- GLOSSÁRIO DE ACRÔNIMOS -->
     <div class="acronyms-box">
@@ -48,6 +33,24 @@
 </div>
 
 <a href="mapa.html" class="secret-map-link" title="Acesso Alpha - Mapa Tático">🌐</a>
+
+<script src="campaigns/missoes.js"></script>
+<script>
+    (function () {
+        var lista = document.getElementById('mission-list');
+        (window.GRB_MISSOES || []).forEach(function (m) {
+            var item = document.createElement('div');
+            item.className = 'mission-item';
+            item.innerHTML =
+                '<div class="mission-info"><h3></h3><p></p></div>' +
+                '<a class="btn-access">ACESSAR OPORD</a>';
+            item.querySelector('h3').textContent = m.titulo;
+            item.querySelector('p').textContent = m.resumo;
+            item.querySelector('a').href = m.pagina;
+            lista.appendChild(item);
+        });
+    })();
+</script>
 
 </body>
 </html>

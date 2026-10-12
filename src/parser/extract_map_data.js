@@ -1,9 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 
-const codexDir = path.join(__dirname, '..', 'Data', 'Codex');
-const extractedDir = path.join(__dirname, '..', 'Data', 'Extracted');
-const outputFile = path.join(__dirname, '..', 'assets', 'map_data.json');
+const codexDir = path.join(__dirname, '..', '..', 'Data', 'Codex');
+const extractedDir = path.join(__dirname, '..', '..', 'Data', 'Extracted');
+const outputFile = path.join(__dirname, '..', '..', 'data-out', 'map_data_raw.json');
 
 // Ensure output directory exists
 const outputDir = path.dirname(outputFile);

@@ -1,7 +1,7 @@
 /**
  * clean_map_data.js
  * 
- * Le o assets/map_data.json extraido e aplica filtros baseados em evidencia
+ * Le o data-out/map_data_raw.json extraido e aplica filtros baseados em evidencia
  * para remover ruido, assets de motor 3D e coordenadas placeholder invalidas.
  * 
  * Preserva deliberadamente:
@@ -9,7 +9,7 @@
  *   - Erewhon e pontos de missao com nome especifico
  *   - Todos os Bivouacs/Camps/Outposts com prefixo geografico identificavel
  * 
- * Saida: assets/map_data_clean.json (nao sobrescreve o original)
+ * Saida: data-out/map_data.json (arquivo consumido pelo mapa; o bruto nao e alterado)
  */
 
 'use strict';
@@ -17,8 +17,8 @@
 const fs   = require('fs');
 const path = require('path');
 
-const INPUT_FILE  = path.join(__dirname, '..', 'assets', 'map_data.json');
-const OUTPUT_FILE = path.join(__dirname, '..', 'assets', 'map_data_clean.json');
+const INPUT_FILE  = path.join(__dirname, '..', '..', 'data-out', 'map_data_raw.json');
+const OUTPUT_FILE = path.join(__dirname, '..', '..', 'data-out', 'map_data.json');
 
 // 1. PREFIXOS DE ASSETS DO MOTOR - nunca sao POIs geograficos
 const ENGINE_ASSET_PREFIXES = [
@@ -103,7 +103,7 @@ function isGolemIsland(poi) {
 //     para uma atribuicao de coordenada mais precisa por entidade.
 //   - Exigir que o float Z (altitude) seja > 1.0 para descartar entidades 2D/HUD.
 //   - Rejeitar floats com valores tipicos de placeholder do motor (multiplos de 8, 512, 2048).
-//   - Ver: src/extract_map_data.js para implementacao atual.
+//   - Ver: src/parser/extract_map_data.js para implementacao atual.
 // ─────────────────────────────────────────────────────────────────────────────
 const GEO_ZONES = [
     // Ilha Principal de Auroa (sem Golem Island)

@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const dir = path.join(__dirname, '..', 'Data', 'Extracted', 'DataPC_TGT_WorldMap_Bootstrap_Split.forge');
+const dir = path.join(__dirname, '..', '..', 'Data', 'Extracted', 'DataPC_TGT_WorldMap_Bootstrap_Split.forge');
 
 try {
     if (!fs.existsSync(dir)) {

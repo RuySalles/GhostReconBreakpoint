@@ -6,6 +6,7 @@
     "start": "node src/server/server.js",
     "nova-missao": "node src/tools/nova_missao.js",
     "validar": "node src/tools/validar_missoes.js",
+    "gerar-og": "node src/tools/gerar_og.js",
     "certificado": "node -e \"require('fs').mkdirSync('src/server/certs',{recursive:true})\" && openssl req -x509 -newkey rsa:2048 -nodes -keyout src/server/certs/key.pem -out src/server/certs/cert.pem -days 825 -subj /CN=localhost -addext subjectAltName=DNS:localhost,IP:127.0.0.1",
     "test": "node src/tools/validar_missoes.js"
   },

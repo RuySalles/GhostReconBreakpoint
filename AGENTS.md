@@ -53,7 +53,8 @@ E:\Trabalho\GhostReconBreakpoint\
 │   ├── diagnostics/                    <- Scripts de testes e ferramentas de análise estrutural
 │   └── tools/
 │       ├── nova_missao.js              <- "npm run nova-missao -- 03 \"Nome\"": cria missão a partir do _modelo
-│       └── validar_missoes.js          <- "npm run validar": confere missões (roda também no deploy)
+│       ├── validar_missoes.js          <- "npm run validar": confere missões (roda também no deploy)
+│       └── gerar_og.js                 <- "npm run gerar-og": imagens de prévia de link (WhatsApp) em public/assets/og/
 ├── bastidores/                         <- FORA do site: originais das imagens, roteiros, versões antigas
 ├── docs/planos/                        <- Planos aprovados ainda não implementados (ex.: radio-tatica.md)
 ├── AGENTS.md                           <- Este arquivo: diretrizes permanentes para todas as IAs
@@ -265,6 +266,7 @@ As missões são **orientadas a dados**: o conteúdo fica em `missao.js` (Squad)
 2. Imagens otimizadas em `imagens/` (WebP/JPG, até ~1920 px), áudio em `audio/briefing.mp3`; originais em `bastidores/`.
 3. Preencha `missao.js` (o que o Squad vê) e `missao-gm.js` (tudo que é do GM). Os arquivos do `_modelo` trazem exemplo de cada bloco.
 4. Ajuste o `resumo` da missão em `campaigns/catalogo.js` (texto mostrado no hub inicial).
+   - Prévia no WhatsApp: acrescente a missão em `CARTOES` de `src/tools/gerar_og.js`, rode `npm run gerar-og` e troque `og-site.jpg` por `og-missao-NN.jpg` (e ajuste `og:description` e `og:url`) nas páginas `.html` da missão.
 5. `npm run validar` (precisa terminar com **0 erros**) e `npm start` para conferir hub do Squad, hub do GM e dossiês nos dois temas e no celular.
 
 ### Trilha sonora tática

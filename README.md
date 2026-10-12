@@ -36,6 +36,7 @@ public/                  Site publicado no GitHub Pages
       imagens/ audio/ video/
   css/ js/               Estilo, tema escuro/claro e componentes compartilhados
 bastidores/              Fora do site: originais das imagens, roteiros, versões antigas
+docs/planos/             Planos aprovados para implementar depois (ex.: Rádio Tática)
 src/
   tools/                 nova_missao.js, validar_missoes.js
   parser/                Extração do mapa (Data/ -> data-out/)

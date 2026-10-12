@@ -55,6 +55,7 @@ E:\Trabalho\GhostReconBreakpoint\
 │       ├── nova_missao.js              <- "npm run nova-missao -- 03 \"Nome\"": cria missão a partir do _modelo
 │       └── validar_missoes.js          <- "npm run validar": confere missões (roda também no deploy)
 ├── bastidores/                         <- FORA do site: originais das imagens, roteiros, versões antigas
+├── docs/planos/                        <- Planos aprovados ainda não implementados (ex.: radio-tatica.md)
 ├── AGENTS.md                           <- Este arquivo: diretrizes permanentes para todas as IAs
 ├── CLAUDE.md                           <- Importa AGENTS.md (+ notas exclusivas do Claude)
 └── GEMINI.md                           <- Importa AGENTS.md (+ notas exclusivas do Gemini)

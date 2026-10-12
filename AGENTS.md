@@ -25,6 +25,7 @@ E:\Trabalho\GhostReconBreakpoint\
 ├── public/                             <- [NOVO] Frontend estático da aplicação
 │   ├── assets/                         <- Imagens, ícones e assets de interface
 │   ├── campaigns/                      <- Conteúdo narrativo estático e missões (ex: missao-01-growler-silent)
+│   │   └── shared/                     <- ops.css + ops.js: tema escuro/claro, modais, zoom e áudio usados por TODAS as missões
 │   ├── index.html                      <- Ponto de entrada principal
 │   └── mapa.html                       <- Aplicação do mapa operacional
 ├── src/                                <- Código-fonte (backend e scripts)

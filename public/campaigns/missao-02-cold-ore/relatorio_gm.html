@@ -1,33 +1,36 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark light">
     <title>OPORD-002: Cold Ore - DOSSIÊ OVERLORD (RESTRITO)</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../css/global.css">
-    <link rel="stylesheet" href="missao_02.css">
+    <script>(function(){try{var t=localStorage.getItem('grb-theme');if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+    <link rel="stylesheet" href="../shared/ops.css">
+    <script src="../shared/ops.js" defer></script>
 </head>
-<body class="a4-mode">
-    
-    <div class="a4-watermark">USO RESTRITO GHOST LEAD</div>
+<body class="dossier">
 
-    <div class="nav-buttons">
-        <button class="btn" onclick="window.location.href='lore_hub_gm.html'">&lt; RETORNAR AO HUB GM</button>
-        <button class="btn" onclick="window.print()">IMPRIMIR DOSSIÊ</button>
-    </div>
+    <div class="a4-watermark" aria-hidden="true">USO RESTRITO GHOST LEAD</div>
 
-    <div class="container" style="border-color: var(--term-red);">
+    <nav class="nav-buttons" aria-label="Navegação do dossiê">
+        <a class="btn btn--ghost" href="lore_hub_gm.html">&lt; RETORNAR AO HUB GM</a>
+        <button type="button" class="btn" data-action="print">🖨️ IMPRIMIR DOSSIÊ</button>
+    </nav>
+
+    <main class="container is-gm">
         <div class="a4-stamp">SOMENTE LEITURA GHOST 1-1 / OVERLORD</div>
 
-        <div class="header" style="border-bottom-color: var(--term-red);">
-            <h1 class="typing-effect" style="color: var(--term-red); border-left-color: var(--term-red);">GRB-INTEL-OPORD-002: DOSSIÊ GM</h1>
+        <header class="header">
+            <h1 class="typing-effect">GRB-INTEL-OPORD-002: DOSSIÊ GM</h1>
             <p><strong>OPERAÇÃO:</strong> COLD ORE (MINÉRIO GELADO)</p>
             <p><strong>LOCALIZAÇÃO:</strong> ARQUIPÉLAGO DE AUROA // MOUNT HODGSON</p>
             <p><strong>AUTORIZAÇÃO:</strong> CONTROLE GM ATIVO // APENAS PARA ESQUADRÃO GHOST</p>
             <p><strong>ALERTA DE SEGURANÇA:</strong> O CONTEÚDO A SEGUIR DITARÁ AS REGRAS DE ARBITRAGEM E COMPLICAÇÕES DA SESSÃO. NÃO COMPARTILHAR COM OS OPERADORES 1-2, 1-3 OU 1-4.</p>
-        </div>
+        </header>
 
         <h2>1. ANÁLISE DE VIABILIDADE E ARBITRAGEM DO GM</h2>
         <p>
@@ -38,7 +41,7 @@
         </p>
 
         <h2>2. EXECUÇÃO TÁTICA (PASSO A PASSO)</h2>
-        
+
         <h3>OBJETIVO 1: MINA DO VALE SILENT (Extração)</h3>
         <p>Prioridade em infiltração, reconhecimento e sabotagem.</p>
         <ul>
@@ -75,13 +78,11 @@
             4. <strong>Hélices:</strong> Estação de Drones W041, prédio secundário próximo ao heliponto.
         </p>
 
-        <h2 style="color: var(--term-red); border-left-color: var(--term-red);">4. EVENTOS OPCIONAIS / COMPLICAÇÕES DO GM (SEÇÃO 6)</h2>
-        <div class="intel-card" style="border-color: var(--term-red);">
-            <p style="color: var(--term-red);">
-                Como GM, você deve invocar estas complicações baseadas nos GATILHOS descritos.
-            </p>
+        <h2 class="h-danger">4. EVENTOS OPCIONAIS / COMPLICAÇÕES DO GM (SEÇÃO 6)</h2>
+        <div class="callout callout--danger">
+            Como GM, você deve invocar estas complicações baseadas nos GATILHOS descritos.
         </div>
-        
+
         <h3>COMPLICAÇÃO 1: Interdição de Rota</h3>
         <p>
             <strong>Gatilho:</strong> Quando o esquadrão planeja o deslocamento entre objetivos.<br>
@@ -138,23 +139,10 @@
             <strong>Resposta dos jogadores:</strong> Avançar com extrema cautela até alcançar a nascente do Riacho da Pomba.
         </p>
 
-        <br><hr style="border: 1px dashed var(--term-red);"><br>
-        <p style="text-align: center; color: var(--term-red);">
-            <em>FIM DO DOSSIÊ OVERLORD. DESTRUA APÓS A LEITURA.</em>
-        </p>
+        <p class="end-mark">FIM DO DOSSIÊ OVERLORD. DESTRUA APÓS A LEITURA.</p>
 
-        <div class="a4-stamp">FIM DE RELATÓRIO DO GM</div>
-    </div>
+        <div class="a4-stamp a4-stamp--end">FIM DE RELATÓRIO DO GM</div>
+    </main>
 
-    <!-- Modal de Imagem -->
-    <div id="imgModal" class="spoiler-modal-overlay">
-        <div class="spoiler-modal" style="border-color: var(--term-red); box-shadow: 0 0 30px rgba(255, 0, 0, 0.2);">
-            <img id="modalImg" src="" style="max-width: 100%; max-height: 70vh;">
-            <p id="modalCaption" style="color: var(--term-red);"></p>
-            <button class="btn btn-red" onclick="closeModal()">FECHAR ZOOM</button>
-        </div>
-    </div>
-
-    <script src="missao_02.js"></script>
 </body>
 </html>

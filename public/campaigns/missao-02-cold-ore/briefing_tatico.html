@@ -1,38 +1,38 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark light">
     <title>OPORD-002: Cold Ore - Briefing Tático (Ghost Squad)</title>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="../../css/global.css">
-    <link rel="stylesheet" href="missao_02.css">
+    <script>(function(){try{var t=localStorage.getItem('grb-theme');if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+    <link rel="stylesheet" href="../shared/ops.css">
+    <script src="../shared/ops.js" defer></script>
 </head>
 
-<body class="a4-mode">
+<body class="dossier">
 
-    <div class="a4-watermark">CONFIDENCIAL // USO RESTRITO</div>
+    <div class="a4-watermark" aria-hidden="true">CONFIDENCIAL // USO RESTRITO</div>
 
-    <div class="nav-buttons">
-        <button class="btn" onclick="window.location.href='lore_hub.html'" style="border-color: #888; color: #ccc;">&lt;
-            RETORNAR AO HUB</button>
-        <button class="btn" onclick="window.print()">🖨️ IMPRIMIR DOSSIÊ</button>
-    </div>
+    <nav class="nav-buttons" aria-label="Navegação do dossiê">
+        <a class="btn btn--ghost" href="lore_hub.html">&lt; RETORNAR AO HUB</a>
+        <button type="button" class="btn" data-action="print">🖨️ IMPRIMIR DOSSIÊ</button>
+    </nav>
 
-    <div class="container">
+    <main class="container">
         <div class="a4-stamp">ULTRA SECRETO - APENAS GHOST SQUAD</div>
 
-        <div class="header">
+        <header class="header">
             <h1 class="typing-effect">GRB-INTEL-OPORD-002: COLD ORE</h1>
             <p><strong>OPERAÇÃO:</strong> COLD ORE (MINÉRIO GELADO)</p>
             <p><strong>LOCALIZAÇÃO:</strong> ARQUIPÉLAGO DE AUROA // MOUNT HODGSON</p>
             <p><strong>AUTORIZAÇÃO:</strong> APENAS PARA ESQUADRÃO GHOST</p>
             <p class="warning">&gt;&gt; TRANSMISSÃO CRIPTOGRAFADA RECEBIDA...</p>
-        </div>
+        </header>
 
         <h2>1. ANÁLISE DE VIABILIDADE E REGRAS TÁTICAS</h2>
         <p>
@@ -86,16 +86,11 @@
             4. <strong>Hélices:</strong> Estação de Drones W041, prédio secundário próximo ao heliponto.
         </p>
 
-        <br>
-        <hr style="border: 1px dashed var(--term-dim);"><br>
-        <p style="text-align: center; color: var(--term-dim);">
-            <em>FIM DA TRANSMISSÃO - BOA CAÇADA, GHOSTS.</em>
-        </p>
+        <p class="end-mark">FIM DA TRANSMISSÃO - BOA CAÇADA, GHOSTS.</p>
 
-        <div class="a4-stamp">FIM DE RELATÓRIO</div>
-    </div>
+        <div class="a4-stamp a4-stamp--end">FIM DE RELATÓRIO</div>
+    </main>
 
-    <script src="missao_02.js"></script>
 </body>
 
 </html>

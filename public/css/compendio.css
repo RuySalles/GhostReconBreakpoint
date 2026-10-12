@@ -1,0 +1,42 @@
+/* ==========================================================================
+   COMPÊNDIO DOUTRINÁRIO (compendio.html) — só o que é exclusivo desta página.
+   Cores, tipografia, botões e tema vêm de base.css.
+   ========================================================================== */
+
+.compendio h1 {
+    font-size: clamp(1.25rem, 1rem + 1.6vw, 1.9rem);
+}
+
+.compendio-subtitulo {
+    margin: 0 0 0.3em;
+    color: var(--accent);
+    font-size: 1.05em;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.compendio-subtitulo--menor {
+    color: var(--text-muted);
+    font-size: 0.9em;
+}
+
+.compendio .divisor {
+    margin: 2em 0;
+    border: 0;
+    border-top: 1px dashed var(--line);
+}
+
+.compendio-indice a {
+    color: var(--text);
+    text-decoration: none;
+}
+
+.compendio-indice a:hover,
+.compendio-indice a:focus-visible {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+.compendio h2 {
+    scroll-margin-top: 16px;
+}

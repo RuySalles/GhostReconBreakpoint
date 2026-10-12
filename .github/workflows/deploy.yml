@@ -24,6 +24,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       
+      - name: Validate missions
+        # Bloqueia a publicação se alguma missão tiver ERRO (spoiler vazando, link quebrado...)
+        run: node src/tools/validar_missoes.js
+
       - name: Prepare Deployment Directory
         run: |
           # The main static site is in 'public'

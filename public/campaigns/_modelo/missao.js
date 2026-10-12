@@ -2,15 +2,17 @@
    {{CODIGO}} — {{NOME}}
    Todo o conteúdo da missão fica aqui. As páginas são montadas a partir deste arquivo:
      hub.html             -> Hub do Ghost Squad (jogadores)
-     hub-gm.html          -> Hub do Ghost Lead (GM) = tudo do Squad + o que for soGm
+     hub-gm.html          -> Hub do Ghost Lead (GM) = tudo do Squad + o conteúdo do missao-gm.js
      dossie.html          -> Dossiê tático do Squad   (documentos.dossie)
      dossie-gm.html       -> Dossiê do GM             (documentos.dossie, versão GM)
      intel-documento.html -> Documento interceptado   (documentos.inteligencia)
                              renomeie para intel-<assunto>.html (ex.: intel-skell-agua.html)
 
-   GRB.papel('squad', 'gm')  -> texto diferente para Squad e GM
-   GRB.soGm(...)             -> aparece só para o GM (item de lista, linha, seção inteira...)
-   GRB.soSquad(...)          -> aparece só para o Squad
+   IMPORTANTE: os jogadores baixam ESTE arquivo. Conteúdo do GM vai no missao-gm.js:
+   GRB.gm('chave')                       -> lugar de um conteúdo do GM (item de lista, linha,
+                                            botão, seção inteira...); o valor fica no missao-gm.js
+   GRB.papel('texto Squad', GRB.gm('chave')) -> versão diferente para Squad e GM
+   GRB.soSquad(...)                       -> aparece só para o Squad
 
    Textos aceitam HTML simples: <strong>, <em>, <br>, <span class="warning">,
    <strong class="text-amber">, <strong class="text-danger">.
@@ -21,33 +23,33 @@
     'use strict';
 
     var papel = GRB.papel;
-    var soGm = GRB.soGm;
+    var gm = GRB.gm;
     var soSquad = GRB.soSquad;
 
     GRB.registrarMissao({
-        imagens: '{{IMAGENS}}',                         // pasta das imagens desta missão
-        audio: '{{IMAGENS}}audio/briefing.mp3',         // áudio do Overlord (apague a linha se não houver)
+        imagens: 'imagens/',                  // imagens/ desta pasta (salve em WebP ou JPG, máx. ~1920px)
+        audio: 'audio/briefing.mp3',          // áudio do Overlord (apague a linha se não houver)
         // estiloGaleria: 'intel-gallery--nvg',         // filtro de visão noturna em todas as galerias
 
         // ------------------------------------------------------------------
         // HUB
         // ------------------------------------------------------------------
         hub: {
-            tituloPagina: papel('{{CODIGO}}: {{NOME_TITULO}} - Lore & Briefing', '[OVERLORD] {{CODIGO}}: {{NOME_TITULO}} - Hub do GM'),
-            titulo: papel('OPERAÇÃO: {{NOME}}', 'OVERLORD: {{NOME}}'),
+            tituloPagina: papel('{{CODIGO}}: {{NOME_TITULO}} - Lore & Briefing', gm('hub.tituloPagina')),
+            titulo: papel('OPERAÇÃO: {{NOME}}', gm('hub.titulo')),
             cabecalho: [
-                ['DE', papel('CENTRO DE COMANDO TÁTICO (OVERLORD)', 'COMANDO CENTRAL (VOCÊ)')],
-                ['PARA', papel('ESQUADRÃO GHOST', 'ESQUADRÃO GHOST (CAMPO)')],
+                ['DE', papel('CENTRO DE COMANDO TÁTICO (OVERLORD)', gm('hub.de'))],
+                ['PARA', papel('ESQUADRÃO GHOST', gm('hub.para'))],
                 ['LOCALIZAÇÃO', 'PROVÍNCIA, AUROA']
                 // { aviso: 'TEXTO PISCANDO' }   <- alerta piscando no meio do cabeçalho
             ],
-            aviso: papel('&gt;&gt; UPLINK SEGURO ESTABELECIDO...', '&gt;&gt; UPLINK MESTRE ESTABELECIDO...'),
+            aviso: papel('&gt;&gt; UPLINK SEGURO ESTABELECIDO...', gm('hub.aviso')),
             // imprimir: true,      // botão "IMPRIMIR DOSSIÊ" na barra do topo
             // acessoGm: false,     // missão sem área do GM (some o 👁️ do canto)
 
             // Briefing: lista de blocos, na ordem em que aparecem
             briefing: [
-                // { video: 'video.mp4' },
+                // { video: 'video/briefing.mp4' },
                 // { kneeboard: '// CARTAS DE NAVEGAÇÃO (KNEEBOARD)', galeria: [ ... ] },
                 'Senhores, ... (parágrafo de abertura do Overlord).',
                 { galeria: [
@@ -70,17 +72,11 @@
                 { configuracoes: true, rotulo: '⚙️ CONFIGURAÇÕES', dica: 'Parâmetros de Imersão e Loadout' },
                 { rotulo: '📄 CONFIDENCIAL', href: 'dossie.html', dica: '{{CODIGO}}: Execução Tática (Esquadrão)' },
                 { rotulo: '📖 INTELIGÊNCIA', href: 'intel-documento.html', dica: 'Documento Interceptado' },
-                soGm({ rotulo: '📄 DOSSIÊ GM', href: 'dossie-gm.html', dica: 'Dossiê de Arbitragem (GM)', estilo: 'amber' })
+                gm('hub.documentos.dossieGm')
             ],
 
             // Script do mestre (só GM)
-            script: soGm({
-                evento: 'EVENTO X (Descrição):',
-                paragrafos: [
-                    'Quando acionar e o que anunciar no rádio: <em>"Atenção Ghost 1-1, ..."</em>',
-                    'Mecanicamente: o que o GM faz in-game.'
-                ]
-            }),
+            script: gm('hub.script'),
 
             // Objetivos: cada seção vira um título + lista
             objetivos: [
@@ -89,7 +85,7 @@
                     itens: [
                         {
                             titulo: 'OBJETIVO PRINCIPAL:',
-                            texto: papel('O que o esquadrão deve fazer.', 'O que o GM deve monitorar.'),
+                            texto: papel('O que o esquadrão deve fazer.', gm('hub.objetivo1')),
                             sub: [
                                 { rotulo: 'Local A:', texto: 'Detalhe do local.', galeria: [
                                     { img: 'alvo_a.jpg', titulo: 'Alvo Primário', legenda: 'Local A', zoom: '[SABOTAGEM] Descrição ampliada.' }
@@ -117,9 +113,7 @@
             ],
 
             // Gabaritos do GM (botões que abrem a imagem em tela cheia)
-            gabaritos: soGm([
-                { img: 'gm_alvo_a.jpg', titulo: 'ALVO A', zoom: 'Gabarito: Alvo A', descricao: 'O que a imagem mostra.' }
-            ])
+            gabaritos: gm('hub.gabaritos')
         },
 
         // ------------------------------------------------------------------
@@ -140,15 +134,15 @@
         // ------------------------------------------------------------------
         documentos: {
             dossie: {
-                tituloPagina: papel('{{CODIGO}}: {{NOME_TITULO}} - Briefing Tático (Ghost Squad)', '{{CODIGO}}: {{NOME_TITULO}} - DOSSIÊ OVERLORD (RESTRITO)'),
-                marcaDagua: papel('CONFIDENCIAL // USO RESTRITO', 'USO RESTRITO GHOST LEAD'),
-                carimbo: papel('ULTRA SECRETO - APENAS GHOST SQUAD', 'SOMENTE LEITURA GHOST 1-1 / OVERLORD'),
-                titulo: papel('GRB-INTEL-{{CODIGO}}: {{NOME}}', 'GRB-INTEL-{{CODIGO}}: DOSSIÊ GM'),
+                tituloPagina: papel('{{CODIGO}}: {{NOME_TITULO}} - Briefing Tático (Ghost Squad)', gm('dossie.tituloPagina')),
+                marcaDagua: papel('CONFIDENCIAL // USO RESTRITO', gm('dossie.marcaDagua')),
+                carimbo: papel('ULTRA SECRETO - APENAS GHOST SQUAD', gm('dossie.carimbo')),
+                titulo: papel('GRB-INTEL-{{CODIGO}}: {{NOME}}', gm('dossie.titulo')),
                 cabecalho: [
                     ['OPERAÇÃO', '{{NOME}}'],
                     ['LOCALIZAÇÃO', 'ARQUIPÉLAGO DE AUROA // PROVÍNCIA'],
-                    ['AUTORIZAÇÃO', papel('APENAS PARA ESQUADRÃO GHOST', 'CONTROLE GM ATIVO')],
-                    soGm(['ALERTA DE SEGURANÇA', 'NÃO COMPARTILHAR COM OS OPERADORES 1-2, 1-3 OU 1-4.'])
+                    ['AUTORIZAÇÃO', papel('APENAS PARA ESQUADRÃO GHOST', gm('dossie.autorizacao'))],
+                    gm('dossie.alerta')
                 ],
                 aviso: soSquad('&gt;&gt; TRANSMISSÃO CRIPTOGRAFADA RECEBIDA...'),
                 secoes: [
@@ -157,7 +151,7 @@
                         blocos: [
                             { linhas: [
                                 '- <strong>Regra 1:</strong> descrição.',
-                                soGm('- <strong>Arbitragem (GM):</strong> só o GM vê esta linha.')
+                                gm('dossie.regras.arbitragem')
                             ] }
                         ]
                     },
@@ -166,22 +160,13 @@
                         blocos: [
                             { h3: 'OBJETIVO 1: LOCAL' },
                             'Prioridade em infiltração.',
-                            { lista: ['Ação 1.', soGm('Ação extra que só o GM vê.')] }
+                            { lista: ['Ação 1.', gm('dossie.objetivo1.acaoExtra')] }
                         ]
                     },
-                    soGm({
-                        titulo: '3. COMPLICAÇÕES DO GM',
-                        cor: 'perigo',
-                        blocos: [
-                            { callout: 'Como GM, invoque estas complicações conforme os GATILHOS.', perigo: true },
-                            { complicacoes: [
-                                { nome: 'Interdição de Rota', gatilho: 'Quando ...', acao: 'O GM declara ...', resposta: 'Os jogadores ...' }
-                            ] }
-                        ]
-                    })
+                    gm('dossie.complicacoes')
                 ],
-                fim: papel('FIM DA TRANSMISSÃO - BOA CAÇADA, GHOSTS.', 'FIM DO DOSSIÊ OVERLORD. DESTRUA APÓS A LEITURA.'),
-                carimboFim: papel('FIM DE RELATÓRIO', 'FIM DE RELATÓRIO DO GM')
+                fim: papel('FIM DA TRANSMISSÃO - BOA CAÇADA, GHOSTS.', gm('dossie.fim')),
+                carimboFim: papel('FIM DE RELATÓRIO', gm('dossie.carimboFim'))
             },
 
             inteligencia: {

@@ -9,3 +9,6 @@ node_modules/
 
 # Ignore large original map image
 public/assets/aurora-original.jpg
+
+# Certificado HTTPS local (gerado na máquina; nunca versionar a chave privada)
+src/server/certs/

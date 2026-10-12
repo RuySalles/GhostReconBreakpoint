@@ -7,8 +7,9 @@
  *   npm run nova-missao -- 03 "Silent Storm"
  *
  * Resultado:
- *   public/campaigns/missao-03-silent-storm/   <- páginas + missao.js para preencher
- *   public/assets/missao-03/                   <- pasta para as imagens (e audio/)
+ *   public/campaigns/missao-03-silent-storm/   <- páginas + missao.js e missao-gm.js para preencher,
+ *                                                 com imagens/, audio/ e video/ (o que o site publica)
+ *   bastidores/missao-03-silent-storm/         <- fora do site: originais, roteiro, rascunhos
  *   public/campaigns/catalogo.js                <- missão adicionada à lista do hub
  */
 
@@ -41,7 +42,7 @@ const slug = nome
 
 const pasta = `missao-${nn}-${slug}`;
 const destino = path.join(CAMPAIGNS, pasta);
-const pastaImagens = path.join(ROOT, 'public', 'assets', `missao-${nn}`);
+const bastidores = path.join(ROOT, 'bastidores', pasta);
 
 if (fs.existsSync(destino)) sair(`a pasta ${pasta} já existe.`);
 const existente = fs.readdirSync(CAMPAIGNS).find(d => d.startsWith(`missao-${nn}-`));
@@ -50,8 +51,7 @@ if (existente) sair(`já existe uma missão ${nn}: ${existente}.`);
 const valores = {
     '{{CODIGO}}': `OPORD-${nn.padStart(3, '0')}`,
     '{{NOME}}': nome.toUpperCase(),
-    '{{NOME_TITULO}}': nome,
-    '{{IMAGENS}}': `../../assets/missao-${nn}/`
+    '{{NOME_TITULO}}': nome
 };
 
 // 1. Copia o modelo preenchendo os marcadores
@@ -64,9 +64,13 @@ for (const arquivo of fs.readdirSync(MODELO)) {
     fs.writeFileSync(path.join(destino, arquivo), conteudo, 'utf8');
 }
 
-// 2. Pasta de imagens (com .gitkeep para o Git registrar a pasta vazia)
-fs.mkdirSync(path.join(pastaImagens, 'audio'), { recursive: true });
-fs.writeFileSync(path.join(pastaImagens, '.gitkeep'), '');
+// 2. Pastas de mídia da missão e de bastidores (.gitkeep para o Git registrar pastas vazias)
+for (const sub of ['imagens', 'audio', 'video']) {
+    fs.mkdirSync(path.join(destino, sub));
+    fs.writeFileSync(path.join(destino, sub, '.gitkeep'), '');
+}
+fs.mkdirSync(path.join(bastidores, 'imagens-originais'), { recursive: true });
+fs.writeFileSync(path.join(bastidores, 'imagens-originais', '.gitkeep'), '');
 
 // 3. Cadastra no hub inicial
 const registro = fs.readFileSync(REGISTRO, 'utf8');
@@ -82,6 +86,7 @@ const entrada =
 fs.writeFileSync(REGISTRO, antes + entrada + registro.slice(fim), 'utf8');
 
 console.log(`Missão criada: public/campaigns/${pasta}/`);
-console.log(`Imagens em:    public/assets/missao-${nn}/  (áudio em audio/briefing.mp3)`);
+console.log(`Mídia em:      public/campaigns/${pasta}/imagens/ (WebP/JPG), audio/briefing.mp3, video/`);
+console.log(`Originais em:  bastidores/${pasta}/imagens-originais/ (fora do site)`);
 console.log('Hub inicial:   cadastrada em public/campaigns/catalogo.js (ajuste o "resumo")');
-console.log(`Próximo passo: preencha public/campaigns/${pasta}/missao.js`);
+console.log(`Próximo passo: preencha missao.js (Squad) e missao-gm.js (GM) e rode "npm run validar"`);

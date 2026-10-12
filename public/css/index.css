@@ -141,3 +141,7 @@ body.hub-inicial {
 .build-stamp:empty {
     display: none;
 }
+
+.compendio-link {
+    margin-top: 14px;
+}

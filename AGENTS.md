@@ -27,18 +27,21 @@ E:\Trabalho\GhostReconBreakpoint\
 │   ├── campaigns/                      <- Conteúdo narrativo estático e missões (ex: missao-01-growler-silent)
 │   │   ├── catalogo.js                 <- Lista de missões exibida no hub inicial (index.html)
 │   │   ├── _modelo/                    <- Modelo copiado por "npm run nova-missao" (não é uma missão publicada)
-│   │   └── missao-XX-nome/             <- missao.js = TODO o conteúdo (Squad + GM); os .html são só esqueletos
+│   │   └── missao-XX-nome/             <- missao.js (Squad) + missao-gm.js (GM) + esqueletos .html + imagens/ audio/ video/
 │   ├── css/
 │   │   ├── base.css                    <- Estilo e tema (escuro/claro) do hub inicial e de TODAS as missões
 │   │   ├── index.css                   <- Só o que é exclusivo do hub inicial
+│   │   ├── compendio.css               <- Só o que é exclusivo do compêndio
 │   │   ├── global.css / mapa.css       <- Estilos do mapa (mapa.html)
 │   ├── js/
 │   │   ├── tema.js                     <- Aplica o tema salvo antes da página aparecer (no <head>, sem defer)
 │   │   ├── base.js                     <- Botão de tema, modais, zoom de imagem, áudio Overlord
 │   │   ├── componentes.js              <- Monta as páginas das missões a partir do missao.js
 │   │   ├── index.js                    <- Monta a lista de missões do hub inicial
+│   │   ├── versao.js                   <- Carimbo de versão (sobrescrito pelo deploy)
 │   │   └── mapa.js
 │   ├── favicon.svg                     <- Ícone da aba (todas as páginas)
+│   ├── compendio.html                  <- Compêndio Doutrinário (lore/TTPs do esquadrão)
 │   ├── index.html                      <- Ponto de entrada principal (hub inicial)
 │   └── mapa.html                       <- Aplicação do mapa operacional
 ├── src/                                <- Código-fonte (backend e scripts)
@@ -49,7 +52,9 @@ E:\Trabalho\GhostReconBreakpoint\
 │   │   └── server.js
 │   ├── diagnostics/                    <- Scripts de testes e ferramentas de análise estrutural
 │   └── tools/
-│       └── nova_missao.js              <- "npm run nova-missao -- 03 \"Nome\"": cria missão a partir do _modelo
+│       ├── nova_missao.js              <- "npm run nova-missao -- 03 \"Nome\"": cria missão a partir do _modelo
+│       └── validar_missoes.js          <- "npm run validar": confere missões (roda também no deploy)
+├── bastidores/                         <- FORA do site: originais das imagens, roteiros, versões antigas
 ├── AGENTS.md                           <- Este arquivo: diretrizes permanentes para todas as IAs
 ├── CLAUDE.md                           <- Importa AGENTS.md (+ notas exclusivas do Claude)
 └── GEMINI.md                           <- Importa AGENTS.md (+ notas exclusivas do Gemini)
@@ -242,7 +247,7 @@ O Ghost Lead deve sempre ser considerado capaz de acessar o conteúdo do Ghost S
 
 ## 🎯 Como Criar uma Missão
 
-As missões são **orientadas a dados**: todo o conteúdo fica em `public/campaigns/missao-XX-nome/missao.js`, e as páginas `.html` são esqueletos idênticos que o `js/componentes.js` preenche. Não escreva conteúdo de missão direto em HTML.
+As missões são **orientadas a dados**: o conteúdo fica em `missao.js` (Squad) e `missao-gm.js` (GM) dentro de `public/campaigns/missao-XX-nome/`, e as páginas `.html` são esqueletos idênticos que o `js/componentes.js` preenche. Não escreva conteúdo de missão direto em HTML.
 
 ### Padrão de nomes
 - Tudo em **minúsculas com hífen**, sem acentos e sem versão no nome (`_v4`, `-final`...): o histórico fica no Git.
@@ -251,30 +256,35 @@ As missões são **orientadas a dados**: todo o conteúdo fica em `public/campai
 - Mesmo tipo de página = **mesmo nome em todas as missões**: `hub.html`, `dossie.html`, `intel-<assunto>.html`, `missao.js`.
 - Versão do GM = nome da versão do Squad + `-gm` (`hub-gm.html`, `dossie-gm.html`).
 - Compartilhados: `campaigns/catalogo.js` (lista do hub), `css/base.css`, `js/tema.js`, `js/base.js`, `js/componentes.js`.
-- Imagens ainda **não** seguem este padrão (Missão 01 usa `ASSETS/` local); não renomear sem combinar antes.
+- Mídia da missão em `imagens/`, `audio/` e `video/` dentro da própria pasta da missão. Imagens publicadas em **WebP ou JPG, até ~1920 px**; originais vão para `bastidores/missao-NN-.../imagens-originais/`.
+- Os nomes dos arquivos de imagem antigos ainda não seguem o padrão (acentos, maiúsculas): não renomear sem combinar antes. Também não apagar imagens, mesmo sem uso.
 
 ### Passo a passo
-1. `npm run nova-missao -- 03 "Nome da Operação"` → cria `campaigns/missao-03-nome-da-operacao/`, a pasta `assets/missao-03/` (com `audio/`) e cadastra a missão em `campaigns/catalogo.js`.
-2. Coloque as imagens em `public/assets/missao-03/` e o áudio em `public/assets/missao-03/audio/briefing.mp3`.
-3. Preencha o `missao.js` da missão. O arquivo do `_modelo` já traz um exemplo comentado de cada bloco.
+1. `npm run nova-missao -- 03 "Nome da Operação"` → cria `campaigns/missao-03-nome-da-operacao/` (com `imagens/`, `audio/`, `video/`), `bastidores/missao-03-.../imagens-originais/` e cadastra a missão em `campaigns/catalogo.js`.
+2. Imagens otimizadas em `imagens/` (WebP/JPG, até ~1920 px), áudio em `audio/briefing.mp3`; originais em `bastidores/`.
+3. Preencha `missao.js` (o que o Squad vê) e `missao-gm.js` (tudo que é do GM). Os arquivos do `_modelo` trazem exemplo de cada bloco.
 4. Ajuste o `resumo` da missão em `campaigns/catalogo.js` (texto mostrado no hub inicial).
-5. Teste localmente com `npm start` e confira hub do Squad, hub do GM e dossiês nos dois temas e no celular.
+5. `npm run validar` (precisa terminar com **0 erros**) e `npm start` para conferir hub do Squad, hub do GM e dossiês nos dois temas e no celular.
 
 ### Páginas geradas
-| Arquivo | `<body>` | Conteúdo (`missao.js`) |
+| Arquivo | `<body>` | Conteúdo |
 |---|---|---|
 | `hub.html` | `data-pagina="hub" data-papel="squad"` | `hub` |
-| `hub-gm.html` | `data-pagina="hub" data-papel="gm"` | `hub` (versão GM) |
+| `hub-gm.html` | `data-pagina="hub" data-papel="gm"` + carrega `missao-gm.js` | `hub` (versão GM) |
 | `dossie.html` | `data-pagina="documento" data-papel="squad" data-doc="dossie"` | `documentos.dossie` |
-| `dossie-gm.html` | `data-pagina="documento" data-papel="gm" data-doc="dossie"` | `documentos.dossie` (versão GM) |
+| `dossie-gm.html` | `data-pagina="documento" data-papel="gm" data-doc="dossie"` + carrega `missao-gm.js` | `documentos.dossie` (versão GM) |
 | `intel-<assunto>.html` (no modelo: `intel-documento.html`) | `data-pagina="documento" data-papel="squad" data-doc="inteligencia"` | `documentos.inteligencia` |
 
 Para outro documento, crie um novo esqueleto com outro `data-doc` e a chave correspondente em `documentos`.
 
-### Squad x GM no mesmo arquivo (regra de papéis)
-- `GRB.papel('texto Squad', 'texto GM')` → versão diferente por papel.
-- `GRB.soGm(valor)` / `GRB.soSquad(valor)` → item de lista, linha de cabeçalho, botão, seção inteira etc. que só aparece para aquele papel.
-- O GM sempre vê tudo do Squad + o que for `soGm`. **Nunca** crie conteúdo de GM em arquivo separado do Squad.
+### Squad x GM (regra de papéis)
+Os jogadores baixam o `missao.js`, então **nenhum texto do GM pode estar nele**. O conteúdo do GM fica no `missao-gm.js`, que só as páginas do GM carregam:
+- `missao.js`: `GRB.gm('chave')` marca **onde** entra um conteúdo do GM (item de lista, linha de cabeçalho, botão, seção inteira...).
+- `missao.js`: `GRB.papel('texto Squad', GRB.gm('chave'))` → versão diferente por papel.
+- `missao.js`: `GRB.soSquad(valor)` → só aparece para o Squad.
+- `missao-gm.js`: `GRB.registrarGm({ 'chave': valor, ... })` → o conteúdo em si.
+- O GM sempre vê tudo do Squad + o conteúdo das chaves. O `npm run validar` acusa erro se houver texto do GM no `missao.js`, chave sem conteúdo ou página do Squad carregando `missao-gm.js`.
+- O repositório é público: isso evita spoiler acidental no site, não é proteção de segurança.
 
 ### Blocos disponíveis (em `briefing`, `secoes[].blocos` e `callout`)
 | Bloco | Uso |

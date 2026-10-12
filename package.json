@@ -1,12 +1,13 @@
 {
   "name": "ghostreconbreakpoint",
   "version": "1.0.0",
-  "description": "> **CLASSIFICAÇÃO DE SEGURANÇA:** ESTRITAMENTE SECRETO // SCI // NOFORN // NÍVEL 5  \r > **DIRETRIZ DE EXECUÇÃO:** CÓDIGO GHOST ABSOLUTO",
-  "main": "index.js",
+  "description": "Sala de Operações Ghost Recon Breakpoint: hub de missões (site estático) e parser do mapa de Auroa",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/server/server.js",
-    "nova-missao": "node src/tools/nova_missao.js"
+    "nova-missao": "node src/tools/nova_missao.js",
+    "validar": "node src/tools/validar_missoes.js",
+    "certificado": "node -e \"require('fs').mkdirSync('src/server/certs',{recursive:true})\" && openssl req -x509 -newkey rsa:2048 -nodes -keyout src/server/certs/key.pem -out src/server/certs/cert.pem -days 825 -subj /CN=localhost -addext subjectAltName=DNS:localhost,IP:127.0.0.1",
+    "test": "node src/tools/validar_missoes.js"
   },
   "repository": {
     "type": "git",
@@ -19,5 +20,6 @@
   "bugs": {
     "url": "https://github.com/RuySalles/GhostReconBreakpoint/issues"
   },
-  "homepage": "https://github.com/RuySalles/GhostReconBreakpoint#readme"
+  "homepage": "https://github.com/RuySalles/GhostReconBreakpoint#readme",
+  "private": true
 }

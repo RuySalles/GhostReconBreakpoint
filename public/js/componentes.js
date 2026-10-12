@@ -7,12 +7,15 @@
 
    O missao.js chama GRB.registrarMissao({...}) e esta página é desenhada na hora.
    Ordem dos scripts no <head> (todos com defer):
-     componentes.js -> missao.js -> base.js
+     Squad: componentes.js -> missao.js -> base.js
+     GM:    componentes.js -> missao-gm.js -> missao.js -> base.js
 
-   Conteúdo por papel (Ghost Squad x Ghost Lead/GM), dentro do missao.js:
-     GRB.papel('texto do squad', 'texto do GM')  -> escolhe conforme a página
-     GRB.soGm(valor) / GRB.soSquad(valor)        -> só aparece para aquele papel
-   Lembrete: o GM vê tudo o que o Squad vê + o que for soGm.
+   Conteúdo do GM NUNCA fica no missao.js (o jogador baixa esse arquivo):
+     missao.js     GRB.gm('chave')                 -> marca ONDE entra um conteúdo do GM
+                   GRB.papel('texto Squad', GRB.gm('chave')) -> versão diferente por papel
+                   GRB.soSquad(valor)                  -> só aparece para o Squad
+     missao-gm.js  GRB.registrarGm({ 'chave': valor }) -> o conteúdo em si (só páginas do GM carregam)
+   Lembrete: o GM vê tudo o que o Squad vê + o conteúdo das chaves GRB.gm().
    ========================================================================== */
 (function () {
     'use strict';
@@ -22,6 +25,7 @@
     var GM = PAPEL === 'gm';
     var PINTURAS = '../../assets/paint/';
     var OMITIR = {};
+    var DADOS_GM = {};
 
     // ----------------------------------------------------------------------
     // CONTEÚDO POR PAPEL
@@ -30,17 +34,30 @@
         return { __porPapel: true, squad: squad, gm: gm };
     }
 
-    function soGm(valor) {
-        return { __so: 'gm', valor: valor };
+    // Marca o lugar de um conteúdo do GM; o valor vem do missao-gm.js
+    function gm(chave) {
+        return { __gm: chave };
+    }
+
+    function registrarGm(dados) {
+        DADOS_GM = dados || {};
     }
 
     function soSquad(valor) {
         return { __so: 'squad', valor: valor };
     }
 
-    // Resolve papel()/soGm()/soSquad() em toda a árvore de dados
+    // Resolve papel()/gm()/soSquad() em toda a árvore de dados
     function resolver(v) {
         if (v === null || v === undefined || typeof v !== 'object') return v;
+        if (v.__gm) {
+            if (!GM) return OMITIR;
+            if (!(v.__gm in DADOS_GM)) {
+                if (window.console) console.error('[GRB] Chave do GM sem conteúdo no missao-gm.js: ' + v.__gm);
+                return OMITIR;
+            }
+            return resolver(DADOS_GM[v.__gm]);
+        }
         if (v.__so) return v.__so === PAPEL ? resolver(v.valor) : OMITIR;
         if (v.__porPapel) return resolver(v[PAPEL]);
         if (Array.isArray(v)) {
@@ -118,7 +135,7 @@
     //   { galeria: [...] }            -> galeria de imagens
     //   { callout, titulo, perigo }   -> bloco de destaque (texto ou lista de blocos)
     //   { complicacoes: [...] }       -> complicações do GM (gatilho/ação/resposta)
-    //   { video, legenda }            -> vídeo "uplink" com moldura
+    //   { video, legenda }            -> vídeo "uplink" (caminho relativo à pasta da missão, ex.: video/x.mp4)
     //   { kneeboard, galeria }        -> cartas de navegação (título + galeria)
     //   { tabela: [col1, col2], linhas: [[rótulo, valor] | { perigo, celulas }] }
     // ----------------------------------------------------------------------
@@ -161,7 +178,7 @@
         if (b.video) {
             return '<div class="video-frame">' +
                 '<span class="video-frame__label">' + (b.legenda || 'SINAL DE VÍDEO SEGURO - UPLINK ESTABELECIDO') + '</span>' +
-                '<video controls preload="metadata" playsinline><source src="' + esc(caminho(base, b.video)) + '" type="video/mp4">' +
+                '<video controls preload="metadata" playsinline><source src="' + esc(b.video) + '" type="video/mp4">' +
                 'Seu navegador não suporta a tag de vídeo.</video></div>';
         }
         return '';
@@ -365,8 +382,9 @@
 
     window.GRB = {
         registrarMissao: registrarMissao,
+        registrarGm: registrarGm,
         papel: papel,
-        soGm: soGm,
+        gm: gm,
         soSquad: soSquad
     };
 })();

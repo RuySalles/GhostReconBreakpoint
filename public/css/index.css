@@ -129,3 +129,15 @@ body.hub-inicial {
     color: var(--text-faint);
     font-size: 0.75em;
 }
+
+/* Carimbo de versão do deploy: discreto, mas legível nos dois temas */
+.build-stamp {
+    display: block;
+    margin-top: 6px;
+    font-size: 0.85em;
+    letter-spacing: 0.12em;
+}
+
+.build-stamp:empty {
+    display: none;
+}

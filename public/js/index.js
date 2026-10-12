@@ -22,4 +22,12 @@
 
         lista.appendChild(item);
     });
+
+    // Carimbo de versão: "BUILD a1b2c3d · 12/10/2026 14:32" (ou "BUILD LOCAL" fora do deploy)
+    var carimbo = document.getElementById('build-stamp');
+    var versao = window.GRB_VERSAO;
+    if (carimbo && versao) {
+        carimbo.textContent = 'BUILD ' + versao.commit + (versao.data ? ' · ' + versao.data : '');
+        if (versao.commit !== 'LOCAL') carimbo.title = 'Versão publicada em ' + versao.data + ' (commit ' + versao.commit + ')';
+    }
 })();

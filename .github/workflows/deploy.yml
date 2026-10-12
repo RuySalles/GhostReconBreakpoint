@@ -30,7 +30,15 @@ jobs:
           # We need to copy 'data-out' into 'public' so the site can fetch it relatively
           mkdir -p public/data-out
           cp -r data-out/* public/data-out/
-          
+
+      - name: Stamp build version
+        run: |
+          # Carimbo exibido no rodapé do hub inicial: commit curto + data/hora de Brasília
+          SHA=$(echo "$GITHUB_SHA" | cut -c1-7)
+          DATA=$(TZ=America/Sao_Paulo date '+%d/%m/%Y %H:%M')
+          printf "window.GRB_VERSAO = { commit: '%s', data: '%s' };\n" "$SHA" "$DATA" > public/js/versao.js
+          cat public/js/versao.js
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
         

@@ -1,345 +1,475 @@
-:root {
-    --term-bright: #adff2f;
-    --hud-bg: rgba(5, 5, 5, 0.9);
-    --border-glow: 0 0 10px rgba(51, 255, 51, 0.2);
+/* ==========================================================================
+   MAPA OPERACIONAL (mapa.html) — só o que é exclusivo desta página.
+   Cores, tipografia, botões e tema vêm de base.css.
+   Desktop: mapa à esquerda + painel fixo à direita.
+   Celular: mapa ocupa a tela; o painel vem logo abaixo (rolando a página).
+   ========================================================================== */
 
-    /* POI Colors */
-    --color-bivouac: #00f0ff;
-    --color-camp: #ff3333;
-    --color-outpost: #ff9900;
-    --color-village: #ffff33;
-    --color-station: #cc33ff;
-    --color-other: #55a855;
+/* --------------------------------------------------------------------------
+   TOKENS DO MAPA (os pontos ficam sobre a imagem do mapa, por isso cada tema
+   tem sua paleta: no claro, a imagem fica mais clara e os pontos mais escuros)
+   -------------------------------------------------------------------------- */
+:root,
+[data-theme="dark"] {
+    --mapa-fundo: #030303;
+    --mapa-hud: rgba(5, 9, 5, 0.88);
+    --poi-borda: #000;
+    --poi-bivouac: #00f0ff;
+    --poi-camp: #ff3333;
+    --poi-outpost: #ff9900;
+    --poi-village: #ffff33;
+    --poi-station: #cc33ff;
+    --poi-other: #55a855;
 }
 
-body {
-    background-color: var(--term-dark);
-    color: var(--term-green);
+[data-theme="light"] {
+    --mapa-fundo: #d9d3bf;
+    --mapa-hud: rgba(247, 243, 231, 0.92);
+    --poi-borda: #fff;
+    --poi-bivouac: #006d77;
+    --poi-camp: #c1121f;
+    --poi-outpost: #a64b00;
+    --poi-village: #7a6500;
+    --poi-station: #7b2cbf;
+    --poi-other: #2f6b2f;
+}
+
+/* --------------------------------------------------------------------------
+   LAYOUT
+   -------------------------------------------------------------------------- */
+body.pagina-mapa {
+    padding: 0;
+}
+
+.mapa-app {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(320px, 30vw, 400px);
     height: 100vh;
+    height: 100dvh;
+}
+
+.mapa-viewport {
+    position: relative;
+    min-height: 0;
+    background: var(--mapa-fundo);
+}
+
+.mapa-painel {
+    overflow-y: auto;
+    padding: 20px;
+    border-left: 1px solid var(--accent);
+    background: var(--surface);
+    box-shadow: var(--glow);
+}
+
+@media (max-width: 760px) {
+    .mapa-app {
+        display: block;
+        height: auto;
+    }
+
+    /* Sobra uma faixa embaixo para mostrar que há painel ao rolar */
+    .mapa-viewport {
+        height: 75vh;
+        height: 75svh;
+    }
+
+    .mapa-painel {
+        border-left: 0;
+        border-top: 1px solid var(--accent);
+        padding: 16px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   PAINEL
+   -------------------------------------------------------------------------- */
+.mapa-painel .nav-buttons {
+    flex-wrap: nowrap;
+    margin: 0 0 16px;
+}
+
+.mapa-painel .nav-buttons .btn:first-child {
+    flex: 1 1 auto;
+}
+
+/* Painel estreito: botão de tema só com ícone (o nome continua para leitor de tela) */
+.mapa-painel .theme-toggle {
+    flex: 0 0 auto;
+    min-width: 44px;
+    margin-left: 0;
+}
+
+.mapa-painel .theme-toggle__label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
     overflow: hidden;
-    display: flex;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
 }
 
-body::after {
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.12) 50%);
-    background-size: 100% 2px;
+.mapa-painel h1 {
+    margin: 0 0 18px;
+    padding: 0 0 10px;
+    border-left: 0;
+    border-bottom: 2px dashed var(--accent);
+    font-size: 1.2rem;
+    letter-spacing: 0.08em;
 }
 
-.app-container {
-    display: flex;
-    width: 100vw;
-    height: 100vh;
-    position: relative;
+.mapa-secao {
+    min-width: 0;
+    margin: 0 0 18px;
+    padding: 14px;
+    border: 1px solid var(--line);
+    background: var(--surface-2);
 }
 
-.map-viewport {
-    flex: 1;
-    height: 100%;
-    position: relative;
-    background-color: #030303;
-    border-right: 2px solid var(--term-dim);
+.mapa-secao h2 {
+    margin: 0 0 10px;
+    padding: 0 0 6px;
+    border-left: 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 1rem;
+    letter-spacing: 0.04em;
 }
 
-#map {
+.mapa-secao legend {
+    float: left;
     width: 100%;
-    height: 100%;
-    display: block;
-    background: #030303;
+    padding: 0;
 }
 
-/* Custom Leaflet overrides for cyberpunk theme */
-.leaflet-container {
-    font-family: 'Share Tech Mono', monospace !important;
-    background: #030303 !important;
+.mapa-secao legend + * {
+    clear: both;
 }
 
-.leaflet-popup-content-wrapper, .leaflet-popup-tip {
-    background: var(--hud-bg) !important;
-    border: 1px solid var(--term-green) !important;
-    color: var(--term-green) !important;
-    box-shadow: var(--border-glow) !important;
-    border-radius: 0px !important;
+.mapa-secao--amber {
+    border-color: var(--amber);
 }
 
-.leaflet-popup-content {
-    margin: 12px 16px !important;
+.mapa-secao--amber h2 {
+    color: var(--amber);
+    border-bottom-color: var(--amber);
+}
+
+/* Rótulo visível só para leitor de tela (o título da seção já diz o que é) */
+.mapa-rotulo {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+.mapa-campo {
+    width: 100%;
+    min-height: 44px;
+    padding: 8px 10px;
+    border: 1px solid var(--accent);
+    background: var(--bg);
+    color: var(--text);
+    font: inherit;
+    font-size: 0.95rem;
+}
+
+.mapa-campo::placeholder {
+    color: var(--text-faint);
+    opacity: 1;
+}
+
+select.mapa-campo {
+    cursor: pointer;
+}
+
+.mapa-tipos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px 10px;
+}
+
+.mapa-tipo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    cursor: pointer;
+}
+
+.mapa-tipo input {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    accent-color: var(--accent);
+    cursor: pointer;
+}
+
+.mapa-faixa {
+    display: flex;
+    justify-content: space-between;
     font-size: 0.85rem;
-    line-height: 1.4;
 }
 
-.leaflet-popup-close-button {
-    color: var(--term-green) !important;
+.mapa-faixa output {
+    color: var(--amber);
+}
+
+.mapa-slider {
+    width: 100%;
+    min-height: 44px;
+    margin: 0;
+    accent-color: var(--amber);
+    cursor: pointer;
+}
+
+/* Detalhes do ponto selecionado */
+.mapa-detalhes__vazio {
+    margin: 0;
+    color: var(--text-muted);
+    font-style: italic;
+    text-align: center;
+}
+
+.mapa-detalhes__nome {
+    margin: 0 0 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px dashed var(--accent);
+    color: var(--text);
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+.mapa-dados {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 4px 12px;
+    margin: 0;
+    font-size: 0.85rem;
+}
+
+.mapa-dados dt {
+    color: var(--accent);
+}
+
+.mapa-dados dd {
+    margin: 0;
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+.mapa-dados__sep {
+    margin-top: 8px !important;
+    padding-top: 8px;
+    border-top: 1px dashed var(--line);
+}
+
+.mapa-rodape {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px;
+    padding-top: 10px;
+    border-top: 1px solid var(--line);
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+/* --------------------------------------------------------------------------
+   CORES POR TIPO DE PONTO
+   -------------------------------------------------------------------------- */
+.poi-ponto {
+    flex: 0 0 auto;
+    width: 10px;
+    height: 10px;
+    border: 1px solid var(--poi-borda);
+    border-radius: 50%;
+    background: var(--poi-cor, var(--poi-other));
+}
+
+.poi-tipo {
+    color: var(--poi-cor, var(--text));
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+[data-tipo="Bivouac"] { --poi-cor: var(--poi-bivouac); }
+[data-tipo="Camp"]    { --poi-cor: var(--poi-camp); }
+[data-tipo="Outpost"] { --poi-cor: var(--poi-outpost); }
+[data-tipo="Village"] { --poi-cor: var(--poi-village); }
+[data-tipo="Station"] { --poi-cor: var(--poi-station); }
+[data-tipo="Other"]   { --poi-cor: var(--poi-other); }
+
+/* --------------------------------------------------------------------------
+   SOBREPOSIÇÕES DO MAPA (instruções, coordenadas, carregamento)
+   -------------------------------------------------------------------------- */
+.mapa-instrucoes,
+.mapa-coords,
+.mapa-status {
+    position: absolute;
+    z-index: 1000;
+    border: 1px solid var(--line);
+    background: var(--mapa-hud);
+    color: var(--text);
+    pointer-events: none;
+}
+
+.mapa-instrucoes {
+    top: 12px;
+    left: 56px;
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    line-height: 1.45;
+}
+
+.mapa-instrucoes p {
+    margin: 0;
+}
+
+.mapa-instrucoes__titulo {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.mapa-coords {
+    bottom: 12px;
+    left: 12px;
+    padding: 6px 10px;
+    border-color: var(--destaque, var(--accent));
+    font-size: 0.85rem;
+    box-shadow: var(--glow);
+}
+
+/* Sem mouse (celular/tablet) não há roda nem cursor: some instrução e coordenada do cursor */
+@media (hover: none), (max-width: 760px) {
+    .mapa-instrucoes,
+    .mapa-coords {
+        display: none;
+    }
+}
+
+.mapa-status {
+    top: 50%;
+    left: 50%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    max-width: calc(100% - 32px);
+    padding: 14px 18px;
+    border-color: var(--accent);
+    box-shadow: var(--glow);
+    transform: translate(-50%, -50%);
+    transition: opacity 0.4s;
+}
+
+.mapa-status.is-done {
+    opacity: 0;
+}
+
+.mapa-status.is-error {
+    border-color: var(--danger);
+    color: var(--danger);
+    pointer-events: auto;
+}
+
+.mapa-status.is-error .mapa-status__spinner {
+    display: none;
+}
+
+.mapa-status__spinner {
+    flex: 0 0 auto;
+    width: 24px;
+    height: 24px;
+    border: 3px dashed var(--accent);
+    border-radius: 50%;
+    animation: mapa-girar 2s linear infinite;
+}
+
+@keyframes mapa-girar {
+    to { transform: rotate(360deg); }
+}
+
+/* --------------------------------------------------------------------------
+   LEAFLET (controles e popup no tema do site)
+   -------------------------------------------------------------------------- */
+.leaflet-container {
+    background: var(--mapa-fundo);
+    font: inherit;
+}
+
+/* Camada da imagem de fundo (prévia + tiles): a opacidade vem do slider via --mapa-opacidade */
+.leaflet-fundo-pane {
+    opacity: var(--mapa-opacidade, 0.6);
 }
 
 .leaflet-bar {
-    border: 1px solid var(--term-green) !important;
-    box-shadow: var(--border-glow) !important;
-    border-radius: 0px !important;
-    overflow: hidden;
+    border: 1px solid var(--accent) !important;
+    border-radius: 0 !important;
+    box-shadow: var(--glow) !important;
 }
 
-.leaflet-bar a {
-    background-color: var(--hud-bg) !important;
-    color: var(--term-green) !important;
-    border-bottom: 1px solid var(--term-dim) !important;
-    border-radius: 0px !important;
+.leaflet-bar a,
+.leaflet-touch .leaflet-bar a {
+    width: 44px;
+    height: 44px;
+    border-radius: 0 !important;
+    border-bottom-color: var(--line);
+    background: var(--mapa-hud);
+    color: var(--accent);
+    line-height: 44px;
 }
 
-.leaflet-bar a:hover {
-    background-color: var(--term-green) !important;
-    color: var(--term-dark) !important;
+.leaflet-bar a:hover,
+.leaflet-bar a:focus-visible {
+    background: var(--accent);
+    color: var(--accent-ink);
 }
 
-/* HUD Panel */
-.hud-panel {
-    width: 400px;
-    height: 100%;
-    background-color: var(--hud-bg);
-    border-left: 1px solid var(--term-green);
-    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.8);
-    display: flex;
-    flex-direction: column;
-    padding: 25px;
-    z-index: 5;
-    overflow-y: auto;
+.leaflet-bar a.leaflet-disabled {
+    background: var(--surface-2);
+    color: var(--text-faint);
 }
 
-.hud-title {
-    font-size: 1.25rem;
-    font-weight: bold;
-    border-bottom: 2px dashed var(--term-green);
-    padding-bottom: 10px;
-    margin-top: 0;
-    margin-bottom: 20px;
-    letter-spacing: 2px;
-    text-shadow: 0 0 5px rgba(51, 255, 51, 0.5);
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+    border: 1px solid var(--accent);
+    border-radius: 0;
+    background: var(--surface-2);
+    color: var(--text);
+    box-shadow: var(--glow);
 }
 
-.btn-back {
-    background-color: var(--term-dim);
-    color: var(--term-green);
-    border: 1px solid var(--term-green);
-    padding: 10px;
-    text-align: center;
-    text-decoration: none;
-    display: block;
-    font-weight: bold;
-    letter-spacing: 1px;
-    margin-bottom: 25px;
-    transition: all 0.2s;
-    cursor: pointer;
-}
-
-.btn-back:hover {
-    background-color: var(--term-green);
-    color: var(--term-dark);
-    box-shadow: 0 0 10px rgba(51, 255, 51, 0.5);
-}
-
-.control-section {
-    border: 1px solid var(--term-dim);
-    padding: 15px;
-    margin-bottom: 20px;
-    background: rgba(0, 20, 0, 0.2);
-}
-
-.control-section h4 {
-    margin-top: 0;
-    margin-bottom: 12px;
-    color: var(--term-bright);
-    letter-spacing: 1px;
-    border-bottom: 1px solid var(--term-dim);
-    padding-bottom: 5px;
-}
-
-/* Search input */
-.search-container {
-    display: flex;
-    position: relative;
-    margin-bottom: 15px;
-}
-
-#searchInput {
-    width: 100%;
-    background: #000;
-    border: 1px solid var(--term-green);
-    color: var(--term-green);
-    padding: 10px;
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.9rem;
-}
-
-#searchInput:focus {
-    outline: none;
-    box-shadow: var(--border-glow);
-}
-
-/* Province Select */
-#provinceSelect {
-    width: 100%;
-    background: #000;
-    border: 1px solid var(--term-green);
-    color: var(--term-green);
-    padding: 8px;
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.9rem;
-    cursor: pointer;
-}
-
-#provinceSelect:focus {
-    outline: none;
-}
-
-/* Type Checkboxes */
-.filter-types {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-}
-
-.type-item {
-    display: flex;
-    align-items: center;
+.leaflet-popup-content {
+    margin: 12px 16px;
     font-size: 0.85rem;
-    cursor: pointer;
+    line-height: 1.45;
 }
 
-.type-item input {
-    margin-right: 8px;
-    cursor: pointer;
-    accent-color: var(--term-green);
+.leaflet-popup-content p {
+    margin: 0;
 }
 
-.type-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: 6px;
+.leaflet-container a.leaflet-popup-close-button {
+    width: 32px;
+    height: 32px;
+    color: var(--accent);
+    font-size: 22px;
+    line-height: 30px;
 }
 
-/* Details Card */
-.details-card {
-    border: 1px solid var(--term-green);
-    background: rgba(0, 10, 0, 0.6);
-    padding: 15px;
-    margin-bottom: 20px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    min-height: 150px;
-}
-
-.details-placeholder {
-    color: var(--term-dim);
-    text-align: center;
-    margin: auto;
-    font-style: italic;
-}
-
-.details-title {
-    color: #fff;
-    font-weight: bold;
-    font-size: 1rem;
-    margin-bottom: 10px;
-    word-break: break-all;
-    border-bottom: 1px dashed var(--term-green);
+.poi-popup__nome {
+    margin-bottom: 8px !important;
     padding-bottom: 5px;
+    border-bottom: 1px dashed var(--accent);
+    font-weight: 700;
+    overflow-wrap: anywhere;
 }
 
-.details-row {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.8rem;
-    margin-bottom: 6px;
-}
-
-.details-label {
-    color: var(--term-bright);
-}
-
-.details-value {
-    color: #fff;
-    text-align: right;
-    word-break: break-all;
-}
-
-/* Stats & HUD Foot */
-.hud-stats {
-    font-size: 0.75rem;
-    color: var(--term-dim);
-    border-top: 1px solid var(--term-dim);
-    padding-top: 10px;
-    display: flex;
-    justify-content: space-between;
-}
-
-/* Overlay map instructions UI */
-.map-overlay-info {
-    position: absolute;
-    top: 20px;
-    left: 50px;
-    background: rgba(5, 5, 5, 0.85);
-    border: 1px solid var(--term-dim);
-    padding: 10px 15px;
-    pointer-events: none;
-    font-size: 0.8rem;
-    line-height: 1.4;
-    z-index: 1000;
-}
-
-.map-overlay-info h5 {
-    margin: 0 0 5px 0;
-    color: var(--term-bright);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* Coordinate HUD at bottom of canvas */
-.coords-display {
-    position: absolute;
-    bottom: 20px;
-    left: 50px;
-    background: rgba(5, 5, 5, 0.85);
-    border: 1px solid var(--term-green);
-    padding: 8px 12px;
-    font-size: 0.85rem;
-    pointer-events: none;
-    box-shadow: var(--border-glow);
-    z-index: 1000;
-}
-
-/* Loading indicator overlay */
-.loader-overlay {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: var(--term-dark);
-    z-index: 100000;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: opacity 0.5s;
-}
-
-.loader-box {
-    border: 2px solid var(--term-green);
-    padding: 40px;
-    box-shadow: var(--border-glow);
-    text-align: center;
-    background: rgba(0, 0, 0, 0.9);
-}
-
-.loader-spinner {
-    width: 40px;
-    height: 40px;
-    border: 3px dashed var(--term-green);
-    border-radius: 50%;
-    margin: 20px auto;
-    animation: spin 2s linear infinite;
-}
-
-@keyframes spin {
-    100% { transform: rotate(360deg); }
+@media (prefers-reduced-motion: reduce) {
+    .mapa-status__spinner {
+        animation: none;
+    }
 }

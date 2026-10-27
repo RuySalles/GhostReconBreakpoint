@@ -8,7 +8,7 @@ Site estático com as missões de MilSim do Ghost Squad no arquipélago de Auroa
 
 ## Requisitos
 
-- [Node.js](https://nodejs.org/) 18 ou mais novo (não há dependências para instalar)
+- [Node.js](https://nodejs.org/) 18 ou mais novo. O site não tem dependências; só `npm run gerar-tiles` precisa de `npm install` (instala o `sharp`)
 - `openssl` (já vem com o Git para Windows), só para o certificado HTTPS local
 
 ## Comandos
@@ -19,6 +19,8 @@ Site estático com as missões de MilSim do Ghost Squad no arquipélago de Auroa
 | `npm run certificado` | Gera o certificado HTTPS local em `src/server/certs/` (não vai para o Git) |
 | `npm run nova-missao -- 03 "Nome da Operação"` | Cria uma missão a partir de `public/campaigns/_modelo/` e a cadastra no hub |
 | `npm run validar` | Confere todas as missões: spoilers do GM vazando, links, páginas, HTML e mídias |
+| `npm run gerar-og` | Gera as imagens de prévia de link (WhatsApp) em `public/assets/og/` |
+| `npm run gerar-tiles` | Corta o fundo do mapa em tiles (`public/assets/mapa-tiles/`); só se a imagem mudar |
 
 ## Estrutura
 

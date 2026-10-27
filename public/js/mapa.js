@@ -3,14 +3,29 @@ let poiData = [];
 let filteredData = [];
 let selectedPoi = null;
 
-// Background Image Calibration Parameters (Auroa-Optimized WebP mathematically calculated center/bounds)
-let mapWidthGameUnits = 18000;
-let mapHeightGameUnits = 22658; // matches 12710x16000 aspect ratio
-let mapCenterX = -4600;         // Center of main island (excluding Golem)
-let mapCenterY = -1400;         // Center of main island (excluding Golem)
+// Background map calibration: where aurora-optimized.webp sits in game coordinates.
+// The image is served as tiles (assets/mapa-tiles/, made by "npm run gerar-tiles").
+// To recalibrate, change these values (the old offset sliders found them).
+const IMAGEM_LARGURA_PX = 12710;         // aurora-optimized.webp size
+const IMAGEM_ALTURA_PX = 16000;
+const MAPA_LARGURA_UNIDADES = 18000;     // image width in game units
+const MAPA_CENTRO_X = -4600;             // Center of main island (excluding Golem)
+const MAPA_CENTRO_Y = -1400;
+const TILE_TAMANHO = 256;
 let mapOpacity = 0.60;
 
-let overlay = null;
+const UNIDADES_POR_PX = MAPA_LARGURA_UNIDADES / IMAGEM_LARGURA_PX;
+const MAPA_ALTURA_UNIDADES = IMAGEM_ALTURA_PX * UNIDADES_POR_PX;
+const MAPA_ESQUERDA = MAPA_CENTRO_X - MAPA_LARGURA_UNIDADES / 2;
+const MAPA_TOPO = MAPA_CENTRO_Y + MAPA_ALTURA_UNIDADES / 2;
+const MAPA_LIMITES = [
+    [MAPA_TOPO - MAPA_ALTURA_UNIDADES, MAPA_ESQUERDA],
+    [MAPA_TOPO, MAPA_ESQUERDA + MAPA_LARGURA_UNIDADES]
+];
+// Deepest tile level = full resolution (zoom 0 = whole image inside one tile)
+const TILE_ZOOM_MAX = Math.ceil(Math.log2(Math.max(IMAGEM_LARGURA_PX, IMAGEM_ALTURA_PX) / TILE_TAMANHO));
+
+let tileLayer = null;
 let isHoveringMarker = false; // Prevents coordinate conflict during hover
 
 // Canvas elements & HUD controls
@@ -42,15 +57,35 @@ const COLORS = {
 };
 
 // Initialize Leaflet Map
-// We use CRS.Simple for flat 2D game coordinates where Y is north and X is east
+// Flat 2D game coordinates (Y is north, X is east), scaled so that Leaflet zoom N
+// matches tile level N: at zoom 0 the whole image fits in one 256 px tile.
+const ESCALA_ZOOM0 = 1 / (UNIDADES_POR_PX * Math.pow(2, TILE_ZOOM_MAX));
+const CRS_AUROA = L.extend({}, L.CRS.Simple, {
+    transformation: new L.Transformation(ESCALA_ZOOM0, -MAPA_ESQUERDA * ESCALA_ZOOM0, -ESCALA_ZOOM0, MAPA_TOPO * ESCALA_ZOOM0)
+});
+
 const map = L.map('map', {
-    crs: L.CRS.Simple,
-    minZoom: -6, // Expanded to allow massive zoom out
-    maxZoom: 4,  // Expanded to allow deeper zoom in
+    crs: CRS_AUROA,
+    minZoom: 0,
+    maxZoom: TILE_ZOOM_MAX + 2,  // beyond full resolution the last tiles are enlarged
     zoomSnap: 0.1,
     attributionControl: false,
     renderer: L.canvas({ padding: 0.5 }) // High-performance Leaflet canvas renderer
 });
+
+// Only the tiles on screen are downloaded (instead of the whole 12 MB image)
+tileLayer = L.tileLayer('assets/mapa-tiles/{z}/{y}/{x}.webp', {
+    tileSize: TILE_TAMANHO,
+    minZoom: 0,
+    maxZoom: TILE_ZOOM_MAX + 2,
+    maxNativeZoom: TILE_ZOOM_MAX,
+    bounds: MAPA_LIMITES,   // no requests for tiles outside the image
+    noWrap: true,
+    opacity: mapOpacity
+}).addTo(map);
+
+// Show the map right away, even before the POI data arrives
+map.fitBounds(MAPA_LIMITES);
 
 // Create a layer group to hold all points
 const markerGroup = L.layerGroup().addTo(map);
@@ -86,9 +121,6 @@ function loadData() {
                 provinceSelect.appendChild(opt);
             });
 
-            // Setup dynamic image overlay bounds
-            updateOverlayBounds();
-
             // Auto-fit to coordinates bounds on load
             let minX = Infinity, maxX = -Infinity;
             let minY = Infinity, maxY = -Infinity;
@@ -122,28 +154,6 @@ function loadData() {
             console.error(err);
             loaderText.innerHTML = `<span style="color:#ff3333;">ERRO DE CONEXÃO: ${err.message}</span><br><br>Verifique se o servidor HTTP/HTTPS está rodando.`;
         });
-}
-
-// Render Overlay Bounds
-function updateOverlayBounds() {
-    const cx = mapCenterX;
-    const cy = mapCenterY;
-    const w = mapWidthGameUnits;
-    const h = mapHeightGameUnits;
-
-    // Leaflet bounds: [[minY, minX], [maxY, maxX]]
-    const southWest = [cy - h/2, cx - w/2];
-    const northEast = [cy + h/2, cx + w/2];
-    const bounds = [southWest, northEast];
-
-    if (!overlay) {
-        overlay = L.imageOverlay('assets/aurora-optimized.webp', bounds, {
-            opacity: mapOpacity
-        }).addTo(map);
-    } else {
-        overlay.setBounds(bounds);
-        overlay.setOpacity(mapOpacity);
-    }
 }
 
 // Filter Logic
@@ -233,37 +243,14 @@ map.on('mousemove', (e) => {
     coordsDisplay.textContent = `X: ${gameX.toFixed(4)} | Y: ${gameY.toFixed(4)}`;
 });
 
-// Simple offset sliders for visual alignment
-const slideCX = document.getElementById('slideCX');
-const slideCY = document.getElementById('slideCY');
+// Background image opacity slider
 const slideOpacity = document.getElementById('slideOpacity');
-const valCX = document.getElementById('valCX');
-const valCY = document.getElementById('valCY');
 const valOpacity = document.getElementById('valOpacity');
-const btnCopyCalib = document.getElementById('btnCopyCalib');
-
-slideCX.addEventListener('input', () => {
-    mapCenterX = parseInt(slideCX.value);
-    valCX.textContent = mapCenterX;
-    updateOverlayBounds();
-});
-
-slideCY.addEventListener('input', () => {
-    mapCenterY = parseInt(slideCY.value);
-    valCY.textContent = mapCenterY;
-    updateOverlayBounds();
-});
 
 slideOpacity.addEventListener('input', () => {
     mapOpacity = parseFloat(slideOpacity.value);
     valOpacity.textContent = mapOpacity.toFixed(2);
-    updateOverlayBounds();
-});
-
-btnCopyCalib.addEventListener('click', () => {
-    const text = `mapWidthGameUnits = ${mapWidthGameUnits};\nmapHeightGameUnits = ${mapHeightGameUnits};\nmapCenterX = ${mapCenterX};\nmapCenterY = ${mapCenterY};\nmapOpacity = ${mapOpacity.toFixed(2)};`;
-    navigator.clipboard.writeText(text).catch(() => {});
-    alert('Valores copiados!\n\n' + text);
+    tileLayer.setOpacity(mapOpacity);
 });
 
 // Selection Details cards

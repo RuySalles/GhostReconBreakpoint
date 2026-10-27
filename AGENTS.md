@@ -24,6 +24,9 @@ E:\Trabalho\GhostReconBreakpoint\
 │   └── Extracted/                      <- Células binárias brutas extraídas das .forge
 ├── public/                             <- [NOVO] Frontend estático da aplicação
 │   ├── assets/                         <- Imagens, ícones e assets de interface
+│   │   ├── game/                       <- ACERVO de referência (drones etc.) para missões futuras: pode estar sem uso, NÃO apagar nem mover
+│   │   ├── mapa-tiles/                 <- Fundo do mapa em pedaços {z}/{y}/{x}.webp (gerado por "npm run gerar-tiles", não editar à mão)
+│   │   └── aurora-optimized.webp       <- Imagem de origem dos tiles (o mapa não baixa mais este arquivo)
 │   ├── campaigns/                      <- Conteúdo narrativo estático e missões (ex: missao-01-growler-silent)
 │   │   ├── catalogo.js                 <- Lista de missões exibida no hub inicial (index.html)
 │   │   ├── _modelo/                    <- Modelo copiado por "npm run nova-missao" (não é uma missão publicada)
@@ -40,6 +43,7 @@ E:\Trabalho\GhostReconBreakpoint\
 │   │   ├── index.js                    <- Monta a lista de missões do hub inicial
 │   │   ├── versao.js                   <- Carimbo de versão (sobrescrito pelo deploy)
 │   │   └── mapa.js
+│   ├── vendor/leaflet-1.9.4/           <- Leaflet servido pelo próprio site (o mapa não depende de CDN)
 │   ├── favicon.svg                     <- Ícone da aba (todas as páginas)
 │   ├── compendio.html                  <- Compêndio Doutrinário (lore/TTPs do esquadrão)
 │   ├── index.html                      <- Ponto de entrada principal (hub inicial)
@@ -54,7 +58,8 @@ E:\Trabalho\GhostReconBreakpoint\
 │   └── tools/
 │       ├── nova_missao.js              <- "npm run nova-missao -- 03 \"Nome\"": cria missão a partir do _modelo
 │       ├── validar_missoes.js          <- "npm run validar": confere missões (roda também no deploy)
-│       └── gerar_og.js                 <- "npm run gerar-og": imagens de prévia de link (WhatsApp) em public/assets/og/
+│       ├── gerar_og.js                 <- "npm run gerar-og": imagens de prévia de link (WhatsApp) em public/assets/og/
+│       └── gerar_tiles_mapa.js         <- "npm run gerar-tiles": corta o fundo do mapa em tiles (precisa de "npm install")
 ├── bastidores/                         <- FORA do site: originais das imagens, roteiros, versões antigas
 ├── docs/planos/                        <- Planos aprovados ainda não implementados (ex.: radio-tatica.md)
 ├── AGENTS.md                           <- Este arquivo: diretrizes permanentes para todas as IAs
@@ -259,7 +264,7 @@ As missões são **orientadas a dados**: o conteúdo fica em `missao.js` (Squad)
 - Versão do GM = nome da versão do Squad + `-gm` (`hub-gm.html`, `dossie-gm.html`).
 - Compartilhados: `campaigns/catalogo.js` (lista do hub), `css/base.css`, `js/tema.js`, `js/base.js`, `js/componentes.js`.
 - Mídia da missão em `imagens/`, `audio/` e `video/` dentro da própria pasta da missão. Imagens publicadas em **WebP ou JPG, até ~1920 px**; originais vão para `bastidores/missao-NN-.../imagens-originais/`.
-- Os nomes dos arquivos de imagem antigos ainda não seguem o padrão (acentos, maiúsculas): não renomear sem combinar antes. Também não apagar imagens, mesmo sem uso.
+- Os nomes dos arquivos de imagem antigos ainda não seguem o padrão (acentos, maiúsculas): não renomear sem combinar antes. Também não apagar imagens, mesmo sem uso: o que não é usado hoje (ex.: `assets/game/`) é acervo de referência para missões futuras. Arquivo sem uso não pesa para o jogador (o navegador só baixa o que a página pede).
 
 ### Passo a passo
 1. `npm run nova-missao -- 03 "Nome da Operação"` → cria `campaigns/missao-03-nome-da-operacao/` (com `imagens/`, `audio/`, `video/`), `bastidores/missao-03-.../imagens-originais/` e cadastra a missão em `campaigns/catalogo.js`.
@@ -321,6 +326,11 @@ Componente novo? Adicione em `js/componentes.js` (e o estilo em `css/base.css`) 
 - **Sem estilo inline nem `onclick` no HTML**: use classes de `base.css` e os atributos `data-zoom`, `data-open`, `data-close`, `data-action`.
 - **Imagens** com `alt` descritivo e `loading="lazy"` (o `componentes.js` já faz isso).
 - Testar hub do Squad, hub do GM e dossiês nos dois temas antes de publicar.
+
+---
+
+## 🌿 Git: nomes de branch
+O dono do projeto acompanha pelo celular, com leitura em voz alta. Branch com nome **curto, em português, minúsculas e hífen**, dizendo o assunto (ex.: `revisao-estrutura`, `mapa-padrao`, `missao-03`). Nada de códigos aleatórios: se o ambiente criar a branch com um nome assim, renomeie antes do primeiro push. Nas respostas, prefira descrever a branch pelo assunto em vez de soletrar o nome.
 
 ---
 

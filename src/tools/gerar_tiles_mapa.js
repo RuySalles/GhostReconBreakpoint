@@ -4,6 +4,8 @@
  * Corta a imagem de fundo do mapa (public/assets/aurora-optimized.webp, 12 MB) em
  * "tiles" de 256 px em public/assets/mapa-tiles/{z}/{y}/{x}.webp. O mapa.html baixa
  * só os pedaços visíveis no zoom atual, em vez da imagem inteira.
+ * Gera também mapa-tiles/previa.webp (imagem inteira, pequena): fica por baixo dos
+ * tiles, aparece na hora e cobre a fresta de 1 px que o navegador deixa entre eles.
  *
  * Uso (precisa do "npm install" uma vez, para instalar o sharp):
  *   npm run gerar-tiles
@@ -23,6 +25,7 @@ const ORIGEM = path.join(ROOT, 'public', 'assets', 'aurora-optimized.webp');
 const SAIDA = path.join(ROOT, 'public', 'assets', 'mapa-tiles');
 const TAMANHO_TILE = 256;
 const QUALIDADE_WEBP = 80;
+const PREVIA_LARGURA = 1024;
 
 // Mesmos valores de public/js/mapa.js
 const ESPERADO = { largura: 12710, altura: 16000 };
@@ -60,6 +63,11 @@ async function main() {
             fs.rmSync(path.join(pasta, extra), { force: true });
         }
     }
+
+    await sharp(ORIGEM, { limitInputPixels: false })
+        .resize({ width: PREVIA_LARGURA })
+        .webp({ quality: 70 })
+        .toFile(path.join(SAIDA, 'previa.webp'));
 
     let arquivos = 0;
     let bytes = 0;

@@ -25,7 +25,7 @@ E:\Trabalho\GhostReconBreakpoint\
 ├── public/                             <- [NOVO] Frontend estático da aplicação
 │   ├── assets/                         <- Imagens, ícones e assets de interface
 │   │   ├── game/                       <- ACERVO de referência (drones etc.) para missões futuras: pode estar sem uso, NÃO apagar nem mover
-│   │   ├── mapa-tiles/                 <- Fundo do mapa em pedaços {z}/{y}/{x}.webp (gerado por "npm run gerar-tiles", não editar à mão)
+│   │   ├── mapa-tiles/                 <- Fundo do mapa em pedaços {z}/{y}/{x}.webp + previa.webp (gerados por "npm run gerar-tiles", não editar à mão)
 │   │   └── aurora-optimized.webp       <- Imagem de origem dos tiles (o mapa não baixa mais este arquivo)
 │   ├── campaigns/                      <- Conteúdo narrativo estático e missões (ex: missao-01-growler-silent)
 │   │   ├── catalogo.js                 <- Lista de missões exibida no hub inicial (index.html)
@@ -35,7 +35,7 @@ E:\Trabalho\GhostReconBreakpoint\
 │   │   ├── base.css                    <- Estilo e tema (escuro/claro) do hub inicial e de TODAS as missões
 │   │   ├── index.css                   <- Só o que é exclusivo do hub inicial
 │   │   ├── compendio.css               <- Só o que é exclusivo do compêndio
-│   │   ├── global.css / mapa.css       <- Estilos do mapa (mapa.html)
+│   │   ├── mapa.css                    <- Só o que é exclusivo do mapa (mapa.html), incluindo as cores dos pontos por tema
 │   ├── js/
 │   │   ├── tema.js                     <- Aplica o tema salvo antes da página aparecer (no <head>, sem defer)
 │   │   ├── base.js                     <- Botão de tema, modais, zoom de imagem, áudio Overlord

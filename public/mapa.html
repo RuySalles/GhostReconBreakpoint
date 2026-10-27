@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#060906">
     <title>MAPA OPERACIONAL - GHOST SQUAD</title>
     <meta name="description" content="Mapa tático interativo do arquipélago de Auroa.">
     <!-- Prévia de link (WhatsApp, Telegram, Discord...): imagens geradas por "npm run gerar-og" -->
@@ -18,156 +20,108 @@
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Mapa Operacional - Ghost Squad">
     <meta name="twitter:card" content="summary_large_image">
-    
-    <!-- Leaflet 1.9.4 (Map Library) servido pelo próprio site: o mapa não depende de CDN -->
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <script src="js/tema.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap">
+    <!-- Leaflet 1.9.4 (biblioteca do mapa) servido pelo próprio site: o mapa não depende de CDN -->
     <link rel="stylesheet" href="vendor/leaflet-1.9.4/leaflet.css">
-    <script src="vendor/leaflet-1.9.4/leaflet.js"></script>
-
-    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/mapa.css">
+    <script src="vendor/leaflet-1.9.4/leaflet.js" defer></script>
+    <script src="js/mapa.js" defer></script>
+    <script src="js/base.js" defer></script>
 </head>
-<body>
+<body class="pagina-mapa">
 
-<div class="loader-overlay" id="loader">
-    <div class="loader-box">
-        <h2>// INICIANDO UPLINK TÁTICO</h2>
-        <div class="loader-spinner"></div>
-        <p id="loaderText">Carregando dados de telemetria de Auroa...</p>
-    </div>
-</div>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
-<div class="app-container">
-    <!-- MAP VIEWPORT (Leaflet container) -->
-    <div class="map-viewport" id="map">
-        <div class="map-overlay-info">
-            <h5>// SISTEMA DE NAVEGAÇÃO</h5>
-            • Roda do mouse: ZOOM In / Out<br>
-            • Clique esquerdo + Arrastar: MOVER<br>
-            • Clique em um ponto: INSPECIONAR COORDENADAS
+<div class="mapa-app">
+    <!-- Área do mapa (Leaflet) -->
+    <div class="mapa-viewport" id="map" role="region" aria-label="Mapa de Auroa">
+        <div class="mapa-instrucoes" aria-hidden="true">
+            <p class="mapa-instrucoes__titulo">// SISTEMA DE NAVEGAÇÃO</p>
+            <p>• Roda do mouse: ZOOM In / Out<br>
+               • Clique esquerdo + Arrastar: MOVER<br>
+               • Clique em um ponto: INSPECIONAR COORDENADAS</p>
         </div>
 
-        <div class="coords-display" id="coordsDisplay">
-            X: 0.0000 | Y: 0.0000
+        <div class="mapa-coords" id="coordsDisplay" aria-hidden="true">X: 0.0000 | Y: 0.0000</div>
+
+        <div class="mapa-status" id="loader" role="status">
+            <span class="mapa-status__spinner" aria-hidden="true"></span>
+            <span id="loaderText">Carregando dados de telemetria de Auroa...</span>
         </div>
     </div>
 
-    <!-- HUD SIDEBAR PANEL -->
-    <div class="hud-panel">
-        <h3 class="hud-title">// CENTRAL DE MAPA TÁTICO</h3>
-        
-        <a href="index.html" class="btn-back">< RETORNAR AO MENU</a>
+    <!-- Painel de controle -->
+    <main id="conteudo" class="mapa-painel">
+        <!-- O botão de tema é inserido aqui por base.js -->
+        <nav class="nav-buttons" aria-label="Navegação">
+            <a class="btn btn--sm" href="index.html">&lt; RETORNAR AO MENU</a>
+        </nav>
 
-        <!-- Search -->
-        <div class="control-section">
-            <h4>// BUSCA OPERACIONAL</h4>
-            <div class="search-container">
-                <input type="text" id="searchInput" placeholder="Filtrar por nome ou ID...">
-            </div>
-        </div>
+        <h1>// CENTRAL DE MAPA TÁTICO</h1>
+        <noscript><p class="noscript">O mapa precisa de JavaScript ativado para ser exibido.</p></noscript>
 
-        <!-- Province Filter -->
-        <div class="control-section">
-            <h4>// FILTRAR POR PROVÍNCIA</h4>
-            <select id="provinceSelect">
+        <section class="mapa-secao" aria-labelledby="tituloBusca">
+            <h2 id="tituloBusca">// BUSCA OPERACIONAL</h2>
+            <label class="mapa-rotulo" for="searchInput">Nome ou ID do ponto</label>
+            <input class="mapa-campo" type="search" id="searchInput" placeholder="Filtrar por nome ou ID..." autocomplete="off">
+        </section>
+
+        <section class="mapa-secao" aria-labelledby="tituloProvincia">
+            <h2 id="tituloProvincia">// FILTRAR POR PROVÍNCIA</h2>
+            <label class="mapa-rotulo" for="provinceSelect">Província</label>
+            <select class="mapa-campo" id="provinceSelect">
                 <option value="ALL">-- TODAS AS PROVÍNCIAS --</option>
             </select>
-        </div>
+        </section>
 
-        <!-- Type Filter -->
-        <div class="control-section">
-            <h4>// CATEGORIAS DE ENTIDADES</h4>
-            <div class="filter-types">
-                <label class="type-item">
-                    <input type="checkbox" id="chkBivouac" checked>
-                    <span class="type-dot" style="background-color: var(--color-bivouac);"></span>
-                    Bivouac
-                </label>
-                <label class="type-item">
-                    <input type="checkbox" id="chkCamp" checked>
-                    <span class="type-dot" style="background-color: var(--color-camp);"></span>
-                    Camp
-                </label>
-                <label class="type-item">
-                    <input type="checkbox" id="chkOutpost" checked>
-                    <span class="type-dot" style="background-color: var(--color-outpost);"></span>
-                    Outpost
-                </label>
-                <label class="type-item">
-                    <input type="checkbox" id="chkVillage" checked>
-                    <span class="type-dot" style="background-color: var(--color-village);"></span>
-                    Village
-                </label>
-                <label class="type-item">
-                    <input type="checkbox" id="chkStation" checked>
-                    <span class="type-dot" style="background-color: var(--color-station);"></span>
-                    Station
-                </label>
-                <label class="type-item">
-                    <input type="checkbox" id="chkOther" checked>
-                    <span class="type-dot" style="background-color: var(--color-other);"></span>
-                    Other
-                </label>
+        <fieldset class="mapa-secao">
+            <legend><h2>// CATEGORIAS DE ENTIDADES</h2></legend>
+            <div class="mapa-tipos">
+                <label class="mapa-tipo"><input type="checkbox" id="chkBivouac" checked><span class="poi-ponto" data-tipo="Bivouac" aria-hidden="true"></span>Bivouac</label>
+                <label class="mapa-tipo"><input type="checkbox" id="chkCamp" checked><span class="poi-ponto" data-tipo="Camp" aria-hidden="true"></span>Camp</label>
+                <label class="mapa-tipo"><input type="checkbox" id="chkOutpost" checked><span class="poi-ponto" data-tipo="Outpost" aria-hidden="true"></span>Outpost</label>
+                <label class="mapa-tipo"><input type="checkbox" id="chkVillage" checked><span class="poi-ponto" data-tipo="Village" aria-hidden="true"></span>Village</label>
+                <label class="mapa-tipo"><input type="checkbox" id="chkStation" checked><span class="poi-ponto" data-tipo="Station" aria-hidden="true"></span>Station</label>
+                <label class="mapa-tipo"><input type="checkbox" id="chkOther" checked><span class="poi-ponto" data-tipo="Other" aria-hidden="true"></span>Other</label>
             </div>
-        </div>
+        </fieldset>
 
-        <!-- Map Calibration (HUD Overlay Controllers) -->
-        <div class="control-section" style="border-color: rgba(255,170,0,0.5);">
-            <h4 style="color: #ffaa00;">// AJUSTE DE IMAGEM DE FUNDO</h4>
-
-            <div style="margin-bottom: 15px;">
-                <div style="display: flex; justify-content: space-between; font-size: 0.75rem;">
-                    <span>OPACIDADE:</span>
-                    <span id="valOpacity">0.60</span>
-                </div>
-                <input type="range" id="slideOpacity" min="0" max="1" step="0.05" value="0.60" style="width: 100%; accent-color: #ffaa00;">
+        <section class="mapa-secao mapa-secao--amber" aria-labelledby="tituloFundo">
+            <h2 id="tituloFundo">// IMAGEM DE FUNDO</h2>
+            <div class="mapa-faixa">
+                <label for="slideOpacity">OPACIDADE:</label>
+                <output id="valOpacity" for="slideOpacity">0.60</output>
             </div>
+            <input class="mapa-slider" type="range" id="slideOpacity" min="0" max="1" step="0.05" value="0.60">
+        </section>
 
-        </div>
-
-        <!-- POI Details -->
-        <div class="hud-title" style="font-size: 1rem; margin-top: 10px; margin-bottom: 10px;">// DETALHES DO PERÍMETRO</div>
-        <div class="details-card" id="detailsCard">
-            <div class="details-placeholder" id="detailsPlaceholder">
-                Selecione um ponto tático no mapa para descriptografar telemetria.
+        <section class="mapa-secao mapa-detalhes" aria-labelledby="tituloDetalhes" aria-live="polite">
+            <h2 id="tituloDetalhes">// DETALHES DO PERÍMETRO</h2>
+            <p class="mapa-detalhes__vazio" id="detailsPlaceholder">Selecione um ponto tático no mapa para descriptografar telemetria.</p>
+            <div id="detailsContent" hidden>
+                <p class="mapa-detalhes__nome" id="detName"></p>
+                <dl class="mapa-dados">
+                    <dt>ID Único:</dt><dd id="detId"></dd>
+                    <dt>Província:</dt><dd id="detProvince"></dd>
+                    <dt>Tipo:</dt><dd class="poi-tipo" id="detType"></dd>
+                    <dt class="mapa-dados__sep">X (Longitude):</dt><dd class="mapa-dados__sep" id="detX"></dd>
+                    <dt>Y (Latitude):</dt><dd id="detY"></dd>
+                    <dt>Z (Altitude):</dt><dd id="detZ"></dd>
+                </dl>
             </div>
-            <div id="detailsContent" style="display: none;">
-                <div class="details-title" id="detName">GL001_RespawnPoint_PhotographerHouse</div>
-                <div class="details-row">
-                    <span class="details-label">ID Único:</span>
-                    <span class="details-value" id="detId">0x0000019b29f0dd88</span>
-                </div>
-                <div class="details-row">
-                    <span class="details-label">Província:</span>
-                    <span class="details-value" id="detProvince">Cape North</span>
-                </div>
-                <div class="details-row">
-                    <span class="details-label">Tipo:</span>
-                    <span class="details-value" id="detType" style="text-transform: uppercase;">Bivouac</span>
-                </div>
-                <div class="details-row" style="margin-top: 12px; border-top: 1px dashed var(--term-dim); padding-top: 8px;">
-                    <span class="details-label">X (Longitude):</span>
-                    <span class="details-value" id="detX">-8511.9463</span>
-                </div>
-                <div class="details-row">
-                    <span class="details-label">Y (Latitude):</span>
-                    <span class="details-value" id="detY">-5590.4072</span>
-                </div>
-                <div class="details-row">
-                    <span class="details-label">Z (Altitude):</span>
-                    <span class="details-value" id="detZ">195.0164</span>
-                </div>
-            </div>
-        </div>
+        </section>
 
-        <!-- HUD stats footer -->
-        <div class="hud-stats">
-            <span id="txtUplink">UPLINK: SEGURO (HTTPS)</span>
+        <footer class="mapa-rodape">
+            <span>UPLINK: SEGURO (HTTPS)</span>
             <span id="txtCounter">POIs: 0 / 0</span>
-        </div>
-    </div>
+        </footer>
+    </main>
 </div>
-
-<script src="js/mapa.js"></script>
 
 </body>
 </html>

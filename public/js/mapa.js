@@ -46,15 +46,26 @@ const typeFilters = {
     'Other': document.getElementById('chkOther')
 };
 
-// Color definitions
-const COLORS = {
-    'Bivouac': '#00f0ff',
-    'Camp': '#ff3333',
-    'Outpost': '#ff9900',
-    'Village': '#ffff33',
-    'Station': '#cc33ff',
-    'Other': '#55a855'
-};
+// Point colors come from the theme tokens in css/mapa.css (--poi-*), one palette per theme
+const TIPOS = ['Bivouac', 'Camp', 'Outpost', 'Village', 'Station', 'Other'];
+let COLORS = {};
+let CORBORDA = '#000';
+
+function lerCoresDoTema() {
+    const css = getComputedStyle(document.documentElement);
+    COLORS = {};
+    TIPOS.forEach(tipo => {
+        COLORS[tipo] = css.getPropertyValue('--poi-' + tipo.toLowerCase()).trim();
+    });
+    CORBORDA = css.getPropertyValue('--poi-borda').trim();
+}
+lerCoresDoTema();
+
+// The theme button (base.js) changes <html data-theme>: repaint the points
+new MutationObserver(() => {
+    lerCoresDoTema();
+    renderPoints();
+}).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
 // Initialize Leaflet Map
 // Flat 2D game coordinates (Y is north, X is east), scaled so that Leaflet zoom N
@@ -73,15 +84,24 @@ const map = L.map('map', {
     renderer: L.canvas({ padding: 0.5 }) // High-performance Leaflet canvas renderer
 });
 
+// Background pane: the opacity slider fades the whole pane (preview + tiles together)
+const painelFundo = map.createPane('fundo');
+painelFundo.style.zIndex = 150;   // below markers (overlayPane = 400)
+painelFundo.style.setProperty('--mapa-opacidade', mapOpacity);
+
+// Small preview of the whole image under the tiles: shows up at once and hides the
+// 1 px gap browsers leave between tiles at fractional zoom
+L.imageOverlay('assets/mapa-tiles/previa.webp', MAPA_LIMITES, { pane: 'fundo' }).addTo(map);
+
 // Only the tiles on screen are downloaded (instead of the whole 12 MB image)
 tileLayer = L.tileLayer('assets/mapa-tiles/{z}/{y}/{x}.webp', {
+    pane: 'fundo',
     tileSize: TILE_TAMANHO,
     minZoom: 0,
     maxZoom: TILE_ZOOM_MAX + 2,
     maxNativeZoom: TILE_ZOOM_MAX,
     bounds: MAPA_LIMITES,   // no requests for tiles outside the image
-    noWrap: true,
-    opacity: mapOpacity
+    noWrap: true
 }).addTo(map);
 
 // Show the map right away, even before the POI data arrives
@@ -90,10 +110,8 @@ map.fitBounds(MAPA_LIMITES);
 // Create a layer group to hold all points
 const markerGroup = L.layerGroup().addTo(map);
 
-// Initialize Page
-window.addEventListener('load', () => {
-    loadData();
-});
+// Initialize Page (script is deferred: the DOM is ready; don't wait for the tiles)
+loadData();
 
 // Load map data
 function loadData() {
@@ -121,38 +139,20 @@ function loadData() {
                 provinceSelect.appendChild(opt);
             });
 
-            // Auto-fit to coordinates bounds on load
-            let minX = Infinity, maxX = -Infinity;
-            let minY = Infinity, maxY = -Infinity;
-            let hasPoints = false;
-            poiData.forEach(poi => {
-                if (Math.abs(poi.x) > 100 && Math.abs(poi.y) > 100) {
-                    if (poi.x < minX) minX = poi.x;
-                    if (poi.x > maxX) maxX = poi.x;
-                    if (poi.y < minY) minY = poi.y;
-                    if (poi.y > maxY) maxY = poi.y;
-                    hasPoints = true;
-                }
-            });
-
-            if (hasPoints) {
-                // Zoom directly into the archipelago bounds
-                map.fitBounds([[minY, minX], [maxY, maxX]]);
-            } else {
-                map.setView([0, 0], -1);
-            }
+            // The view stays framed on the map image (set above): fitting to all points
+            // would include stray parser points in the sea and shrink the archipelago.
 
             applyFilters();
 
             // Hide loader overlay
-            document.getElementById('loader').style.opacity = '0';
-            setTimeout(() => {
-                document.getElementById('loader').style.display = 'none';
-            }, 500);
+            const loader = document.getElementById('loader');
+            loader.classList.add('is-done');
+            setTimeout(() => { loader.hidden = true; }, 500);
         })
         .catch(err => {
             console.error(err);
-            loaderText.innerHTML = `<span style="color:#ff3333;">ERRO DE CONEXÃO: ${err.message}</span><br><br>Verifique se o servidor HTTP/HTTPS está rodando.`;
+            document.getElementById('loader').classList.add('is-error');
+            loaderText.textContent = `ERRO DE CONEXÃO: ${err.message} Verifique se o servidor HTTP/HTTPS está rodando.`;
         });
 }
 
@@ -194,7 +194,7 @@ function renderPoints() {
         const marker = L.circleMarker([poi.y, poi.x], {
             radius: 3,
             fillColor: color,
-            color: '#000',
+            color: CORBORDA,
             weight: 0.5,
             fillOpacity: 0.85
         });
@@ -203,11 +203,11 @@ function renderPoints() {
         marker.on('mouseover', () => {
             isHoveringMarker = true;
             coordsDisplay.textContent = `X: ${poi.x.toFixed(4)} | Y: ${poi.y.toFixed(4)} | ALVO: ${poi.name}`;
-            coordsDisplay.style.borderColor = color; // Border glows in category color!
+            coordsDisplay.style.setProperty('--destaque', color); // Border glows in category color!
         });
         marker.on('mouseout', () => {
             isHoveringMarker = false;
-            coordsDisplay.style.borderColor = 'var(--term-green)';
+            coordsDisplay.style.removeProperty('--destaque');
         });
 
         // Handle selection on click
@@ -216,12 +216,7 @@ function renderPoints() {
             showDetails(poi);
 
             // Open standard Leaflet popup with quick info
-            marker.bindPopup(`
-                <div style="font-weight:bold; font-size: 0.9rem; border-bottom: 1px dashed var(--term-green); padding-bottom:5px; margin-bottom:8px;">${poi.name}</div>
-                <b>Tipo:</b> ${poi.type.toUpperCase()}<br>
-                <b>Província:</b> ${poi.province}<br>
-                <b>Coord:</b> X: ${poi.x.toFixed(2)} | Y: ${poi.y.toFixed(2)}
-            `).openPopup();
+            marker.bindPopup(popupContent(poi)).openPopup();
         });
 
         marker.addTo(markerGroup);
@@ -250,13 +245,34 @@ const valOpacity = document.getElementById('valOpacity');
 slideOpacity.addEventListener('input', () => {
     mapOpacity = parseFloat(slideOpacity.value);
     valOpacity.textContent = mapOpacity.toFixed(2);
-    tileLayer.setOpacity(mapOpacity);
+    painelFundo.style.setProperty('--mapa-opacidade', mapOpacity);
 });
+
+// Popup built with textContent: names come from the game files, never parsed as HTML
+function popupContent(poi) {
+    const box = document.createElement('div');
+    const linha = (rotulo, valor, classe) => {
+        const p = document.createElement('p');
+        if (classe) p.className = classe;
+        if (rotulo) {
+            const b = document.createElement('strong');
+            b.textContent = rotulo + ' ';
+            p.appendChild(b);
+        }
+        p.appendChild(document.createTextNode(valor));
+        box.appendChild(p);
+    };
+    linha('', poi.name, 'poi-popup__nome');
+    linha('Tipo:', poi.type.toUpperCase());
+    linha('Província:', poi.province);
+    linha('Coord:', `X: ${poi.x.toFixed(2)} | Y: ${poi.y.toFixed(2)}`);
+    return box;
+}
 
 // Selection Details cards
 function showDetails(poi) {
-    detailsPlaceholder.style.display = 'none';
-    detailsContent.style.display = 'block';
+    detailsPlaceholder.hidden = true;
+    detailsContent.hidden = false;
 
     document.getElementById('detName').textContent = poi.name;
     document.getElementById('detId').textContent = poi.id;
@@ -264,7 +280,7 @@ function showDetails(poi) {
     
     const typeEl = document.getElementById('detType');
     typeEl.textContent = poi.type;
-    typeEl.style.color = COLORS[poi.type] || COLORS['Other'];
+    typeEl.setAttribute('data-tipo', COLORS[poi.type] ? poi.type : 'Other');
 
     document.getElementById('detX').textContent = poi.x.toFixed(4);
     document.getElementById('detY').textContent = poi.y.toFixed(4);
@@ -272,6 +288,6 @@ function showDetails(poi) {
 }
 
 function hideDetails() {
-    detailsPlaceholder.style.display = 'block';
-    detailsContent.style.display = 'none';
+    detailsPlaceholder.hidden = false;
+    detailsContent.hidden = true;
 }

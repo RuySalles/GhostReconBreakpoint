@@ -31,9 +31,9 @@ jobs:
       - name: Prepare Deployment Directory
         run: |
           # The main static site is in 'public'
-          # We need to copy 'data-out' into 'public' so the site can fetch it relatively
+          # Only the clean JSON is used by the site (mapa.js); map_data_raw.json is parser input
           mkdir -p public/data-out
-          cp -r data-out/* public/data-out/
+          cp data-out/map_data.json public/data-out/
 
       - name: Stamp build version
         run: |
